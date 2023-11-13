@@ -1,5 +1,5 @@
 #Software Development Lifecycle Project 3
-#Katarina Lukic, Naryan Sambhi, Nick Packull-Mccormick, Umang Mohini
+#Nick Packull-Mccormick
 
 #This is the hearthealth module where 3 smaller classes will be created called Heart rate, blood oxygen, blood pressure
 
@@ -48,6 +48,15 @@ class heart_Health(object):
         return self._blood_pressure
     def set_hr(self, blood_pressure):
         self._blood_pressure = blood_pressure
+        
+        
+    # Naryan Sambhi - added abstracted get all 
+    def get_heart_health_data(self):
+        return {
+            'heart_rate': self._heart_rate,
+            'blood_oxygen': self._blood_oxegen,
+            'blood_pressure': self._blood_pressure
+        }
 
     #setFlags
     def checkHRFlag(self):

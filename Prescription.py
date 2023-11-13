@@ -9,13 +9,13 @@ class Prescription:
     
     #constructor 
     def __init__(self, name, effects, dosage):
-        self.Name = name
-        self.Effects = effects
-        self.Dosage = dosage
+        self._Name = name
+        self._Effects = effects
+        self._Dosage = dosage
         
     #string output
     def __str__(self):
-        return f'\nMedication Name: {self.Name} \nEffects: {self.Effects} \nDosage: {self.Dosage}\n'
+        return f'\nMedication Name: {self._Name} \nEffects: {self._Effects} \nDosage: {self._Dosage}\n'
     
     #functions
     
@@ -37,9 +37,9 @@ class PrescriptionManager:
     #remove
     def remove_prescription(self, name):
         for prescription in self.Prescription_Array: #search for prescription and remove
-            if prescription.Name == name: 
+            if prescription._Name == name: 
                 self.Prescription_Array.remove(prescription)
-                print(f'{prescription.Name} has been removed from user file')
+                print(f'{prescription._Name} has been removed from user file')
                 return
             
     def print_prescriptions(self):
@@ -49,9 +49,39 @@ class PrescriptionManager:
             
     def edit_prescription_dose(self, name, new_dose):
           for prescription in self.Prescription_Array:  #search for prescription and change
-            if prescription.Name == name: 
-                prescription.Dosage = new_dose
-                print(f'{prescription.Name} dosage has been changed to {prescription.Dosage}')
+            if prescription._Name == name: 
+                prescription._Dosage = new_dose
+                print(f'{prescription._Name} dosage has been changed to {prescription._Dosage}')
                 return
 
 
+
+'''
+# Create a PrescriptionManager instance
+manager = PrescriptionManager()
+
+# Add prescriptions
+manager.add_prescription("Aspirin", "Pain relief", "10mg")
+manager.add_prescription("Ibuprofen", "Anti-inflammatory", "20mg")
+manager.add_prescription("Paracetamol", "Fever reducer", "15mg")
+
+# Print prescriptions
+print("Initial Prescriptions:")
+manager.print_prescriptions()
+
+# Remove a prescription
+manager.remove_prescription("Ibuprofen")
+
+# Print prescriptions after removal
+print("\nPrescriptions after Removal:")
+manager.print_prescriptions()
+
+# Edit a prescription dose
+manager.edit_prescription_dose("Aspirin", "15mg")
+
+# Print prescriptions after editing dose
+print("\nPrescriptions after Editing Dose:")
+manager.print_prescriptions()
+
+
+'''
