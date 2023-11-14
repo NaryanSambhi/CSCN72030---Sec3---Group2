@@ -5,16 +5,14 @@
 
 
 class heart_Health(object):
-    #main variables
-    _heart_rate = 0
-    _blood_oxegen = 0
-    _blood_pressure = 0
 
     #flag variables
     _hr_flag = False
     _bo_flag = False
     _bp_flag = False
 
+
+#needs to be moved to somewhere user can change it
     #internal variables
     _hrUpperLim = 100
     _hrLowerLim = 60
@@ -49,14 +47,6 @@ class heart_Health(object):
     def set_hr(self, blood_pressure):
         self._blood_pressure = blood_pressure
         
-        
-    # Naryan Sambhi - added abstracted get all 
-    def get_heart_health_data(self):
-        return {
-            'heart_rate': self._heart_rate,
-            'blood_oxygen': self._blood_oxegen,
-            'blood_pressure': self._blood_pressure
-        }
 
     #setFlags
     def checkHRFlag(self):

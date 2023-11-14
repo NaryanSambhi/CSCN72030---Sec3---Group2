@@ -68,12 +68,12 @@ class UserData:
                 },
 
             'BMI': { 
-                    'height': self.BMI.height,
-                    'weight' : self.BMI.weight
+                    'height': self.BMI._height,
+                    'weight' : self.BMI._height
                 },
             'body info': { 
-                    'temp': self.body_Info.temp,
-                    'fluid' : self.body_Info.fluid
+                    'temp': self.body_Info._temp,
+                    'fluid' : self.body_Info._fluid
                 },
             
                         
@@ -94,13 +94,16 @@ class UserData:
         self.heart_health._heart_rate = loaded_data['Heart_Health']['heart_rate']
         self.heart_health._blood_oxegen = loaded_data['Heart_Health']['blood_oxygen']
         self.heart_health._blood_pressure = loaded_data['Heart_Health']['blood_pressure']
-        self.BMI.height = loaded_data['BMI']['height']
-        self.BMI.weight = loaded_data['BMI']['weight']
-        self.body_Info.temp = loaded_data['body info']['temp']
-        self.body_Info.fluid = loaded_data['body info']['temp']
+        self.BMI._height = loaded_data['BMI']['height']
+        self.BMI._weight = loaded_data['BMI']['weight']
+        self.body_Info._temp = loaded_data['body info']['temp']
+        self.body_Info._fluid = loaded_data['body info']['fluid']
 
 
 
+
+
+#create
 
 #for tests
 user = UserData(name="John Doe", age=30)
@@ -112,15 +115,13 @@ user.heart_health._heart_rate = 90
 user.heart_health._blood_oxegen = 80
 user.heart_health._blood_pressure = 70
 
-user.BMI.weight = 70
-user.BMI.height = 190
+user.BMI._weight = 70
+user.BMI._height = 190
 
-user.body_Info.temp = 100
-user.body_Info.fluid = 750
+user.body_Info._temp = 100
+user.body_Info._fluid = 750
 
 user.save_to_file("test.pkl")
-
-#create
 
 #load
 loaded_user = UserData(name="", age=0)
@@ -142,7 +143,7 @@ print(loaded_user.heart_health)
 print("\n--------- body --------")
 print(loaded_user.body_Info)
 
-print("\n--------- BMI --------\n")
+print("\n--------- BMI --------")
 print(loaded_user.BMI)
 
 

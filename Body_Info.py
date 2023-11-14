@@ -6,15 +6,13 @@
 
 
 class body_info(object):
-    #main variables
-    _temp = 0
-    _fluid = 0
 
     #flag variables
     _temp_flag = False
     _fluid_flag = False
 
-    #internal variables
+    
+    #shouldnt be defined here, how will the user change this.
     _tempUpperLim = 100
     _tempLowerLim = 90
     _fluidUpperLim = 1000
@@ -24,8 +22,15 @@ class body_info(object):
     def __init__(self, temp, fluid):
         self._temp = temp
         self._fluid = fluid
-        self.checkTempFlag(self)
-        self.checkFluidFlag(self)
+        
+        
+        #causing errors 
+        
+        #self.checkTempFlag(self)
+        #self.checkFluidFlag(self)
+    
+    def __str__(self):
+        return f'Temp: {self._temp} \nFluid Intake: {self._fluid}\n'
     
     #Getters and Setters for the weight and height 
     def get_temp(self):

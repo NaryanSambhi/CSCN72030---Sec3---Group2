@@ -5,35 +5,57 @@
 #This module will have 2 smaller clases with Weight and Height Respectively
 
 class BMI(object):
+    
+    
     #main variables
+    
+    
+    #why are you defining these here? 
+    '''
     _height = 0
     _weight = 0
+    '''
+    
+    
+    #you and nick need to fix this in yours in where this is being defined
 
+    _weightUpperLim = 100
+    _weightLowerLim = 60
+    _heightUpperLim = 225
+    _heightLowerLim = 80
+    
     #flag variables
     _weight_flag = False
     _height_flag = False
 
     #internal variables 
-    _weightUpperLim = 100
-    _weightLowerLim = 60
-    _heightUpperLim = 225
-    _heightLowerLim = 80
 
     #Parameterized Constructor
     def __init__(self, height, weight):
         self._height = height
         self._weight = weight
-        self.checkWeightFlag(self)
-        self.checkHeightFlag(self)
+        
+        
+        #causing errors
+        # self.checkWeightFlag(self)
+       #   self.checkHeightFlag(self)
+    
+    
+    def __str__(self):
+        return f'\nHeight: {self._height} \nWeight: {self._weight}\n'
+    
+    
     
     #Getters and Setters for the weight and height 
     def get_weight(self):
         return self._weight
+    
     def set_weight(self, weight):
         self._weight = weight
 
     def get_height(self):
         return self._height
+    
     def set_height(self, height):
         self._height = height 
 
@@ -53,22 +75,35 @@ class BMI(object):
     
     # a function to calculate the bmi 
     def Calculate(_height, _weight):
-        bmi = _weight / (_height ** 2)
+        
+        
+        #exception case? 
+        
+        #needs something like this
+        try:
+            bmi = _weight / (_height ** 2)
+        except:
+            return
+
+        
+        #you need to set these to flags for the GUI to use
+        
+        #need to move this code and fix it into calculate. shouldnt be two sepperate 
+        # Interpret the BMI
+        if bmi < 18.5:
+            print("You are underweight.") #you need to use flags how would this work
+                                            #in a gui outside testing?
+        elif 18.5 <= bmi < 24.9:
+            print("Your weight is normal.")
+        elif 25 <= bmi < 29.9:
+            print("You are overweight.")
+        else:
+            print("You are obese.")
+        
         return bmi
-   
-    # call the function for the calculations
-    bmi = Calculate(_height, _weight)
+           
 
-    # Interpret the BMI
-    if bmi < 18.5:
-      print("You are underweight.")
-    elif 18.5 <= bmi < 24.9:
-      print("Your weight is normal.")
-    elif 25 <= bmi < 29.9:
-      print("You are overweight.")
-    else:
-      print("You are obese.")
-
+#useless function, remove
     # a temp display function to the user 
-    def Display():
-      print("This is the BMI info")
+    # def Display():
+    #  print("This is the BMI info")
