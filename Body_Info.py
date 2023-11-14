@@ -26,8 +26,6 @@ class body_info(object):
     def __init__(self, temp, fluid):
         self._temp = temp
         self._fluid = fluid
-        self.checkFluidFlag(self)
-        self.checkTempFlag(self)
     
     def __str__(self):
         return f'Temp: {self._temp} \nFluid Intake: {self._fluid}\n'
@@ -45,13 +43,13 @@ class body_info(object):
 
 
     #setFlags that can be changed later from the user
-    def checkTempFlag(self):
+    def checkTempFlag(self, temp):
         if self._temp > self._tempUpperLim or self._temp < self._tempLowerLim:
             self._tempflag = True
         else:
             self._tempflag = False
 
-    def checkFluidFlag(self):
+    def checkFluidFlag(self, fluid):
         if self._fluid > self._fluidUpperLim or self._fluid < self._fluidLowerLim:
             self._fluidflag = True
         else:

@@ -34,17 +34,9 @@ class BMI(object):
     def __init__(self, height, weight):
         self._height = height
         self._weight = weight
-        
-        
-        #causing errors
-        # self.checkWeightFlag(self)
-       #   self.checkHeightFlag(self)
-    
     
     def __str__(self):
         return f'\nHeight: {self._height} \nWeight: {self._weight}\n'
-    
-    
     
     #Getters and Setters for the weight and height 
     def get_weight(self):
@@ -102,8 +94,3 @@ class BMI(object):
         
         return bmi
            
-
-#useless function, remove
-    # a temp display function to the user 
-    # def Display():
-    #  print("This is the BMI info")
