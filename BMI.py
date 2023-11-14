@@ -13,7 +13,7 @@ class BMI(object):
     _weight_flag = False
     _height_flag = False
 
-    #internal variables -> change the values 
+    #internal variables 
     _weightUpperLim = 100
     _weightLowerLim = 60
     _heightUpperLim = 225
@@ -34,7 +34,7 @@ class BMI(object):
 
     def get_height(self):
         return self._height
-    def set_bo(self, height):
+    def set_height(self, height):
         self._height = height 
 
     #setFlags that can be changed later from the user
@@ -43,7 +43,7 @@ class BMI(object):
         if self._weight > self._weightUpperLim or self._weight < self._weightLowerLim:
             self._weightflag = True
         else:
-            self._heightflag = False
+            self._weightflag = False
 
     def checkHeightFlag(self):
         if self._height > self._heightUpperLim or self._height < self._heightLowerLim:
@@ -68,6 +68,7 @@ class BMI(object):
       print("You are overweight.")
     else:
       print("You are obese.")
+
     # a temp display function to the user 
     def Display():
       print("This is the BMI info")
