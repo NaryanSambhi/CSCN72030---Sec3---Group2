@@ -17,15 +17,17 @@ class body_info(object):
 
     
     #shouldnt be defined here, how will the user change this.
-    _tempUpperLim = 100.4
-    _tempLowerLim = 97.0
-    _fluidUpperLim = 5.0
-    _fluidLowerLim = 0.0
+    _tempUpperLim = 100
+    _tempLowerLim = 97
+    _fluidUpperLim = 5000
+    _fluidLowerLim = 0
 
     #Parameterized Constructor
     def __init__(self, temp, fluid):
         self._temp = temp
         self._fluid = fluid
+        self.checkFluidFlag()
+        self.checkTempFlag()
     
     def __str__(self):
         return f'Temp: {self._temp} \nFluid Intake: {self._fluid}\n'
@@ -43,13 +45,13 @@ class body_info(object):
 
 
     #setFlags that can be changed later from the user
-    def checkTempFlag(self, temp):
+    def checkTempFlag(self):
         if self._temp > self._tempUpperLim or self._temp < self._tempLowerLim:
             self._tempflag = True
         else:
             self._tempflag = False
 
-    def checkFluidFlag(self, fluid):
+    def checkFluidFlag(self):
         if self._fluid > self._fluidUpperLim or self._fluid < self._fluidLowerLim:
             self._fluidflag = True
         else:
