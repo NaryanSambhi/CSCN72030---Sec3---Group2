@@ -34,6 +34,8 @@ class BMI(object):
     def __init__(self, height, weight):
         self._height = height
         self._weight = weight
+        self.checkWeightFlag()
+        self.checkHeightFlag()
     
     def __str__(self):
         return f'\nHeight: {self._height} \nWeight: {self._weight}\n'
