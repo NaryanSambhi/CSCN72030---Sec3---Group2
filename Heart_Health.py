@@ -109,7 +109,3 @@ class heart_Health(object):
     def __str__(self):
         return f'\nHeart Rate: {self._heart_rate} \nBlood Oxygen: {self._blood_oxegen} \nBlood Pressure: {self._blood_pressure}\n'
 
-
-testingHH = heart_Health(90, 97, 100)
-print(testingHH)
-
