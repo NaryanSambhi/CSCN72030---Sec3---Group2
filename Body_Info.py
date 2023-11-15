@@ -43,16 +43,15 @@ class body_info(object):
     def set_fluid(self, fluid):
         self._fluid = fluid 
 
-
     #setFlags that can be changed later from the user
     def checkTempFlag(self):
-        if self._temp > self._tempUpperLim or self._temp < self._tempLowerLim:
+        if self.temp > self._tempUpperLim or self.temp < self._tempLowerLim:
             self._tempflag = True
         else:
             self._tempflag = False
 
     def checkFluidFlag(self):
-        if self._fluid > self._fluidUpperLim or self._fluid < self._fluidLowerLim:
+        if self.fluid > self._fluidUpperLim or self.fluid < self._fluidLowerLim:
             self._fluidflag = True
         else:
             self._fluidflag = False
