@@ -82,15 +82,15 @@ class body_info(object):
     def checkTempFlag(self):
         if self._temp > self._tempUpperLim or self._temp < self._tempLowerLim:
             self._temp_flag = True
-            #return True
+            return self._temp_flag
         else:
             self._temp_flag = False
-            #return False
+            return self._temp_flag
 
     def checkFluidFlag(self):
         if self._fluid > self._fluidUpperLim or self._fluid < self._fluidLowerLim:
             self._fluid_flag = True
-            return self._temp_flag
+            return self._fluid_flag
             #return True
         else:
             self._fluid_flag = False
