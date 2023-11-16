@@ -152,65 +152,65 @@ class Test_Heart_Health(unittest.TestCase):
     
     #test cases for the flag checks
     
-    #this is supposed to fail
-    def test_checkHRFlag_overLimit_Fail(self):
+    #this is supposed to pass
+    def test_checkHRFlag_overLimit_Pass(self):
         hr = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
         self.assertTrue(hr.checkHRFlag())
     
-    # pass to see if it will flag if it is over the limit
-    def test_checkHRFlag_overLimit_Pass(self):
+    #fail to see if it will flag if it is over the limit
+    def test_checkHRFlag_overLimit_Fail(self):
         hr = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
         self.assertFalse(hr.checkHRFlag())
 
-    # pass to make sure that it does not raise a flag meaning that it is in range
-    def test_checkHRFlag_inLimit_Pass(self):
+    #fail to make sure that it does not raise a flag meaning that it is in range
+    def test_checkHRFlag_inLimit_Fail(self):
         hr = heart_Health(heart_rate=99, blood_oxegen=100, blood_pressure=130)
         self.assertTrue(hr.checkHRFlag())
  
-    # fail to see if it will raise true flag when in range
-    def test_checkHRFlag_inLimit_Fail(self):
+    #pass to see if it will raise true flag when in range
+    def test_checkHRFlag_inLimit_Pass(self):
         hr = heart_Health(heart_rate=91, blood_oxegen=100, blood_pressure=130)
         self.assertFalse(hr.checkHRFlag())
         
     #test cases for blood oxygen 
-    #this is supposed to fail
-    def test_checkBOFlag_overLimit_Fail(self):
+    #this is supposed to pass
+    def test_checkBOFlag_overLimit_Pass(self):
         bo = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
         self.assertTrue(bo.checkBOFlag())
     
-    # pass to see if it will flag if it is over the limit
-    def test_checkBOFlag_overLimit_Pass(self):
+    # fail to see if it will flag if it is over the limit
+    def test_checkBOFlag_overLimit_Fail(self):
         bo = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
         self.assertFalse(bo.checkBOFlag())
 
-    # pass to make sure that it does not raise a flag meaning that it is in range
-    def test_checkBOFlag_inLimit_Pass(self):
+    #Fail to make sure that it does not raise a flag meaning that it is in range
+    def test_checkBOFlag_inLimit_Fail(self):
         bo = heart_Health(heart_rate=99, blood_oxegen=98, blood_pressure=130)
         self.assertTrue(bo.checkBOFlag())
  
-    # fail to see if it will raise true flag when in range
-    def test_checkBOFlag_inLimit_Fail(self):
+    # pass to see if it will raise true flag when in range
+    def test_checkBOFlag_inLimit_Pass(self):
         bo = heart_Health(heart_rate=91, blood_oxegen=98, blood_pressure=130)
         self.assertFalse(bo.checkBOFlag())
 
     #test cases for blood pressure 
-    #this is supposed to fail
-    def test_checkBPFlag_overLimit_Fail(self):
+    #this is supposed to pass
+    def test_checkBPFlag_overLimit_pass(self):
         bp = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
         self.assertTrue(bp.checkBPFlag())
     
-    # pass to see if it will flag if it is over the limit
-    def test_checkBPFlag_overLimit_Pass(self):
+    # fail to see if it will flag if it is over the limit
+    def test_checkBPFlag_overLimit_fail(self):
         bp = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
         self.assertFalse(bp.checkBPFlag())
 
-    # pass to make sure that it does not raise a flag meaning that it is in range
-    def test_checkBPFlag_inLimit_Pass(self):
+    # fail to make sure that it does not raise a flag meaning that it is in range
+    def test_checkBPFlag_inLimit_Fail(self):
         bp = heart_Health(heart_rate=99, blood_oxegen=98, blood_pressure=100)
         self.assertTrue(bp.checkBPFlag())
  
-    # fail to see if it will raise true flag when in range
-    def test_checkBPFlag_inLimit_Fail(self):
+    # pass to see if it will raise true flag when in range
+    def test_checkBPFlag_inLimit_Pass(self):
         bp = heart_Health(heart_rate=91, blood_oxegen=98, blood_pressure=99)
         self.assertFalse(bp.checkBPFlag())
     
