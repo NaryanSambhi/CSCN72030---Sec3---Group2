@@ -15,9 +15,6 @@ import csv
 #GUI OBJECTS
 
 #welcome screen to login or create account
-
-
-
 class WelcomeScreen(QDialog):
     def __init__(self):
         super(WelcomeScreen, self).__init__()
@@ -25,7 +22,7 @@ class WelcomeScreen(QDialog):
         self.Login.clicked.connect(self.gotologin)
         self.Account.clicked.connect(self.gotocreate)
 
-        
+#navigation functions
     def gotologin(self):
         login = LoginScreen()
         widget.addWidget(login)
@@ -38,25 +35,24 @@ class WelcomeScreen(QDialog):
         widget.setCurrentIndex(widget.currentIndex()+1)
 
 
+#creating a new account screen
 class CreateScreen(QDialog):
     def __init__(self):
         super(CreateScreen, self).__init__()
         loadUi("UI/create.ui", self)
-        
-        
         self.Password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.Confirm.setEchoMode(QtWidgets.QLineEdit.Password)
-
-        
         self.SignUp.clicked.connect(self.registerfunction)
         self.GoBack.clicked.connect(self.Back)
         
-        
+#register a new account to DBS
     def registerfunction(self):    
         user = self.Email.text()
         password = self.Password.text()
         password2 = self.Confirm.text()
         
+        
+        #checking forum and passwords 
         if len(user) == 0 or len(password) == 0 or len(password2) == 0:
             self.accountError.setText("Please fill out the entire form")
             return
@@ -65,24 +61,20 @@ class CreateScreen(QDialog):
             self.accountError.setText("Passwords dont match")
             return
         
-        
+        #open to save
         with open("UserDBS.csv",mode="a", newline="") as f:
-            writer = csv.writer(f,delimiter=",")
-            writer.writerow( [user, password])
-            self.accountError.setText("")
+            writer = csv.writer(f,delimiter=",") #, useed to sep entries
             
-            print("creating account")
-                
+            writer.writerow( [user, password]) #write in order
+                              
+            self.close()
             login = LoginScreen()
-            widget.addWidget(login)
+            widget.addWidget(login)            
             widget.setCurrentIndex(widget.currentIndex()+1)
-            
             return
         
     def Back(self): 
-        Back = WelcomeScreen()
-        widget.addWidget(Back)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+        widget.removeWidget(self)
         
         
         
@@ -93,21 +85,19 @@ class LoginScreen(QDialog):
         super(LoginScreen, self).__init__()
         loadUi("UI/login.ui", self)    
         self.Password.setEchoMode(QtWidgets.QLineEdit.Password)
-        
-        
         self.LoginAccount.clicked.connect(self.loginfunction)
         self.GoBack.clicked.connect(self.Back)
 
         
         
-    
+    #check login details to DBS
     def loginfunction(self):
         user = self.Email.text()
         password = self.Password.text()
         
         print(user, password)
         
-        # errors
+        # error checks
         if len(user) == 0 or len(password) == 0:
             self.loginError.setText("Please fill out the entire form")
             return
@@ -120,22 +110,15 @@ class LoginScreen(QDialog):
                 if row[0] == user and row[1] == password:
                     print("Logging in")  
                     self.loginError.setText("")
-                        
-                        
-                        
-                    #open window to homepage
-                    home = Home()
-                    widget.addWidget(home)
-                    widget.setCurrentIndex(widget.currentIndex() + 1)
                     
                     #intialize objects from save file
-                    
-                    
-                    
-                    
-                    
 
-                    # Add your logic to proceed after successful login
+                        
+                    #open window to homepage
+                    self.close()
+                    home = Home()
+                    widget.addWidget(home)
+                    widget.setCurrentIndex(widget.currentIndex() + 1)         
                     return
         
         # If no match found
@@ -143,12 +126,10 @@ class LoginScreen(QDialog):
         
         
     def Back(self): 
-        Back = WelcomeScreen()
-        widget.addWidget(Back)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+        widget.removeWidget(self)
         
         
-        
+#homepage
 class Home(QtWidgets.QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
@@ -158,11 +139,11 @@ class Home(QtWidgets.QMainWindow):
         self.BMI.clicked.connect(self.GoToBMI)
         self.Heart.clicked.connect(self.GoToHeartHealth)
 
+#navigation links (doesnt close current as we will go back often)
     def GoToPrescriptionManager(self):
         PHS = PrescriptionManager()
         widget.addWidget(PHS)
         widget.setCurrentIndex(widget.currentIndex() + 1)
-    
     
     def GoToBMI(self):
         bmi = BMI()
@@ -171,39 +152,33 @@ class Home(QtWidgets.QMainWindow):
         
     def GoToHeartHealth(self):
         print("go to heart")
+        
+    #need another for body
 
         
-
-     
+#prescription manager     
 class PrescriptionManager(QtWidgets.QMainWindow):
     def __init__(self):
         super(PrescriptionManager, self).__init__()
         loadUi("UI/PHS_prescription.ui", self)
         self.GoBack.clicked.connect(self.Back)
 
-        
-        
-    
     def Back(self): 
-        home = Home()
-        widget.addWidget(home)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.removeWidget(self)
         
         
-     
+#bmi class 
 class BMI(QtWidgets.QMainWindow):
     def __init__(self):
         super(BMI, self).__init__()
         loadUi("UI/PHS_BMI.ui", self)
         self.GoBack.clicked.connect(self.Back)
 
-        
     def Back(self): 
-        home = Home()
-        widget.addWidget(home)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.removeWidget(self)
     
-        
+
+#heart class     
 '''   
 class HeartHealth(QtWidgets.QMainWindow):
     def __init__(self):
@@ -213,12 +188,11 @@ class HeartHealth(QtWidgets.QMainWindow):
 
         
     def Back(self): 
-        home = Home()
-        widget.addWidget(home)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.removeWidget(self)
         
 '''
 
+#body status class
 '''   
 class BodyStatus(QtWidgets.QMainWindow):
     def __init__(self):
@@ -228,9 +202,7 @@ class BodyStatus(QtWidgets.QMainWindow):
 
         
     def Back(self): 
-        home = Home()
-        widget.addWidget(home)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.removeWidget(self)
         
 '''
         
