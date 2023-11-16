@@ -107,5 +107,5 @@ class heart_Health(object):
 
     #Display
     def __str__(self):
-        return f'\nHeart Rate: {self._heart_rate} \nBlood Oxygen: {self._blood_oxegen} \nBlood Pressure: {self._blood_pressure}\n'
+        return f'\nHeart Rate: {self._heart_rate} \nBlood Oxygen: {self._blood_oxegen} \nBlood Pressure: {self._blood_pressure}\n'  
 

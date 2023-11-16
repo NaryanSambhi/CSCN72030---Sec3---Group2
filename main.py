@@ -18,7 +18,7 @@ import csv
 class WelcomeScreen(QDialog):
     def __init__(self):
         super(WelcomeScreen, self).__init__()
-        loadUi("login_or_create.ui", self)
+        loadUi("UI/login_or_create.ui", self)
         self.Login.clicked.connect(self.gotologin)
         self.Account.clicked.connect(self.gotocreate)
 
@@ -38,7 +38,7 @@ class WelcomeScreen(QDialog):
 class CreateScreen(QDialog):
     def __init__(self):
         super(CreateScreen, self).__init__()
-        loadUi("create.ui", self)
+        loadUi("UI/create.ui", self)
         
         
         self.Password.setEchoMode(QtWidgets.QLineEdit.Password)
@@ -53,18 +53,22 @@ class CreateScreen(QDialog):
         password = self.Password.text()
         password2 = self.Confirm.text()
         
+        if len(user) == 0 or len(password) == 0 or len(password2 == 0):
+            self.accountError.setText("Please fill out the entire form")
+            return
+        
+        if password != password2:   
+            self.accountError.setText("Passwords dont match")
+        
+        
         with open("UserDBS.csv",mode="a", newline="") as f:
             writer = csv.writer(f,delimiter=",")
+            writer.writerow( [user, password])
+            self.accountError.setText("")
             
-
-            if password == password2:   
-                writer.writerow( [user, password])
-                self.accountError.setText("")
-                
-                print("creating account")
-                
-            else: 
-                    self.accountError.setText("your passwords dont match")
+            print("creating account")
+            
+            return
         
         
         
@@ -73,7 +77,7 @@ class CreateScreen(QDialog):
 class LoginScreen(QDialog):
     def __init__(self):
         super(LoginScreen, self).__init__()
-        loadUi("login.ui", self)    
+        loadUi("UI/login.ui", self)    
         self.Password.setEchoMode(QtWidgets.QLineEdit.Password)
         
         

@@ -41,7 +41,8 @@ class UserData:
         
         #modules
         self.prescription_manager = PrescriptionManager()
-        self.heart_health = heart_Health(0,0,0)  
+        self.heart_health = heart_Health(0,0,0,100,60,99,95,120,90)  
+                
         self.BMI = BMI(0,0)  
         self.body_Info = body_info(0.0,0.0)    
         
