@@ -10,6 +10,8 @@ class body_info(object):
      #main variables
     temp = 0
     fluid = 0
+    _temp = 0
+    _fluid = 0
 
     #flag variables
     _temp_flag = False
@@ -23,9 +25,15 @@ class body_info(object):
     _fluidLowerLim = 0
 
     #Parameterized Constructor
-    def __init__(self, temp, fluid):
-        self._temp = temp
-        self._fluid = fluid
+    def __init__(self, temp, fluid, tempLowerLim = 97, tempUpperLim = 100, fluidLowerLim = 0, fluidUpperLim = 5000):
+        self.set_fluid(fluid)
+        self.set_temp(temp)
+        
+        self.set_tempLowerLimit(tempLowerLim)
+        self.set_tempUpperLimit(tempUpperLim)
+        self.set_fluidLowerLimit(fluidLowerLim)
+        self.set_fluidUpperLimit(fluidUpperLim)
+        
         self.checkFluidFlag()
         self.checkTempFlag()
     
@@ -37,22 +45,53 @@ class body_info(object):
         return self._temp
     def set_temp(self, temp):
         self._temp = temp
+        return temp
 
     def get_fluid(self):
         return self._fluid
     def set_fluid(self, fluid):
-        self._fluid = fluid 
+        self._fluid = fluid
+        return fluid 
+        
+    #Getters and Setter for Internal Variables
+    def get_tempUpperLimit(self):
+        return self._tempUpperLim
+    def set_tempUpperLimit(self, tempUpperLim):
+        self._tempUpperLim = tempUpperLim
+        return tempUpperLim
 
-    #setFlags that can be changed later from the user
+    def get_tempLowerLimit(self):
+        return self._tempLowerLim
+    def set_tempLowerLimit(self, tempLowerLim):
+        self._tempLowerLim = tempLowerLim
+        return tempLowerLim
+
+    def get_fluidUpperLimit(self):
+        return self._fluidUpperLim
+    def set_fluidUpperLimit(self, fluidUpperLim):
+        self._fluidUpperLim = fluidUpperLim
+        return fluidUpperLim
+
+    def get_fluidLowerLimit(self):
+        return self._fluidLowerLim
+    def set_fluidLowerLimit(self, fluidLowerLim):
+        self._fluidLowerLim = fluidLowerLim
+        return fluidLowerLim
+
+    #setFlags 
     def checkTempFlag(self):
-        if self.temp > self._tempUpperLim or self.temp < self._tempLowerLim:
-            self._tempflag = True
+        if self._temp > self._tempUpperLim or self._temp < self._tempLowerLim:
+            self._temp_flag = True
+            return True
         else:
-            self._tempflag = False
+            self._temp_flag = False
+            return False
 
     def checkFluidFlag(self):
-        if self.fluid > self._fluidUpperLim or self.fluid < self._fluidLowerLim:
-            self._fluidflag = True
+        if self._fluid > self._fluidUpperLim or self._fluid < self._fluidLowerLim:
+            self._fluid_flag = True
+            return True
         else:
-            self._fluidflag = False
+            self._fluid_flag = False
+            return False
   
