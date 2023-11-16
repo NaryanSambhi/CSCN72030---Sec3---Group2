@@ -15,6 +15,9 @@ import csv
 #GUI OBJECTS
 
 #welcome screen to login or create account
+
+
+
 class WelcomeScreen(QDialog):
     def __init__(self):
         super(WelcomeScreen, self).__init__()
@@ -53,12 +56,13 @@ class CreateScreen(QDialog):
         password = self.Password.text()
         password2 = self.Confirm.text()
         
-        if len(user) == 0 or len(password) == 0 or len(password2 == 0):
+        if len(user) == 0 or len(password) == 0 or len(password2) == 0:
             self.accountError.setText("Please fill out the entire form")
             return
         
         if password != password2:   
             self.accountError.setText("Passwords dont match")
+            return
         
         
         with open("UserDBS.csv",mode="a", newline="") as f:
@@ -67,6 +71,10 @@ class CreateScreen(QDialog):
             self.accountError.setText("")
             
             print("creating account")
+                
+            login = LoginScreen()
+            widget.addWidget(login)
+            widget.setCurrentIndex(widget.currentIndex()+1)
             
             return
         
@@ -104,6 +112,20 @@ class LoginScreen(QDialog):
                 if row[0] == user and row[1] == password:
                     print("Logging in")  
                     self.loginError.setText("")
+                        
+                        
+                        
+                    #open window to homepage
+                    home = Home()
+                    widget.addWidget(home)
+                    widget.setCurrentIndex(widget.currentIndex() + 1)
+                    
+                    #intialize objects from save file
+                    
+                    
+                    
+                    
+                    
 
                     # Add your logic to proceed after successful login
                     return
@@ -113,9 +135,10 @@ class LoginScreen(QDialog):
         
         
         
-        
-        
-        
+class Home(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(Home, self).__init__()
+        loadUi("UI/PHS_homepage.ui", self)
         
 #main 
 app = QApplication(sys.argv)
