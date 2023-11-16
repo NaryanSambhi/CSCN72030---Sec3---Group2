@@ -90,20 +90,27 @@ class heart_Health(object):
     def checkHRFlag(self):
         if self._heart_rate > self._hrUpperLim or self._heart_rate < self._hrLowerLim:
             self._hr_flag = True
+            return self._hr_flag
         else:
             self._hr_flag = False
+            return self._hr_flag
+            
 
     def checkBOFlag(self):
         if self._blood_oxegen > self._boUpperLim or self._blood_oxegen < self._boLowerLim:
             self._bo_flag = True
+            return self._bo_flag
         else:
             self._bo_flag = False
+            return self._bo_flag
 
     def checkBPFlag(self):
         if self._blood_pressure > self._bpUpperLim or self._blood_pressure < self._bpLowerLim:
             self._bp_flag = True
+            return self._bp_flag
         else:
             self._bp_flag = False
+            return self._bp_flag
 
     #Display
     def __str__(self):
