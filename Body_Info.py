@@ -45,53 +45,55 @@ class body_info(object):
         return self._temp
     def set_temp(self, temp):
         self._temp = temp
-        return temp
+        #return temp
 
     def get_fluid(self):
         return self._fluid
     def set_fluid(self, fluid):
         self._fluid = fluid
-        return fluid 
+        #return fluid 
         
     #Getters and Setter for Internal Variables
     def get_tempUpperLimit(self):
         return self._tempUpperLim
     def set_tempUpperLimit(self, tempUpperLim):
         self._tempUpperLim = tempUpperLim
-        return tempUpperLim
+        #return tempUpperLim
 
     def get_tempLowerLimit(self):
         return self._tempLowerLim
     def set_tempLowerLimit(self, tempLowerLim):
         self._tempLowerLim = tempLowerLim
-        return tempLowerLim
+        #return tempLowerLim
 
     def get_fluidUpperLimit(self):
         return self._fluidUpperLim
     def set_fluidUpperLimit(self, fluidUpperLim):
         self._fluidUpperLim = fluidUpperLim
-        return fluidUpperLim
+        #return fluidUpperLim
 
     def get_fluidLowerLimit(self):
         return self._fluidLowerLim
     def set_fluidLowerLimit(self, fluidLowerLim):
         self._fluidLowerLim = fluidLowerLim
-        return fluidLowerLim
+        #return fluidLowerLim
 
     #setFlags 
     def checkTempFlag(self):
         if self._temp > self._tempUpperLim or self._temp < self._tempLowerLim:
             self._temp_flag = True
-            return True
+            #return True
         else:
             self._temp_flag = False
-            return False
+            #return False
 
     def checkFluidFlag(self):
         if self._fluid > self._fluidUpperLim or self._fluid < self._fluidLowerLim:
             self._fluid_flag = True
-            return True
+            return self._temp_flag
+            #return True
         else:
             self._fluid_flag = False
-            return False
+            return self._fluid_flag
+            #return False
   
