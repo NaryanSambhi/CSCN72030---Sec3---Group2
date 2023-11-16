@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>714</width>
-    <height>1222</height>
+    <width>712</width>
+    <height>1221</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,7 +45,7 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>130</x>
         <y>30</y>
         <width>511</width>
         <height>71</height>
@@ -78,6 +78,27 @@ border:0px;</string>
 border: 4px solid black;
 </string>
      </property>
+     <widget class="QPushButton" name="Medication">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>191</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: white;
+border-radius:20px;
+font: 23pt &quot;MS Shell Dlg 2&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Medication</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="widget_6" native="true">
      <property name="geometry">
@@ -157,6 +178,27 @@ border-width:0px;</string>
 border: 4px solid black;
 </string>
      </property>
+     <widget class="QPushButton" name="BMI">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>191</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: white;
+border-radius:20px;
+font: 23pt &quot;MS Shell Dlg 2&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>BMI</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="widget_5" native="true">
      <property name="geometry">
@@ -172,6 +214,27 @@ border: 4px solid black;
 border: 4px solid black;
 </string>
      </property>
+     <widget class="QPushButton" name="Heart">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>191</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: white;
+border-radius:20px;
+font: 23pt &quot;MS Shell Dlg 2&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Heart</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="widget_8" native="true">
      <property name="geometry">
@@ -243,7 +306,7 @@ border-width:0px;</string>
  </widget>
  <resources>
   <include location="testing.qrc"/>
-  <include location="../OneDrive/Desktop/testing.qrc"/>
+  <include location="testing.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -49,6 +49,7 @@ class CreateScreen(QDialog):
 
         
         self.SignUp.clicked.connect(self.registerfunction)
+        self.GoBack.clicked.connect(self.Back)
         
         
     def registerfunction(self):    
@@ -78,6 +79,11 @@ class CreateScreen(QDialog):
             
             return
         
+    def Back(self): 
+        Back = WelcomeScreen()
+        widget.addWidget(Back)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        
         
         
 
@@ -90,6 +96,8 @@ class LoginScreen(QDialog):
         
         
         self.LoginAccount.clicked.connect(self.loginfunction)
+        self.GoBack.clicked.connect(self.Back)
+
         
         
     
@@ -134,11 +142,97 @@ class LoginScreen(QDialog):
         self.loginError.setText("Invalid credentials")
         
         
+    def Back(self): 
+        Back = WelcomeScreen()
+        widget.addWidget(Back)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        
+        
         
 class Home(QtWidgets.QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
         loadUi("UI/PHS_homepage.ui", self)
+        
+        self.Medication.clicked.connect(self.GoToPrescriptionManager)
+        self.BMI.clicked.connect(self.GoToBMI)
+        self.Heart.clicked.connect(self.GoToHeartHealth)
+
+    def GoToPrescriptionManager(self):
+        PHS = PrescriptionManager()
+        widget.addWidget(PHS)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+    
+    
+    def GoToBMI(self):
+        bmi = BMI()
+        widget.addWidget(bmi)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+        
+    def GoToHeartHealth(self):
+        print("go to heart")
+
+        
+
+     
+class PrescriptionManager(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(PrescriptionManager, self).__init__()
+        loadUi("UI/PHS_prescription.ui", self)
+        self.GoBack.clicked.connect(self.Back)
+
+        
+        
+    
+    def Back(self): 
+        home = Home()
+        widget.addWidget(home)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+        
+        
+     
+class BMI(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(BMI, self).__init__()
+        loadUi("UI/PHS_BMI.ui", self)
+        self.GoBack.clicked.connect(self.Back)
+
+        
+    def Back(self): 
+        home = Home()
+        widget.addWidget(home)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+    
+        
+'''   
+class HeartHealth(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(HeartHealth, self).__init__()
+        loadUi("UI/      .ui", self)
+        self.GoBack.clicked.connect(self.Back)
+
+        
+    def Back(self): 
+        home = Home()
+        widget.addWidget(home)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+        
+'''
+
+'''   
+class BodyStatus(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(BodyStatus, self).__init__()
+        loadUi("UI/      .ui", self)
+        self.GoBack.clicked.connect(self.Back)
+
+        
+    def Back(self): 
+        home = Home()
+        widget.addWidget(home)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+        
+'''
         
 #main 
 app = QApplication(sys.argv)
