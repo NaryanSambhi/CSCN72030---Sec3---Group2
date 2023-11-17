@@ -1,12 +1,13 @@
 import unittest   # The test framework
 #from Body_Info import body_info
 from Body_Info import body_info
-#import UserData
+import UserData
 #import BMI
 from Heart_Health import heart_Health
 #import LoginSignup
 #import main
 #import Prescription
+import os
 
 class Test_Body_info(unittest.TestCase):
     #pass to make the user is able to input in their body temp
@@ -214,6 +215,30 @@ class Test_Heart_Health(unittest.TestCase):
         bp = heart_Health(heart_rate=91, blood_oxegen=98, blood_pressure=99)
         self.assertFalse(bp.checkBPFlag())
     
+   
+class Test_UserData(unittest.TestCase):
+    #both are supposed to pass
+    def setUp(self):
+    
+        self.user = UserData.UserData(name="John Doe", age=30)
+
+        self.user.prescription_manager.add_prescription("Aspirin", "Pain relief", "10mg")
+        self.user.prescription_manager.add_prescription("Ibuprofen", "Pain relief", "200mg")
+        self.user.heart_health._heart_rate = 90
+        self.user.heart_health._blood_oxygen = 80
+        self.user.heart_health._blood_pressure = 70
+        self.user.BMI._weight = 70
+        self.user.BMI._height = 190
+        self.user.body_Info._temp = 100
+        self.user.body_Info._fluid = 750
+
+        self.test_file = "test_save_to_file.pkl"
+
+    def test_save_to_file(self):
+        self.user.save_to_file(self.test_file)
+        self.assertTrue(os.path.isfile(self.test_file))
+        os.remove(self.test_file)   
+   
     
 if __name__ == '__main__':
     unittest.main()
