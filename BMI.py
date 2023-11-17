@@ -9,18 +9,10 @@ class BMI(object):
     
     #main variables
     
-    
-    #why are you defining these here? 
-    '''
-    _height = 0
-    _weight = 0
-    '''
-    
-    
     #you and nick need to fix this in yours in where this is being defined
 
-    _weightUpperLim = 100
-    _weightLowerLim = 60
+    _weightUpperLim = 150
+    _weightLowerLim = 50
     _heightUpperLim = 225
     _heightLowerLim = 80
     
@@ -31,11 +23,17 @@ class BMI(object):
     #internal variables 
 
     #Parameterized Constructor
-    def __init__(self, height, weight):
-        self._height = height
-        self._weight = weight
-        self.checkWeightFlag()
-        self.checkHeightFlag()
+    def __init__(self, height, weight, weightLowerLim = 50, weightUpperLim = 150, heightLowerLim = 80, heightUpperLim = 225):
+       self.set_height(height)
+       self.set_weight(weight)
+        
+       self.set_weightLowerLimit(weightLowerLim)
+       self.set_weightUpperLimit(weightUpperLim)
+       self.set_heightLowerLimit(heightLowerLim)
+       self.set_heightUpperLimit(heightUpperLim)
+        
+       self.checkHeightFlag()
+       self.checkWeightFlag()
     
     def __str__(self):
         return f'\nHeight: {self._height} \nWeight: {self._weight}\n'
@@ -53,46 +51,43 @@ class BMI(object):
     def set_height(self, height):
         self._height = height 
 
-    #setFlags that can be changed later from the user
-    #these ranges will let the user know if they are in the optimal body weight 
+      #Getters and Setter for Internal Variables
+    def get_weightUpperLimit(self):
+        return self._weightUpperLim
+    def set_weightUpperLimit(self, weightUpperLim):
+        self._weightUpperLim = weightUpperLim
+       
+    def get_weightLowerLimit(self):
+        return self._weightLowerLim
+    def set_weightLowerLimit(self, weightLowerLim):
+        self._weightLowerLim = weightLowerLim
+
+    def get_heightUpperLimit(self):
+        return self._heightUpperLim
+    def set_heightUpperLimit(self, heightUpperLim):
+        self._heightUpperLim = heightUpperLim
+
+    def get_heightLowerLimit(self):
+        return self._heightLowerLim
+    def set_heightLowerLimit(self, heightLowerLim):
+        self._heightLowerLim = heightLowerLim
+
+    #setFlags 
     def checkWeightFlag(self):
         if self._weight > self._weightUpperLim or self._weight < self._weightLowerLim:
-            self._weightflag = True
+            self._weight_flag = True
+            return self._weight_flag
         else:
-            self._weightflag = False
+            self._weight_flag = False
+            return self._weight_flag
 
     def checkHeightFlag(self):
         if self._height > self._heightUpperLim or self._height < self._heightLowerLim:
-            self._heightflag = True
+            self._height_flag = True
+            return self._height_flag
         else:
-            self._heightflag = False
+            self._height_flag = False
+            return self._height_flag
     
-    # a function to calculate the bmi 
-    def Calculate(_height, _weight):
-        
-        
-        #exception case? 
-        
-        #needs something like this
-        try:
-            bmi = _weight / (_height ** 2)
-        except:
-            return
-
-        
-        #you need to set these to flags for the GUI to use
-        
-        #need to move this code and fix it into calculate. shouldnt be two sepperate 
-        # Interpret the BMI
-        if bmi < 18.5:
-            print("You are underweight.") #you need to use flags how would this work
-                                            #in a gui outside testing?
-        elif 18.5 <= bmi < 24.9:
-            print("Your weight is normal.")
-        elif 25 <= bmi < 29.9:
-            print("You are overweight.")
-        else:
-            print("You are obese.")
-        
-        return bmi
+ #incorporate the calculate bmi function with the flags? 
            
