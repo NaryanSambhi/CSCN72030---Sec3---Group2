@@ -64,7 +64,7 @@ class UserData:
             
             'Heart_Health': { 
                     'heart_rate': self.heart_health._heart_rate,
-                    'blood_oxygen' : self.heart_health._blood_oxegen,
+                    'blood_oxygen' : self.heart_health._blood_oxygen,
                     'blood_pressure' : self.heart_health._blood_pressure 
                 },
 
@@ -93,7 +93,7 @@ class UserData:
         self.prescription_manager.Prescription_Array = loaded_data.get('prescriptions', [])  
         self.prescription_manager.Prescription_Array = loaded_data.get('prescriptions', [])
         self.heart_health._heart_rate = loaded_data['Heart_Health']['heart_rate']
-        self.heart_health._blood_oxegen = loaded_data['Heart_Health']['blood_oxygen']
+        self.heart_health._blood_oxygen = loaded_data['Heart_Health']['blood_oxygen']
         self.heart_health._blood_pressure = loaded_data['Heart_Health']['blood_pressure']
         self.BMI._height = loaded_data['BMI']['height']
         self.BMI._weight = loaded_data['BMI']['weight']
@@ -113,7 +113,7 @@ user.prescription_manager.add_prescription("Aspirin", "Pain relief", "10mg")
 user.prescription_manager.add_prescription("Ibuprofen", "Pain relief", "200mg")
 
 user.heart_health._heart_rate = 90
-user.heart_health._blood_oxegen = 80
+user.heart_health._blood_oxygen = 80
 user.heart_health._blood_pressure = 70
 
 user.BMI._weight = 70
