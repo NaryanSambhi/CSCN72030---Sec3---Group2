@@ -54,16 +54,16 @@ class Test_Body_info(unittest.TestCase):
     def test_checkTempFlag_inLimit_Fail(self):
         body = body_info(temp=99, fluid=2000)
         self.assertTrue(body.checkTempFlag())
+   
+   # pass to make sure that it does not raise a flag meaning that it is in range
+    def test_checkTempFlag_inLimit_Pass(self):
+        body = body_info(temp=99, fluid=4000)
+        self.assertFalse(body.checkTempFlag())
 
     # pass to see if it will flag if it is over the limit
     def test_checkTempFlag_overLimit_Pass(self):
         body = body_info(temp=102, fluid=2000)
         self.assertTrue(body.checkTempFlag())
-
-    # pass to make sure that it does not raise a flag meaning that it is in range
-    def test_checkTempFlag_inLimit_Pass(self):
-        body = body_info(temp=99, fluid=4000)
-        self.assertFalse(body.checkTempFlag())
 
     # fail to make sure that it does raise a flag meaning that it is below range
     def test_checkTempFlag_overLimit_Fail(self):
@@ -77,15 +77,15 @@ class Test_Body_info(unittest.TestCase):
         body = body_info(temp=99, fluid=4000)
         self.assertTrue(body.checkFluidFlag())
 
-    # pass to see if it will flag if it is over the limit
-    def test_checkFluidFlag_overLimit_Pass(self):
-        body = body_info(temp=102, fluid=7000)
-        self.assertTrue(body.checkFluidFlag())
-
     # pass to make sure that it does not raise a flag meaning that it is in range
     def test_checkFluidFlag_inLimit_Pass(self):
         body = body_info(temp=99, fluid=1000)
         self.assertFalse(body.checkFluidFlag())
+    
+    # pass to see if it will flag if it is over the limit
+    def test_checkFluidFlag_overLimit_Pass(self):
+        body = body_info(temp=102, fluid=7000)
+        self.assertTrue(body.checkFluidFlag())
 
     # fail to make sure that it does raise a flag meaning that it is over range
     def test_checkFluidFlag_overLimit_Fail(self):
