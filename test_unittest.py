@@ -3,6 +3,7 @@ import unittest   # The test framework
 from Body_Info import body_info
 import UserData
 #import BMI
+from BMI import BMI
 from Heart_Health import heart_Health
 #import LoginSignup
 #import main
@@ -155,64 +156,64 @@ class Test_Heart_Health(unittest.TestCase):
     
     #this is supposed to pass
     def test_checkHRFlag_overLimit_Pass(self):
-        hr = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
+        hr = heart_Health(heart_rate=120, blood_oxygen=100, blood_pressure=130)
         self.assertTrue(hr.checkHRFlag())
     
     #fail to see if it will flag if it is over the limit
     def test_checkHRFlag_overLimit_Fail(self):
-        hr = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
+        hr = heart_Health(heart_rate=120, blood_oxygen=100, blood_pressure=130)
         self.assertFalse(hr.checkHRFlag())
 
     #fail to make sure that it does not raise a flag meaning that it is in range
     def test_checkHRFlag_inLimit_Fail(self):
-        hr = heart_Health(heart_rate=99, blood_oxegen=100, blood_pressure=130)
+        hr = heart_Health(heart_rate=99, blood_oxygen=100, blood_pressure=130)
         self.assertTrue(hr.checkHRFlag())
  
     #pass to see if it will raise true flag when in range
     def test_checkHRFlag_inLimit_Pass(self):
-        hr = heart_Health(heart_rate=91, blood_oxegen=100, blood_pressure=130)
+        hr = heart_Health(heart_rate=91, blood_oxygen=100, blood_pressure=130)
         self.assertFalse(hr.checkHRFlag())
         
     #test cases for blood oxygen 
     #this is supposed to pass
     def test_checkBOFlag_overLimit_Pass(self):
-        bo = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
+        bo = heart_Health(heart_rate=120, blood_oxygen=100, blood_pressure=130)
         self.assertTrue(bo.checkBOFlag())
     
     # fail to see if it will flag if it is over the limit
     def test_checkBOFlag_overLimit_Fail(self):
-        bo = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
+        bo = heart_Health(heart_rate=120, blood_oxygen=100, blood_pressure=130)
         self.assertFalse(bo.checkBOFlag())
 
     #Fail to make sure that it does not raise a flag meaning that it is in range
     def test_checkBOFlag_inLimit_Fail(self):
-        bo = heart_Health(heart_rate=99, blood_oxegen=98, blood_pressure=130)
+        bo = heart_Health(heart_rate=99, blood_oxygen=98, blood_pressure=130)
         self.assertTrue(bo.checkBOFlag())
  
     # pass to see if it will raise true flag when in range
     def test_checkBOFlag_inLimit_Pass(self):
-        bo = heart_Health(heart_rate=91, blood_oxegen=98, blood_pressure=130)
+        bo = heart_Health(heart_rate=91, blood_oxygen=98, blood_pressure=130)
         self.assertFalse(bo.checkBOFlag())
 
     #test cases for blood pressure 
     #this is supposed to pass
     def test_checkBPFlag_overLimit_pass(self):
-        bp = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
+        bp = heart_Health(heart_rate=120, blood_oxygen=100, blood_pressure=130)
         self.assertTrue(bp.checkBPFlag())
     
     # fail to see if it will flag if it is over the limit
     def test_checkBPFlag_overLimit_fail(self):
-        bp = heart_Health(heart_rate=120, blood_oxegen=100, blood_pressure=130)
+        bp = heart_Health(heart_rate=120, blood_oxygen=100, blood_pressure=130)
         self.assertFalse(bp.checkBPFlag())
 
     # fail to make sure that it does not raise a flag meaning that it is in range
     def test_checkBPFlag_inLimit_Fail(self):
-        bp = heart_Health(heart_rate=99, blood_oxegen=98, blood_pressure=100)
+        bp = heart_Health(heart_rate=99, blood_oxygen=98, blood_pressure=100)
         self.assertTrue(bp.checkBPFlag())
  
     # pass to see if it will raise true flag when in range
     def test_checkBPFlag_inLimit_Pass(self):
-        bp = heart_Health(heart_rate=91, blood_oxegen=98, blood_pressure=99)
+        bp = heart_Health(heart_rate=91, blood_oxygen=98, blood_pressure=99)
         self.assertFalse(bp.checkBPFlag())
     
    
@@ -239,6 +240,86 @@ class Test_UserData(unittest.TestCase):
         self.assertTrue(os.path.isfile(self.test_file))
         os.remove(self.test_file)   
    
+class Test_BMI(unittest.TestCase):
+       #pass to make the user is able to input in their height
+    def test_set_height_pass(self):
+        bmi = BMI(98,2000)
+        result  = bmi.get_height()
+        self.assertEqual(result, 98)
+
+       #pass to make sure the user is able to input in their weight
+    def test_set_weight_pass(self):
+        bmi = BMI(98,75)
+        result  = bmi.get_weight()
+        self.assertEqual(result, 75)    
+    
+    #tests for set upper and lower weight limits
+    def test_set_weightUpperLimit_pass(self):
+        bmi = BMI(97,110,98,150)
+        result  = bmi.get_weightUpperLimit()
+        self.assertEqual(result, 150) 
+    
+    def test_set_weightLowerLimit_pass(self):
+        bmi = BMI(90,110,50, 110)
+        result  = bmi.get_weightLowerLimit()
+        self.assertEqual(result, 50) 
+        
+        
+    #tests for set upper and lower height limits
+    def test_set_heightUpperLimit_pass(self):
+        bmi = BMI(97,225,60, 110)
+        result  = bmi.get_heightUpperLimit()
+        self.assertEqual(result, 225) 
+    
+    def test_set_heightLowerLimit_pass(self):
+        bmi = BMI(80,140,60, 110)
+        result  = bmi.get_heightLowerLimit()
+        self.assertEqual(result, 80) 
+        
+    
+    #tests for the checkHeightFlag function
+
+    # fail to see if it will raise true flag when in range
+    def test_checkHeightFlag_inLimit_Fail(self):
+        bmi = BMI(height=99, weight=60)
+        self.assertTrue(bmi.checkHeightFlag())
+
+    # pass to see if it will flag if it is over the limit
+    def test_checkHeightFlag_overLimit_Pass(self):
+        bmi = BMI(height=1002, weight=65)
+        self.assertTrue(bmi.checkHeightFlag())
+
+    # pass to make sure that it does not raise a flag meaning that it is in range
+    def test_checkHeightFlag_inLimit_Pass(self):
+        bmi = BMI(height=99, weight=56)
+        self.assertFalse(bmi.checkHeightFlag())
+
+    # fail to make sure that it does raise a flag meaning that it is below range
+    def test_checkHeightFlag_overLimit_Fail(self):
+        bmi = BMI(height=60, weight=60)
+        self.assertFalse(bmi.checkHeightFlag())
+
+    # tests for checkWeightFlag function
+
+    # fail to see if it will raise true flag when in range
+    def test_checkWeightFlag_inLimit_Fail(self):
+        bmi = BMI(height=160, weight=70)
+        self.assertTrue(bmi.checkWeightFlag())
+
+    # pass to see if it will flag if it is over the limit
+    def test_checkWeightFlag_overLimit_Pass(self):
+        bmi = BMI(height=102, weight=700)
+        self.assertTrue(bmi.checkWeightFlag())
+
+    # pass to make sure that it does not raise a flag meaning that it is in range
+    def test_checkWeightFlag_inLimit_Pass(self):
+        bmi= BMI(height=180, weight=67)
+        self.assertFalse(bmi.checkWeightFlag())
+
+    # fail to make sure that it does raise a flag meaning that it is over range
+    def test_checkWeightFlag_overLimit_Fail(self):
+        bmi = BMI(height=100, weight=-800)
+        self.assertFalse(bmi.checkWeightFlag())
     
 if __name__ == '__main__':
     unittest.main()
