@@ -11,6 +11,18 @@ from Heart_Health import *
 from BMI import *
 from Body_Info import *
 
+import re
+
+#ensures save files follow specific format
+def sanitize_filename(filename):
+
+    invalid_chars_pattern = re.compile(r'[\\/:*?"<>|@.]')
+
+    # Replace disallowed characters with an underscore
+    sanitized_filename = re.sub(invalid_chars_pattern, '_', filename)
+
+    return sanitized_filename
+
 # basic file IO functions
 class FileIO:
     @staticmethod
@@ -122,11 +134,11 @@ user.BMI._height = 190
 user.body_Info._temp = 100
 user.body_Info._fluid = 750
 
-user.save_to_file("test.pkl")
+user.save_to_file("saves/test.pkl")
 
 #load
 loaded_user = UserData(name="", age=0)
-loaded_user.load_from_file("test.pkl")
+loaded_user.load_from_file("saves/test.pkl")
 
 
 

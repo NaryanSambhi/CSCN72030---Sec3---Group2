@@ -4,7 +4,6 @@
 # main run and GUI using functions to create working application 
 
 
-
 import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
@@ -12,8 +11,13 @@ from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
 
 import csv 
 
-#GUI OBJECTS
+from UserData import *
 
+#create user object to be filled out with new users
+logged_in_user = UserData(name="", age=0)
+
+
+#GUI OBJECTS
 #welcome screen to login or create account
 class WelcomeScreen(QDialog):
     def __init__(self):
@@ -51,6 +55,8 @@ class CreateScreen(QDialog):
         password = self.Password.text()
         password2 = self.Confirm.text()
         
+        #organize a save file name into ours  
+        userSave = "saves/" + sanitize_filename(user) + '.pkl'
         
         #checking forum and passwords 
         if len(user) == 0 or len(password) == 0 or len(password2) == 0:
@@ -65,7 +71,7 @@ class CreateScreen(QDialog):
         with open("UserDBS.csv",mode="a", newline="") as f:
             writer = csv.writer(f,delimiter=",") #, useed to sep entries
             
-            writer.writerow( [user, password]) #write in order
+            writer.writerow([user, password, userSave]) #write in order
                               
             self.close()
             login = LoginScreen()
@@ -108,10 +114,18 @@ class LoginScreen(QDialog):
             for row in reader:
                 # Check if both user and password match
                 if row[0] == user and row[1] == password:
-                    print("Logging in")  
+                    print("Logging in")                                    
+                    
                     self.loginError.setText("")
                     
                     #intialize objects from save file
+                    try: 
+                        user_save = row[2]
+                        logged_in_user.load_from_file(user_save)
+                        print("loaded", logged_in_user)
+                    except:
+                        self.loginError.setText("Error loading user")
+                        return
 
                         
                     #open window to homepage
