@@ -3,7 +3,6 @@
 
 # main run and GUI using functions to create working application 
 
-
 import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
@@ -16,6 +15,16 @@ from UserData import *
 #create user object to be filled out with new users
 logged_in_user = UserData(name="", age=0)
 
+
+
+
+def is_int(value):
+    try:
+        int(value)
+        return True
+    except ValueError:
+        return False
+    
 
 #GUI OBJECTS
 #welcome screen to login or create account
@@ -51,7 +60,10 @@ class CreateScreen(QDialog):
         
 #register a new account to DBS
     def registerfunction(self):    
-        user = self.Email.text()
+        
+        user = self.Email.text().lower()
+
+        
         password = self.Password.text()
         password2 = self.Confirm.text()
         
@@ -67,23 +79,83 @@ class CreateScreen(QDialog):
             self.accountError.setText("Passwords dont match")
             return
         
+        
+        #make sure username isnt already taken
+        with open("UserDBS.csv", mode="r", newline="") as f:
+            reader = csv.reader(f, delimiter=",")
+
+            # Check if the email is already taken
+            for row in reader:
+                if row and row[0] == user:
+                    self.accountError.setText("Username is already taken")
+                    return
+                
+        
         #open to save
         with open("UserDBS.csv",mode="a", newline="") as f:
+            
+                
             writer = csv.writer(f,delimiter=",") #, useed to sep entries
             
             writer.writerow([user, password, userSave]) #write in order
                               
             self.close()
-            login = LoginScreen()
-            widget.addWidget(login)            
+            CreateUser = CreateUserProfile(userSave)
+            widget.addWidget(CreateUser)            
             widget.setCurrentIndex(widget.currentIndex()+1)
             return
         
     def Back(self): 
         widget.removeWidget(self)
+
+
+class CreateUserProfile(QDialog):
+    def __init__(self, user_save):
+        super(CreateUserProfile, self).__init__()
+        loadUi("UI/createUser.ui", self)    
+        self.SignUp.clicked.connect(self.CreateFunction)
+        
+        self.userSave = user_save
+
         
         
+    def CreateFunction(self):
         
+        
+        UserName = self.Name.text()
+        UserAge = self.Age.text()
+        UserWeight = self.Weight.text()
+        UserHeight = self.Height.text()
+        
+        
+        NewUser = UserData(name=UserName, age=UserAge)
+
+
+        NewUser.BMI._weight = UserWeight
+        NewUser.BMI._height = UserHeight
+        
+            
+        if not all([UserName, UserAge, UserWeight, UserHeight]):
+            self.accountError.setText("Please fill out all forms.")
+            return
+
+        if not (is_int(UserAge) and is_int(UserWeight) and is_int(UserHeight)):
+            self.accountError.setText("Age, Weight, and Height must be numeric.")
+            return
+
+        print(NewUser)
+        
+        self.accountError.setText("")
+
+        
+        NewUser.save_to_file(self.userSave)
+        
+        self.close()
+        login = LoginScreen()
+        widget.addWidget(login)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+
 
 #login 
 class LoginScreen(QDialog):
@@ -98,7 +170,10 @@ class LoginScreen(QDialog):
         
     #check login details to DBS
     def loginfunction(self):
-        user = self.Email.text()
+        
+        user = self.Email.text().lower()
+
+        
         password = self.Password.text()
         
         print(user, password)

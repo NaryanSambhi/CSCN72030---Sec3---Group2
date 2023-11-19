@@ -30,8 +30,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>360</y>
+      <x>150</x>
+      <y>190</y>
       <width>421</width>
       <height>101</height>
      </rect>
@@ -45,11 +45,11 @@ font: 36pt &quot;Monospace&quot;;
      <string>Create Account</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Email">
+   <widget class="QLineEdit" name="Name">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>550</y>
+      <x>180</x>
+      <y>390</y>
       <width>341</width>
       <height>61</height>
      </rect>
@@ -61,8 +61,8 @@ font: 36pt &quot;Monospace&quot;;
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>520</y>
+      <x>160</x>
+      <y>360</y>
       <width>161</width>
       <height>20</height>
      </rect>
@@ -73,16 +73,16 @@ font: 15pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>Username</string>
+     <string>Name</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>640</y>
+      <x>160</x>
+      <y>470</y>
       <width>161</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -91,14 +91,14 @@ font: 15pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>Password</string>
+     <string>Age</string>
     </property>
    </widget>
    <widget class="QPushButton" name="SignUp">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>880</y>
+      <x>230</x>
+      <y>890</y>
       <width>231</width>
       <height>61</height>
      </rect>
@@ -116,9 +116,9 @@ font: 16pt &quot;Monospace&quot;;</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>450</y>
-      <width>241</width>
+      <x>290</x>
+      <y>290</y>
+      <width>141</width>
       <height>41</height>
      </rect>
     </property>
@@ -128,14 +128,14 @@ font: 10pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>Enter your desired credentials</string>
+     <string>Enter Your Details</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Password">
+   <widget class="QLineEdit" name="Age">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>670</y>
+      <x>180</x>
+      <y>510</y>
       <width>341</width>
       <height>61</height>
      </rect>
@@ -147,10 +147,10 @@ font: 10pt &quot;Monospace&quot;;
    <widget class="QLabel" name="accountError">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>850</y>
-      <width>351</width>
-      <height>21</height>
+      <x>170</x>
+      <y>820</y>
+      <width>421</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -161,11 +161,11 @@ color: rgb(255, 0, 0);</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Confirm">
+   <widget class="QLineEdit" name="Weight">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>780</y>
+      <x>180</x>
+      <y>630</y>
       <width>341</width>
       <height>61</height>
      </rect>
@@ -189,28 +189,56 @@ font: 15pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>Confirm Password</string>
+     <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="GoBack">
+   <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>93</width>
-      <height>28</height>
+      <x>160</x>
+      <y>590</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 171, 172);
-border-radius:20px;
-font: 26pt &quot;MS Shell Dlg 2&quot;;
-
+font: 15pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>&lt;</string>
+     <string>Weight</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>710</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 15pt &quot;Monospace&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Height</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Height">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>750</y>
+      <width>341</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Modern&quot;;</string>
     </property>
    </widget>
   </widget>
