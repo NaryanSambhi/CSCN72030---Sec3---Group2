@@ -17,6 +17,26 @@ class Prescription:
     def __str__(self):
         return f'\nMedication Name: {self._Name} \nEffects: {self._Effects} \nDosage: {self._Dosage}\n'
     
+    # getters and setters
+    def get_name(self):
+        return self._Name
+
+    def set_name(self, name):
+        self._Name = name
+
+    def get_effects(self):
+        return self._Effects
+
+    def set_effects(self, effects):
+        self._Effects = effects
+
+    def get_dosage(self):
+        return self._Dosage
+
+    def set_dosage(self, dosage):
+        self._Dosage = dosage
+
+
     #functions
     
 

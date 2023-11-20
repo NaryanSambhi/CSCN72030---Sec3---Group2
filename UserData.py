@@ -60,8 +60,21 @@ class UserData:
         
 
     def __str__(self):
-        return f'\nName: {self._Name} \nAge: {self._Age}'        
-        
+        return f'\nName: {self._Name} \nAge: {self._Age}' 
+    
+    
+    # Getters and setters
+    def get_name(self):
+        return self._Name
+
+    def set_name(self, name):
+        self._Name = name
+
+    def get_age(self):
+        return self._Age
+
+    def set_age(self, age):
+        self._Age = age
 
 
 #functions 
@@ -114,7 +127,7 @@ class UserData:
 
 
 
-""" 
+'''
 
 #create
 
@@ -160,5 +173,4 @@ print("\n--------- BMI --------")
 print(loaded_user.BMI)
 
 
-
-"""
+'''
