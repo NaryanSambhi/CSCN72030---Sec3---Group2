@@ -1,0 +1,26 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>Pill_Bottle.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>ruler.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>scale.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>scale.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>temperature.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>blackheart.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>person.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>heart.png</file>
+  </qresource>
+</RCC>

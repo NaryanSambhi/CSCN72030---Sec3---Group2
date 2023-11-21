@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>712</width>
-    <height>1221</height>
+    <width>720</width>
+    <height>1244</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -78,11 +78,33 @@ border:0px;</string>
 border: 4px solid black;
 </string>
      </property>
+     <widget class="QLabel" name="medpic">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>221</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/Pill_Bottle.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
      <widget class="QPushButton" name="Medication">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>70</y>
+        <x>20</x>
+        <y>140</y>
         <width>191</width>
         <height>71</height>
        </rect>
@@ -92,6 +114,7 @@ border: 4px solid black;
 background-color: white;
 border-radius:20px;
 font: 23pt &quot;MS Shell Dlg 2&quot;;
+
 
 </string>
       </property>
@@ -131,6 +154,28 @@ border-width:0px;</string>
        <string>Status</string>
       </property>
      </widget>
+     <widget class="QLabel" name="personpic">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>10</y>
+        <width>181</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/person.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="widget_7" native="true">
      <property name="geometry">
@@ -161,6 +206,28 @@ border-width:0px;</string>
       </property>
       <property name="text">
        <string>Heart</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="blackheart">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>10</y>
+        <width>181</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/blackheart.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -214,11 +281,33 @@ font: 23pt &quot;MS Shell Dlg 2&quot;;
 border: 4px solid black;
 </string>
      </property>
+     <widget class="QLabel" name="heartpic">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>221</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/heart.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
      <widget class="QPushButton" name="Heart">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>70</y>
+        <y>140</y>
         <width>191</width>
         <height>71</height>
        </rect>
@@ -267,6 +356,28 @@ border-width:0px;</string>
        <string>Body Info</string>
       </property>
      </widget>
+     <widget class="QLabel" name="bodyinfo">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>10</y>
+        <width>181</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/temperature.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="widget_9" native="true">
      <property name="geometry">
@@ -299,14 +410,35 @@ border-width:0px;</string>
        <string>BMI</string>
       </property>
      </widget>
+     <widget class="QLabel" name="scale">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>10</y>
+        <width>181</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/scale.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="testing.qrc"/>
-  <include location="testing.qrc"/>
+  <include location="Config.qrc"/>
  </resources>
  <connections/>
 </ui>

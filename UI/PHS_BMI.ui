@@ -43,81 +43,43 @@
 border: 4px solid black;
 </string>
      </property>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="rulerpic">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>10</y>
-        <width>151</width>
-        <height>71</height>
+        <x>340</x>
+        <y>50</y>
+        <width>331</width>
+        <height>131</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 26pt &quot;MS Shell Dlg 2&quot;;
-border: 0px;</string>
-      </property>
-      <property name="text">
-       <string>Steps</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>70</y>
-        <width>171</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 26pt &quot;MS Shell Dlg 2&quot;;
-border: 0px;</string>
-      </property>
-      <property name="text">
-       <string>Minutes</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>130</y>
-        <width>171</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 26pt &quot;MS Shell Dlg 2&quot;;
-border: 0px;</string>
-      </property>
-      <property name="text">
-       <string>Calories</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_8">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>30</y>
-        <width>191</width>
-        <height>171</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/newPrefix/Downloads/pngtree-vector-graph-icon-in-creative-design-with-elements-for-mobile-an-png-image_5173146.jpg);
-border: 0px;</string>
+       <string notr="true">border: 0px</string>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/newPrefix/Downloads/pngtree-vector-graph-icon-in-creative-design-with-elements-for-mobile-an-png-image_5173146.jpg</pixmap>
+       <pixmap resource="Config.qrc">:/newPrefix/ruler.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
       </property>
-      <property name="indent">
-       <number>-1</number>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>70</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Height</string>
       </property>
      </widget>
     </widget>
@@ -149,27 +111,26 @@ border: 4px solid black;
 border: 0px;</string>
       </property>
       <property name="text">
-       <string>Steps</string>
+       <string>Weight</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="person">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>40</y>
-        <width>191</width>
-        <height>141</height>
+        <x>480</x>
+        <y>30</y>
+        <width>181</width>
+        <height>161</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/newPrefix/Downloads/360_F_130146011_64algBC3Kz91zzdht7qeW2fEnUipEtwB.jpg);
-border: 0px;</string>
+       <string notr="true">border: 0px</string>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/newPrefix/Downloads/360_F_130146011_64algBC3Kz91zzdht7qeW2fEnUipEtwB.jpg</pixmap>
+       <pixmap resource="Config.qrc">:/newPrefix/person.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -204,7 +165,29 @@ border: 4px solid black;
 border: 0px;</string>
       </property>
       <property name="text">
-       <string>Body comp</string>
+       <string>BMI</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="bmi">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>30</y>
+        <width>181</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/scale.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -270,7 +253,7 @@ font: 26pt &quot;MS Shell Dlg 2&quot;;
  </widget>
  <resources>
   <include location="testing.qrc"/>
-  <include location="../OneDrive/Desktop/testing.qrc"/>
+  <include location="Config.qrc"/>
  </resources>
  <connections/>
 </ui>

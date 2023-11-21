@@ -7,6 +7,7 @@ import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
+from PyQt5.QtGui import QPixmap
 
 import csv 
 
@@ -223,10 +224,29 @@ class Home(QtWidgets.QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
         loadUi("UI/PHS_homepage.ui", self)
-        
+        qpixmap = QPixmap('UI/Pill_Bottle.png')
+        self.medpic.setPixmap(qpixmap)
+
+        qpixmap = QPixmap('UI/heart.png')
+        self.heartpic.setPixmap(qpixmap)
+
+        qpixmap = QPixmap('UI/person.png')
+        self.personpic.setPixmap(qpixmap)
+
+        qpixmap = QPixmap('UI/blackheart.png')
+        self.blackheart.setPixmap(qpixmap)
+
+        qpixmap = QPixmap('UI/temperature.png')
+        self.bodyinfo.setPixmap(qpixmap)
+
+        qpixmap = QPixmap('UI/scale.png')
+        self.scale.setPixmap(qpixmap)
+
         self.Medication.clicked.connect(self.GoToPrescriptionManager)
         self.BMI.clicked.connect(self.GoToBMI)
         self.Heart.clicked.connect(self.GoToHeartHealth)
+
+        
 
 #navigation links (doesnt close current as we will go back often)
     def GoToPrescriptionManager(self):
@@ -241,6 +261,7 @@ class Home(QtWidgets.QMainWindow):
         
     def GoToHeartHealth(self):
         print("go to heart")
+
         
     #need another for body
 
@@ -261,6 +282,16 @@ class BMI(QtWidgets.QMainWindow):
     def __init__(self):
         super(BMI, self).__init__()
         loadUi("UI/PHS_BMI.ui", self)
+
+        qpixmap = QPixmap('UI/ruler.png')
+        self.rulerpic.setPixmap(qpixmap)
+
+        qpixmap = QPixmap('UI/person.png')
+        self.person.setPixmap(qpixmap)
+        
+        qpixmap = QPixmap('UI/scale.png')
+        self.bmi.setPixmap(qpixmap)
+
         self.GoBack.clicked.connect(self.Back)
 
     def Back(self): 
