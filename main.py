@@ -336,14 +336,14 @@ class UpdateBMI(QtWidgets.QMainWindow):
         self.bmi.setPixmap(qpixmap)
         
         self.GoBack.clicked.connect(self.Back)
-        self.Apply_Height.clicked.connect(self.Apply_Height)
-        self.Apply_Weight.clicked.connect(self.Apply_Weight)
+        self.Apply_Height.clicked.connect(self.ApplyHeight)
+        self.Apply_Weight.clicked.connect(self.ApplyWeight)
 
 
-    def Apply_Height():
+    def ApplyHeight():
         print("apply height")
 
-    def Apply_Weight():
+    def ApplyWeight():
         print("apply weight")
 
     def Back(self):         
