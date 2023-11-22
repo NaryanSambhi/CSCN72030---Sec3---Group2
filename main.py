@@ -17,8 +17,7 @@ from UserData import *
 logged_in_user = UserData(name="", age=0)
 
 
-
-
+#makes sure input values are numbers only 
 def is_int(value):
     try:
         int(value)
@@ -26,7 +25,7 @@ def is_int(value):
     except ValueError:
         return False
     
-
+    
 #GUI OBJECTS
 #welcome screen to login or create account
 class WelcomeScreen(QDialog):
@@ -41,7 +40,6 @@ class WelcomeScreen(QDialog):
         login = LoginScreen()
         widget.addWidget(login)
         widget.setCurrentIndex(widget.currentIndex()+1)
-        
         
     def gotocreate(self):
         create = CreateScreen()
@@ -62,9 +60,8 @@ class CreateScreen(QDialog):
 #register a new account to DBS
     def registerfunction(self):    
         
+        #vars
         user = self.Email.text().lower()
-
-        
         password = self.Password.text()
         password2 = self.Confirm.text()
         
@@ -81,6 +78,8 @@ class CreateScreen(QDialog):
             return
         
         
+        #bugged function doesnt work:
+        """
         #make sure username isnt already taken
         with open("UserDBS.csv", mode="r", newline="") as f:
             reader = csv.reader(f, delimiter=",")
@@ -90,16 +89,14 @@ class CreateScreen(QDialog):
                 if row and row[0] == user:
                     self.accountError.setText("Username is already taken")
                     return
-                
+         """
         
         #open to save
         with open("UserDBS.csv",mode="a", newline="") as f:
-            
-                
             writer = csv.writer(f,delimiter=",") #, useed to sep entries
-            
             writer.writerow([user, password, userSave]) #write in order
                               
+            #close current window open next window
             self.close()
             CreateUser = CreateUserProfile(userSave)
             widget.addWidget(CreateUser)            
@@ -109,33 +106,29 @@ class CreateScreen(QDialog):
     def Back(self): 
         widget.removeWidget(self)
 
-
+#creates user profile after login including making a save file
 class CreateUserProfile(QDialog):
     def __init__(self, user_save):
         super(CreateUserProfile, self).__init__()
         loadUi("UI/createUser.ui", self)    
         self.SignUp.clicked.connect(self.CreateFunction)
-        
         self.userSave = user_save
 
-        
-        
+#create new user
     def CreateFunction(self):
         
-        
+        #vars
         UserName = self.Name.text()
         UserAge = self.Age.text()
         UserWeight = self.Weight.text()
         UserHeight = self.Height.text()
         
-        
+        #assign to object
         NewUser = UserData(name=UserName, age=UserAge)
-
-
         NewUser.BMI._weight = UserWeight
         NewUser.BMI._height = UserHeight
         
-            
+        #verify  
         if not all([UserName, UserAge, UserWeight, UserHeight]):
             self.accountError.setText("Please fill out all forms.")
             return
@@ -144,11 +137,10 @@ class CreateUserProfile(QDialog):
             self.accountError.setText("Age, Weight, and Height must be numeric.")
             return
 
-        print(NewUser)
+        #save person object and save to file
+        print(NewUser)        
         
         self.accountError.setText("")
-
-        
         NewUser.save_to_file(self.userSave)
         
         self.close()
@@ -172,11 +164,9 @@ class LoginScreen(QDialog):
     #check login details to DBS
     def loginfunction(self):
         
+        #vars
         user = self.Email.text().lower()
-
-        
         password = self.Password.text()
-        
         print(user, password)
         
         # error checks
@@ -184,6 +174,7 @@ class LoginScreen(QDialog):
             self.loginError.setText("Please fill out the entire form")
             return
             
+        #open and find user
         with open("UserDBS.csv", mode="r", encoding="utf-8-sig") as f:
             reader = csv.reader(f, delimiter=",")
             
@@ -202,8 +193,7 @@ class LoginScreen(QDialog):
                     except:
                         self.loginError.setText("Error loading user")
                         return
-
-                        
+                    
                     #open window to homepage
                     self.close()
                     home = Home()
@@ -224,6 +214,8 @@ class Home(QtWidgets.QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
         loadUi("UI/PHS_homepage.ui", self)
+    
+        #inmages
         qpixmap = QPixmap('UI/Pill_Bottle.png')
         self.medpic.setPixmap(qpixmap)
 
@@ -241,7 +233,9 @@ class Home(QtWidgets.QMainWindow):
 
         qpixmap = QPixmap('UI/scale.png')
         self.scale.setPixmap(qpixmap)
-
+        
+        #buttons
+        
         self.Medication.clicked.connect(self.GoToPrescriptionManager)
         self.BMI.clicked.connect(self.GoToBMI)
         self.Heart.clicked.connect(self.GoToHeartHealth)
@@ -287,7 +281,22 @@ class BMI(QtWidgets.QMainWindow):
     def __init__(self):
         super(BMI, self).__init__()
         loadUi("UI/PHS_BMI.ui", self)
+        
+        
+        #commented out until standardized units are picked
+        """   
+        height = logged_in_user.BMI.get_height()
+        self.DISPLAY_HEIGHT.setText(str(height) + " Feet")
 
+        weight = logged_in_user.BMI.get_weight()
+        self.DISPLAY_WEIGHT.setText(str(weight) + " Pounds")
+        
+        """
+        
+        #bmi = logged_in_user.BMI.get
+
+
+        #images
         qpixmap = QPixmap('UI/ruler.png')
         self.rulerpic.setPixmap(qpixmap)
 
@@ -298,9 +307,55 @@ class BMI(QtWidgets.QMainWindow):
         self.bmi.setPixmap(qpixmap)
 
         self.GoBack.clicked.connect(self.Back)
-
+        
+        self.UpdateValues.clicked.connect(self.UpdateBMI)
+        
     def Back(self): 
         widget.removeWidget(self)
+        
+    def UpdateBMI(self):      
+        
+        widget.removeWidget(self)
+
+         
+        bmi = UpdateBMI()
+        widget.addWidget(bmi)
+        widget.setCurrentIndex(widget.currentIndex() + 1)     
+        
+        
+class UpdateBMI(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(UpdateBMI, self).__init__()
+        loadUi("UI/input_BMI.ui", self)
+        
+        
+        qpixmap = QPixmap('UI/person.png')
+        self.person.setPixmap(qpixmap)
+        
+        qpixmap = QPixmap('UI/scale.png')
+        self.bmi.setPixmap(qpixmap)
+        
+        self.GoBack.clicked.connect(self.Back)
+        self.Apply_Height.clicked.connect(self.Apply_Height)
+        self.Apply_Weight.clicked.connect(self.Apply_Weight)
+
+
+    def Apply_Height():
+        print("apply height")
+
+    def Apply_Weight():
+        print("apply weight")
+
+    def Back(self):         
+        widget.removeWidget(self)
+        bmi = BMI()
+        widget.addWidget(bmi)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+        
+        
+
+            
+        
     
 
 #heart class     

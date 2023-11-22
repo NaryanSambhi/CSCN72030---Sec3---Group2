@@ -55,7 +55,7 @@ font: 36pt &quot;Monospace&quot;;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;Modern&quot;;</string>
+     <string notr="true">font: 12pt  &quot;MS Shell Dlg 2&quot;;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -141,7 +141,7 @@ font: 10pt &quot;Monospace&quot;;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;Modern&quot;;</string>
+     <string notr="true">font: 12pt  &quot;MS Shell Dlg 2&quot;;</string>
     </property>
    </widget>
    <widget class="QLabel" name="accountError">
@@ -171,7 +171,7 @@ color: rgb(255, 0, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;Modern&quot;;</string>
+     <string notr="true">font: 12pt  &quot;MS Shell Dlg 2&quot;;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -238,7 +238,7 @@ font: 15pt &quot;Monospace&quot;;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;Modern&quot;;</string>
+     <string notr="true">font: 12pt  &quot;MS Shell Dlg 2&quot;;</string>
     </property>
    </widget>
   </widget>
