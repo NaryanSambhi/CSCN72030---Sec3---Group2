@@ -125,8 +125,10 @@ class CreateUserProfile(QDialog):
         
         #assign to object
         NewUser = UserData(name=UserName, age=UserAge)
-        NewUser.BMI._weight = UserWeight
-        NewUser.BMI._height = UserHeight
+        
+        NewUser.BMI.set_height(UserHeight)
+        NewUser.BMI.set_weight(UserWeight)
+        NewUser.set_Save_Path(self.userSave)
         
         #verify  
         if not all([UserName, UserAge, UserWeight, UserHeight]):
@@ -138,7 +140,7 @@ class CreateUserProfile(QDialog):
             return
 
         #save person object and save to file
-        print(NewUser)        
+        print(NewUser)
         
         self.accountError.setText("")
         NewUser.save_to_file(self.userSave)
@@ -159,7 +161,6 @@ class LoginScreen(QDialog):
         self.LoginAccount.clicked.connect(self.loginfunction)
         self.GoBack.clicked.connect(self.Back)
 
-        
         
     #check login details to DBS
     def loginfunction(self):
@@ -284,14 +285,13 @@ class BMI(QtWidgets.QMainWindow):
         
         
         #commented out until standardized units are picked
-        """   
         height = logged_in_user.BMI.get_height()
         self.DISPLAY_HEIGHT.setText(str(height) + " Feet")
 
         weight = logged_in_user.BMI.get_weight()
         self.DISPLAY_WEIGHT.setText(str(weight) + " Pounds")
         
-        """
+
         
         #bmi = logged_in_user.BMI.get
 
@@ -340,11 +340,23 @@ class UpdateBMI(QtWidgets.QMainWindow):
         self.Apply_Weight.clicked.connect(self.ApplyWeight)
 
 
-    def ApplyHeight():
-        print("apply height")
+    def ApplyHeight(self):
+        
+        #apply height to object and save object
+        height = self.New_Height.text()
+        logged_in_user.BMI.set_height(height)
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+        
 
-    def ApplyWeight():
-        print("apply weight")
+    def ApplyWeight(self):
+        
+        #apply height to object and save object
+        weight = self.New_Weight.text()
+        logged_in_user.BMI.set_weight(weight)
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
 
     def Back(self):         
         widget.removeWidget(self)

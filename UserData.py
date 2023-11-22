@@ -51,6 +51,8 @@ class UserData:
         self._Name = name
         self._Age = age
         
+        self._Save_Path = ""
+        
         #modules
         self.prescription_manager = PrescriptionManager()
         self.heart_health = heart_Health(0,0,0,100,60,99,95,120,90)  
@@ -75,6 +77,12 @@ class UserData:
 
     def set_age(self, age):
         self._Age = age
+        
+    def set_Save_Path(self, Save_Path):
+        self._Save_Path = Save_Path
+        
+    def get_Save_Path(self):
+        return self._Save_Path
 
 
 #functions 
@@ -82,6 +90,7 @@ class UserData:
         data_to_save = {
             'Name': self._Name,
             'Age': self._Age,
+            'Savepath' : self._Save_Path,
             
             #modules
             
@@ -113,6 +122,7 @@ class UserData:
         loaded_data = FileIO.load_from_file(filename)
         self._Name = loaded_data['Name']
         self._Age = loaded_data['Age']
+        self._Save_Path = loaded_data['Savepath']
         
         #modules
         self.prescription_manager.Prescription_Array = loaded_data.get('prescriptions', [])  
@@ -127,7 +137,7 @@ class UserData:
 
 
 
-'''
+"""
 
 #create
 
@@ -147,6 +157,7 @@ user.BMI._height = 190
 user.body_Info._temp = 100
 user.body_Info._fluid = 750
 
+
 user.save_to_file("saves/test.pkl")
 
 #load
@@ -155,9 +166,11 @@ loaded_user.load_from_file("saves/test.pkl")
 
 
 
+
 #print to confirm
 print("\n--------- profile --------")
 print(loaded_user)
+print(loaded_user._Save_Path)
 
 print("\n--------- prescriptions --------")
 loaded_user.prescription_manager.print_prescriptions()
@@ -173,4 +186,4 @@ print("\n--------- BMI --------")
 print(loaded_user.BMI)
 
 
-'''
+""" 
