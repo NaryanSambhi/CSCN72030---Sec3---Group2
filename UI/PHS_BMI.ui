@@ -35,7 +35,7 @@
        <x>20</x>
        <y>170</y>
        <width>681</width>
-       <height>241</height>
+       <height>311</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -87,9 +87,9 @@ border: 0px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>430</y>
+       <y>510</y>
        <width>681</width>
-       <height>211</height>
+       <height>311</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -141,9 +141,9 @@ border: 0px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>660</y>
+       <y>850</y>
        <width>681</width>
-       <height>211</height>
+       <height>311</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -252,7 +252,7 @@ font: 26pt &quot;MS Shell Dlg 2&quot;;
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="testing.qrc"/>
+  <include location="Config.qrc"/>
   <include location="Config.qrc"/>
  </resources>
  <connections/>

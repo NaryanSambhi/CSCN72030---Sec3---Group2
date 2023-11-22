@@ -245,6 +245,7 @@ class Home(QtWidgets.QMainWindow):
         self.Medication.clicked.connect(self.GoToPrescriptionManager)
         self.BMI.clicked.connect(self.GoToBMI)
         self.Heart.clicked.connect(self.GoToHeartHealth)
+        self.Body.clicked.connect(self.GoToBodyStatus)
 
         
 
@@ -260,10 +261,14 @@ class Home(QtWidgets.QMainWindow):
         widget.setCurrentIndex(widget.currentIndex() + 1)
         
     def GoToHeartHealth(self):
-        print("go to heart")
+        heart = HeartHealth()
+        widget.addWidget(heart)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
 
-        
-    #need another for body
+    def GoToBodyStatus(self):
+        body_status = BodyStatus()
+        widget.addWidget(body_status)
+        widget.setCurrentIndex(widget.currentIndex() + 1)     
 
         
 #prescription manager     
@@ -299,32 +304,49 @@ class BMI(QtWidgets.QMainWindow):
     
 
 #heart class     
-'''   
+   
 class HeartHealth(QtWidgets.QMainWindow):
     def __init__(self):
         super(HeartHealth, self).__init__()
-        loadUi("UI/      .ui", self)
+        loadUi("UI/PHS_Heart_Health.ui", self)
+
+        qpixmap = QPixmap('UI/bloodpressure.png')
+        self.bloodpressure.setPixmap(qpixmap)
+        
+        qpixmap = QPixmap('UI/bloodoxygen.png')
+        self.bloodoxygen.setPixmap(qpixmap)
+        
+        qpixmap = QPixmap('UI/heart.png')
+        self.heartrate.setPixmap(qpixmap)
+
         self.GoBack.clicked.connect(self.Back)
 
         
     def Back(self): 
         widget.removeWidget(self)
         
-'''
+
 
 #body status class
-'''   
+  
 class BodyStatus(QtWidgets.QMainWindow):
     def __init__(self):
         super(BodyStatus, self).__init__()
-        loadUi("UI/      .ui", self)
+        loadUi("UI/PHS_Body_Info.ui", self)
+
+        qpixmap = QPixmap('UI/temperature.png')
+        self.bodytemp.setPixmap(qpixmap)
+        
+        qpixmap = QPixmap('UI/bodyfluid.png')
+        self.bodyfluid.setPixmap(qpixmap)
+
         self.GoBack.clicked.connect(self.Back)
 
         
     def Back(self): 
         widget.removeWidget(self)
         
-'''
+
         
 #main 
 app = QApplication(sys.argv)

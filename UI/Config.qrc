@@ -3,6 +3,15 @@
     <file>Pill_Bottle.png</file>
   </qresource>
   <qresource prefix="newPrefix">
+    <file>bodyfluid.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>bloodoxygen.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>bloodpressure.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
     <file>ruler.png</file>
   </qresource>
   <qresource prefix="newPrefix">

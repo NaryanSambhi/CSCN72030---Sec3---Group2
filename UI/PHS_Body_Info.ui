@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>706</width>
-    <height>1199</height>
+    <width>714</width>
+    <height>1222</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,9 +33,9 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>160</y>
-       <width>671</width>
-       <height>491</height>
+       <y>170</y>
+       <width>681</width>
+       <height>471</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -43,57 +43,34 @@
 border: 4px solid black;
 </string>
      </property>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="bodytemp">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>10</y>
-        <width>331</width>
-        <height>51</height>
+        <x>440</x>
+        <y>40</y>
+        <width>231</width>
+        <height>261</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
-border: 0px;</string>
+       <string notr="true">border: 0px</string>
       </property>
       <property name="text">
-       <string>Medication Plan</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/temperature.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QCalendarWidget" name="calendarWidget">
+     <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>30</x>
         <y>70</y>
-        <width>421</width>
-        <height>341</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="widget_7" native="true">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>670</y>
-       <width>671</width>
-       <height>521</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 171, 172);
-border: 4px solid black;
-</string>
-     </property>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>10</y>
-        <width>421</width>
+        <width>251</width>
         <height>71</height>
        </rect>
       </property>
@@ -102,17 +79,61 @@ border: 4px solid black;
 border: 0px;</string>
       </property>
       <property name="text">
-       <string>Medication List</string>
+       <string>Temperature</string>
       </property>
      </widget>
-     <widget class="QListWidget" name="listWidget">
+    </widget>
+    <widget class="QWidget" name="widget_8" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>670</y>
+       <width>681</width>
+       <height>511</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+border: 4px solid black;
+</string>
+     </property>
+     <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>621</width>
-        <height>401</height>
+        <x>30</x>
+        <y>60</y>
+        <width>221</width>
+        <height>71</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Body Fluid</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="bodyfluid">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>50</y>
+        <width>181</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/bodyfluid.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
