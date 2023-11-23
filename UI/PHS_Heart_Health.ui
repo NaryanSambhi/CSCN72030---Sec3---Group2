@@ -35,7 +35,7 @@
        <x>20</x>
        <y>170</y>
        <width>681</width>
-       <height>341</height>
+       <height>241</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -46,10 +46,10 @@ border: 4px solid black;
      <widget class="QLabel" name="bloodpressure">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>40</y>
-        <width>201</width>
-        <height>181</height>
+        <x>460</x>
+        <y>20</y>
+        <width>181</width>
+        <height>161</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -68,9 +68,9 @@ border: 4px solid black;
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>70</y>
-        <width>251</width>
+        <x>20</x>
+        <y>20</y>
+        <width>401</width>
         <height>71</height>
        </rect>
       </property>
@@ -87,9 +87,9 @@ border: 0px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>530</y>
+       <y>420</y>
        <width>681</width>
-       <height>331</height>
+       <height>251</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -100,9 +100,9 @@ border: 4px solid black;
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>60</y>
-        <width>221</width>
+        <x>20</x>
+        <y>20</y>
+        <width>381</width>
         <height>71</height>
        </rect>
       </property>
@@ -141,9 +141,9 @@ border: 0px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>880</y>
+       <y>680</y>
        <width>681</width>
-       <height>311</height>
+       <height>281</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -155,7 +155,7 @@ border: 4px solid black;
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>60</y>
+        <y>20</y>
         <width>311</width>
         <height>71</height>
        </rect>
@@ -204,27 +204,6 @@ border: 0px;</string>
       <string notr="true">background-color: rgb(255, 171, 172);
 </string>
      </property>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>40</y>
-        <width>601</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 28pt &quot;MS Shell Dlg 2&quot;;
-text-align: center;
-border:0px;</string>
-      </property>
-      <property name="text">
-       <string>Prescription Health System</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="GoBack">
       <property name="geometry">
        <rect>
@@ -246,10 +225,50 @@ font: 26pt &quot;MS Shell Dlg 2&quot;;
        <string>&lt;</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>40</y>
+        <width>541</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 28pt &quot;MS Shell Dlg 2&quot;;
+text-align: center;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string>Medical Health System</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="UpdateValues">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>1010</y>
+       <width>351</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 171, 172);
+border: 4px solid black;
+border-radius:20px;
+font: 30pt &quot;Monospace&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Update Values</string>
+     </property>
     </widget>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="Config.qrc"/>

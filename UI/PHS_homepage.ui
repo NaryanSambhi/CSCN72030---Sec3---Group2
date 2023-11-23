@@ -67,9 +67,9 @@ border:0px;</string>
     <widget class="QWidget" name="widget_3" native="true">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>20</x>
        <y>150</y>
-       <width>201</width>
+       <width>341</width>
        <height>191</height>
       </rect>
      </property>
@@ -78,34 +78,12 @@ border:0px;</string>
 border: 4px solid black;
 </string>
      </property>
-     <widget class="QLabel" name="medpic">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>201</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="Config.qrc">:/newPrefix/Pill_Bottle.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QPushButton" name="Medication">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>130</y>
-        <width>181</width>
+        <x>80</x>
+        <y>120</y>
+        <width>201</width>
         <height>61</height>
        </rect>
       </property>
@@ -122,6 +100,32 @@ font: 23pt &quot;MS Shell Dlg 2&quot;;
        <string>Medication</string>
       </property>
      </widget>
+     <widget class="QLabel" name="medpic">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>-50</y>
+        <width>231</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> border: none;
+background-color: none;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/Pill_Bottle.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>medpic</zorder>
+     <zorder>Medication</zorder>
     </widget>
     <widget class="QWidget" name="widget_6" native="true">
      <property name="geometry">
@@ -137,43 +141,42 @@ font: 23pt &quot;MS Shell Dlg 2&quot;;
 border: 4px solid black;
 </string>
      </property>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="Name">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>221</width>
-        <height>61</height>
+        <x>40</x>
+        <y>30</y>
+        <width>421</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 30pt &quot;MS Shell Dlg 2&quot;;
-border-width:0px;</string>
-      </property>
-      <property name="text">
-       <string>Status</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="personpic">
-      <property name="geometry">
-       <rect>
-        <x>510</x>
-        <y>10</y>
-        <width>181</width>
-        <height>151</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border: 0px</string>
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 0);
+border: none;
+</string>
       </property>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap resource="Config.qrc">:/newPrefix/person.png</pixmap>
+     </widget>
+     <widget class="QLabel" name="Status">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>80</y>
+        <width>421</width>
+        <height>41</height>
+       </rect>
       </property>
-      <property name="scaledContents">
-       <bool>true</bool>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 0);
+border: none;
+</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -234,9 +237,9 @@ border-width:0px;</string>
     <widget class="QWidget" name="widget_4" native="true">
      <property name="geometry">
       <rect>
-       <x>390</x>
+       <x>370</x>
        <y>150</y>
-       <width>201</width>
+       <width>321</width>
        <height>191</height>
       </rect>
      </property>
@@ -248,8 +251,8 @@ border: 4px solid black;
      <widget class="QPushButton" name="BMI">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>70</y>
+        <x>70</x>
+        <y>120</y>
         <width>181</width>
         <height>61</height>
        </rect>
@@ -378,9 +381,9 @@ border-width:0px;</string>
     <widget class="QWidget" name="widget_5" native="true">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>20</x>
        <y>350</y>
-       <width>201</width>
+       <width>341</width>
        <height>191</height>
       </rect>
      </property>
@@ -392,14 +395,15 @@ border: 4px solid black;
      <widget class="QLabel" name="heartpic">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>201</width>
-        <height>191</height>
+        <x>10</x>
+        <y>10</y>
+        <width>321</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true"> border: none;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -414,8 +418,8 @@ border: 4px solid black;
      <widget class="QPushButton" name="Heart">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>110</y>
+        <x>80</x>
+        <y>120</y>
         <width>181</width>
         <height>61</height>
        </rect>
@@ -436,9 +440,9 @@ font: 23pt &quot;MS Shell Dlg 2&quot;;
     <widget class="QWidget" name="widget_10" native="true">
      <property name="geometry">
       <rect>
-       <x>390</x>
+       <x>370</x>
        <y>350</y>
-       <width>201</width>
+       <width>321</width>
        <height>191</height>
       </rect>
      </property>
@@ -450,10 +454,10 @@ border: 4px solid black;
      <widget class="QPushButton" name="Body">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>70</y>
+        <x>70</x>
+        <y>130</y>
         <width>181</width>
-        <height>61</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -466,6 +470,30 @@ font: 23pt &quot;MS Shell Dlg 2&quot;;
       </property>
       <property name="text">
        <string>Body Info</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="personpic">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>10</y>
+        <width>141</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> border: none;
+background-color: none;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/person.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

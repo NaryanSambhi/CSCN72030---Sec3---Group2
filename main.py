@@ -25,6 +25,13 @@ def is_int(value):
     except ValueError:
         return False
     
+def is_float(value):
+   try:
+       float(value)
+       return True
+   except ValueError:
+       return False    
+    
     
 #GUI OBJECTS
 #welcome screen to login or create account
@@ -135,8 +142,12 @@ class CreateUserProfile(QDialog):
             self.accountError.setText("Please fill out all forms.")
             return
 
-        if not (is_int(UserAge) and is_int(UserWeight) and is_int(UserHeight)):
-            self.accountError.setText("Age, Weight, and Height must be numeric.")
+        if not (is_int(UserAge)):
+            self.accountError.setText("Age must be a whole number")
+            return
+
+        if not(is_float(UserWeight) and is_float(UserHeight)):
+            self.accountError.setText("Weight and height must be numeric.")
             return
 
         #save person object and save to file
@@ -235,6 +246,16 @@ class Home(QtWidgets.QMainWindow):
         qpixmap = QPixmap('UI/scale.png')
         self.scale.setPixmap(qpixmap)
         
+        
+        
+        name = logged_in_user.get_name()
+        
+        self.Name.setText("Welcome " + name)
+
+        self.Status.setText("Nothing to report")
+
+        
+        
         #buttons
         
         self.Medication.clicked.connect(self.GoToPrescriptionManager)
@@ -286,10 +307,10 @@ class BMI(QtWidgets.QMainWindow):
         
         #commented out until standardized units are picked
         height = logged_in_user.BMI.get_height()
-        self.DISPLAY_HEIGHT.setText(str(height) + " Feet")
+        self.DISPLAY_HEIGHT.setText(str(height) + " Meters")
 
         weight = logged_in_user.BMI.get_weight()
-        self.DISPLAY_WEIGHT.setText(str(weight) + " Pounds")
+        self.DISPLAY_WEIGHT.setText(str(weight) + " Kilos")
         
 
         
@@ -344,6 +365,14 @@ class UpdateBMI(QtWidgets.QMainWindow):
         
         #apply height to object and save object
         height = self.New_Height.text()
+        
+        if not(is_float(height)):
+            self.HeightError.setText("Height must be numeric.")
+            return
+        
+        self.HeightError.setText("")
+
+        
         logged_in_user.BMI.set_height(height)
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
@@ -353,6 +382,14 @@ class UpdateBMI(QtWidgets.QMainWindow):
         
         #apply height to object and save object
         weight = self.New_Weight.text()
+        
+        if not(is_float(weight)):
+            self.WeightError.setText("Weight must be numeric.")
+            return
+        
+        self.WeightError.setText("")
+        
+        
         logged_in_user.BMI.set_weight(weight)
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)

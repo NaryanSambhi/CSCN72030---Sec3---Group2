@@ -197,7 +197,7 @@ font: 15pt &quot;Monospace&quot;;
      <rect>
       <x>160</x>
       <y>590</y>
-      <width>161</width>
+      <width>361</width>
       <height>31</height>
      </rect>
     </property>
@@ -207,7 +207,7 @@ font: 15pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>Weight</string>
+     <string>Weight (kilograms)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
@@ -215,7 +215,7 @@ font: 15pt &quot;Monospace&quot;;
      <rect>
       <x>170</x>
       <y>710</y>
-      <width>161</width>
+      <width>351</width>
       <height>31</height>
      </rect>
     </property>
@@ -225,7 +225,7 @@ font: 15pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>Height</string>
+     <string>Height (Meters)</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="Height">
