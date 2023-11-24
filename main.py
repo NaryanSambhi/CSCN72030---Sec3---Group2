@@ -50,7 +50,7 @@ def GoToAndRemove(self, new_widget):
     widget.setCurrentIndex(widget.currentIndex() + 1)
     
     
-    
+ #displays the BMI values currently   
 def DisplayBMI(self):
     
         #height and weight
@@ -67,8 +67,7 @@ def DisplayBMI(self):
         bmi_status = logged_in_user.BMI.get_bmi_status()
         self.DISPLAY_BMI_STATUS.setText(str(bmi_status))
     
-    
-    
+     
 ########################################################## Graphic User Interface ##########################################################
 
 #GUI OBJECTS
@@ -258,7 +257,7 @@ class Home(QtWidgets.QMainWindow):
         super(Home, self).__init__()
         loadUi("UI/PHS_homepage.ui", self)
     
-        #inmages
+        #images
         qpixmap = QPixmap('UI/Pill_Bottle.png')
         self.medpic.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/heart.png')
@@ -271,7 +270,12 @@ class Home(QtWidgets.QMainWindow):
         self.bodyinfo.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/scale.png')
         self.scale.setPixmap(qpixmap)
-        
+        qpixmap = QPixmap('UI/bmipic.png')
+        self.BMIpic.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/handwave.png')
+        self.welcome.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/gear.png')
+        self.Setting.setPixmap(qpixmap)
         
         #name
         name = logged_in_user.get_name()
@@ -286,16 +290,16 @@ class Home(QtWidgets.QMainWindow):
         self.timer.start(1000) # 1000 ms = 1 second        
         self.update_label()
 
-        #BMI 
+        #Display the current BMI info
         DisplayBMI(self)
-        
+ 
         
         #buttons
         self.Medication.clicked.connect(self.GoToPrescriptionManager)
         self.BMI.clicked.connect(self.GoToBMI)
         self.Heart.clicked.connect(self.GoToHeartHealth)
         self.Body.clicked.connect(self.GoToBodyStatus)
-        
+        self.setting.clicked.connect(self.GoToSetting)
         
     def update_label(self):        
         simulate_heart(self)
@@ -318,7 +322,35 @@ class Home(QtWidgets.QMainWindow):
         body_status = BodyStatus()
         GoTo(body_status)
 
+    def GoToSetting(self):
+        setting = Setting()
+        GoTo(setting)
+
+#setting class
+class Setting(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(Setting, self).__init__()
+        loadUi("UI/PHS_setting.ui", self)
+        self.GoBack.clicked.connect(self.Back)
         
+        #images
+        qpixmap = QPixmap('UI/person.png')
+        self.profile.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/blackheart.png')
+        self.heart.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/temperature.png')
+        self.bodyinfo.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/scale.png')
+        self.BMI.setPixmap(qpixmap)
+
+        #buttons
+        self.GoBack.clicked.connect(self.Back)
+        
+        # go back to homepage
+    def Back(self):         
+        home = Home()
+        GoBack(self, home)
+ 
 #prescription manager     
 class PrescriptionManager(QtWidgets.QMainWindow):
     def __init__(self):
@@ -326,10 +358,28 @@ class PrescriptionManager(QtWidgets.QMainWindow):
         loadUi("UI/PHS_prescription.ui", self)
         self.GoBack.clicked.connect(self.Back)
 
+        #buttons
+        self.GoBack.clicked.connect(self.Back)       
+        self.UpdateValues.clicked.connect(self.UpdatePrescription)
+
     def Back(self): 
         widget.removeWidget(self)
+
+    def UpdatePrescription(self):               
+        med = UpdatePrescription()
+        GoToAndRemove(self, med)  
+
+class UpdatePrescription(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(UpdatePrescription, self).__init__()
+        loadUi("UI/input_Prescriptions.ui", self)
         
-        
+        self.GoBack.clicked.connect(self.Back)
+
+    def Back(self):         
+        body = PrescriptionManager()
+        GoBack(self, body)
+       
 #bmi class 
 class BMI(QtWidgets.QMainWindow):
     def __init__(self):
@@ -343,9 +393,9 @@ class BMI(QtWidgets.QMainWindow):
         self.DISPLAY_HEIGHT.setText(str(height) + " cm")
         weight = logged_in_user.BMI.get_weight()
         self.DISPLAY_WEIGHT.setText(str(weight) + " Kilograms")
-                
-        DisplayBMI(self)
 
+        #display the current BMI values       
+        DisplayBMI(self)
 
         #images
         qpixmap = QPixmap('UI/ruler.png')
@@ -361,12 +411,13 @@ class BMI(QtWidgets.QMainWindow):
         
     def Back(self): 
         widget.removeWidget(self)
-        
+    
+    #go to the update page
     def UpdateBMI(self):               
         bmi = UpdateBMI()
-        GoToAndRemove(self, bmi)
-        
-        
+        GoToAndRemove(self, bmi)       
+
+#update the BMI values   
 class UpdateBMI(QtWidgets.QMainWindow):
     def __init__(self):
         super(UpdateBMI, self).__init__()
@@ -382,12 +433,12 @@ class UpdateBMI(QtWidgets.QMainWindow):
         #display current bmi        
         DisplayBMI(self)
 
-        
+        #buttons
         self.GoBack.clicked.connect(self.Back)
         self.Apply_Height.clicked.connect(self.ApplyHeight)
         self.Apply_Weight.clicked.connect(self.ApplyWeight)
 
-
+    #function to change the height
     def ApplyHeight(self):
         
         #apply height to object and save object
@@ -399,7 +450,7 @@ class UpdateBMI(QtWidgets.QMainWindow):
         
         self.HeightError.setText("")
 
-        
+        #saved to the file
         logged_in_user.BMI.set_height(float(height))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
@@ -409,7 +460,7 @@ class UpdateBMI(QtWidgets.QMainWindow):
         DisplayBMI(self)
 
         
-
+    #function to change the weight 
     def ApplyWeight(self):
         
         #apply height to object and save object
@@ -421,7 +472,7 @@ class UpdateBMI(QtWidgets.QMainWindow):
         
         self.WeightError.setText("")
         
-        
+        #save to the file 
         logged_in_user.BMI.set_weight(float(weight))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
@@ -429,14 +480,13 @@ class UpdateBMI(QtWidgets.QMainWindow):
         
         #display current bmi
         DisplayBMI(self)
-
+    
+    #go back to the BMi class
     def Back(self):         
         bmi = BMI()
         GoBack(self, bmi)
-    
-
+ 
 #heart class     
-   
 class HeartHealth(QtWidgets.QMainWindow):
     def __init__(self):
         super(HeartHealth, self).__init__()
@@ -475,19 +525,45 @@ class BodyStatus(QtWidgets.QMainWindow):
     def __init__(self):
         super(BodyStatus, self).__init__()
         loadUi("UI/PHS_Body_Info.ui", self)
-
+        
+        #images
         qpixmap = QPixmap('UI/temperature.png')
         self.bodytemp.setPixmap(qpixmap)
-        
         qpixmap = QPixmap('UI/bodyfluid.png')
         self.bodyfluid.setPixmap(qpixmap)
 
-        self.GoBack.clicked.connect(self.Back)
-
+         #buttons
+        self.GoBack.clicked.connect(self.Back)       
+        self.UpdateValues.clicked.connect(self.UpdateBody)
         
     def Back(self): 
         widget.removeWidget(self)
+    
+    #go to the update body page
+    def UpdateBody(self):               
+        body = UpdateBody()
+        GoToAndRemove(self, body)  
+
+#update body values 
+class UpdateBody(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(UpdateBody, self).__init__()
+        loadUi("UI/input_Body_Info.ui", self)
         
+        #images
+        qpixmap = QPixmap('UI/temperature.png')
+        self.Temperature.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/bodyfluid.png')
+        self.IV.setPixmap(qpixmap)
+
+        
+        self.GoBack.clicked.connect(self.Back)
+    
+    #go back to the body status page
+    def Back(self):         
+        body = BodyStatus()
+        GoBack(self, body)
+      
         
 ########################################################## MAIN ##########################################################
         

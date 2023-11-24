@@ -3,6 +3,18 @@
     <file>Pill_Bottle.png</file>
   </qresource>
   <qresource prefix="newPrefix">
+    <file>gear.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>heightscale.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>bmipic.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>handwave.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
     <file>bodyfluid.png</file>
   </qresource>
   <qresource prefix="newPrefix">

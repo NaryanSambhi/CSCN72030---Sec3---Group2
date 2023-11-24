@@ -6,15 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>714</width>
-    <height>1222</height>
+    <width>720</width>
+    <height>1280</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="widget" native="true">
@@ -29,13 +26,13 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 228, 229);</string>
     </property>
-    <widget class="QWidget" name="widget_6" native="true">
+    <widget class="QWidget" name="widget_12" native="true">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>170</y>
+       <y>180</y>
        <width>681</width>
-       <height>241</height>
+       <height>311</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -43,35 +40,47 @@
 border: 4px solid black;
 </string>
      </property>
-     <widget class="QLabel" name="rulerpic">
+     <widget class="QPushButton" name="Apply_Name">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>10</y>
-        <width>161</width>
-        <height>221</height>
+        <x>460</x>
+        <y>210</y>
+        <width>181</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border: 0px</string>
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
       </property>
       <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="Config.qrc">:/newPrefix/heightscale.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
+       <string>Apply</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLineEdit" name="New_Name">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>191</width>
-        <height>71</height>
+        <x>80</x>
+        <y>130</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>221</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -79,36 +88,35 @@ border: 4px solid black;
 border: 0px;</string>
       </property>
       <property name="text">
-       <string>Height</string>
+       <string>Name</string>
       </property>
      </widget>
-     <widget class="QLabel" name="DISPLAY_HEIGHT">
+     <widget class="QLabel" name="HeightError">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>120</y>
-        <width>351</width>
-        <height>91</height>
+        <x>90</x>
+        <y>230</y>
+        <width>331</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-
-color: rgb(0, 0, 0);
-border: 0px;</string>
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="widget_8" native="true">
+    <widget class="QWidget" name="widget_13" native="true">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>430</y>
+       <y>520</y>
        <width>681</width>
-       <height>241</height>
+       <height>311</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -116,11 +124,11 @@ border: 0px;</string>
 border: 4px solid black;
 </string>
      </property>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>30</y>
+        <x>40</x>
+        <y>40</y>
         <width>201</width>
         <height>71</height>
        </rect>
@@ -130,51 +138,63 @@ border: 4px solid black;
 border: 0px;</string>
       </property>
       <property name="text">
-       <string>Weight</string>
+       <string>Effects</string>
       </property>
      </widget>
-     <widget class="QLabel" name="person">
+     <widget class="QLineEdit" name="New_Effects">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>20</y>
-        <width>201</width>
-        <height>191</height>
+        <x>90</x>
+        <y>110</y>
+        <width>341</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border: 0px</string>
+       <string notr="true">font: 20pt  &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Effects">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>230</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
       </property>
       <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="Config.qrc">:/newPrefix/person.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
+       <string>Apply</string>
       </property>
      </widget>
-     <widget class="QLabel" name="DISPLAY_WEIGHT">
+     <widget class="QLabel" name="WeightError">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>120</y>
-        <width>351</width>
-        <height>91</height>
+        <x>90</x>
+        <y>220</y>
+        <width>331</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(0, 0, 0);
-border: 0px;</string>
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="widget_2" native="true">
+    <widget class="QWidget" name="widget_3" native="true">
      <property name="geometry">
       <rect>
        <x>-10</x>
@@ -187,12 +207,12 @@ border: 0px;</string>
       <string notr="true">background-color: rgb(255, 171, 172);
 </string>
      </property>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>70</x>
         <y>40</y>
-        <width>541</width>
+        <width>601</width>
         <height>61</height>
        </rect>
       </property>
@@ -205,7 +225,7 @@ text-align: center;
 border:0px;</string>
       </property>
       <property name="text">
-       <string>Medical Health System</string>
+       <string>Prescription Health System</string>
       </property>
      </widget>
      <widget class="QPushButton" name="GoBack">
@@ -234,9 +254,9 @@ font: 26pt &quot;MS Shell Dlg 2&quot;;
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>700</y>
+       <y>870</y>
        <width>681</width>
-       <height>361</height>
+       <height>311</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -244,34 +264,12 @@ font: 26pt &quot;MS Shell Dlg 2&quot;;
 border: 4px solid black;
 </string>
      </property>
-     <widget class="QLabel" name="bmi">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>20</y>
-        <width>331</width>
-        <height>311</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border: 0px</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="Config.qrc">:/newPrefix/scale.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>121</width>
+        <x>40</x>
+        <y>40</y>
+        <width>201</width>
         <height>71</height>
        </rect>
       </property>
@@ -280,83 +278,61 @@ border: 4px solid black;
 border: 0px;</string>
       </property>
       <property name="text">
-       <string>BMI</string>
+       <string>Dosage</string>
       </property>
      </widget>
-     <widget class="QLabel" name="DISPLAY_BMI">
+     <widget class="QLineEdit" name="New_Dosage">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>170</y>
-        <width>171</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(0, 0, 0);
-background-color: none;
-border: 0px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="DISPLAY_BMI_STATUS">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>150</y>
-        <width>271</width>
+        <x>90</x>
+        <y>110</y>
+        <width>341</width>
         <height>61</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(0, 0, 0);
-border: 0px;</string>
+       <string notr="true">font: 20pt  &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Dosage">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>230</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="WeightError_2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>220</y>
+        <width>331</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_12">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>90</y>
-        <width>221</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-border: 0px;</string>
-      </property>
-      <property name="text">
-       <string>Status:</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QPushButton" name="UpdateValues">
-     <property name="geometry">
-      <rect>
-       <x>180</x>
-       <y>1100</y>
-       <width>351</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 171, 172);
-border: 4px solid black;
-border-radius:20px;
-font: 30pt &quot;Monospace&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Update Values</string>
-     </property>
     </widget>
    </widget>
   </widget>
