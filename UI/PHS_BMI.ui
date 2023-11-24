@@ -94,7 +94,7 @@ border: 0px;</string>
       <property name="styleSheet">
        <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
 
-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border: 0px;</string>
       </property>
       <property name="text">
@@ -136,10 +136,10 @@ border: 0px;</string>
      <widget class="QLabel" name="person">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>30</y>
-        <width>151</width>
-        <height>131</height>
+        <x>470</x>
+        <y>20</y>
+        <width>201</width>
+        <height>191</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -166,7 +166,7 @@ border: 0px;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border: 0px;</string>
       </property>
       <property name="text">
@@ -294,7 +294,7 @@ border: 0px;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 background-color: none;
 border: 0px;</string>
       </property>
@@ -305,19 +305,36 @@ border: 0px;</string>
      <widget class="QLabel" name="DISPLAY_BMI_STATUS">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>130</y>
-        <width>261</width>
-        <height>91</height>
+        <x>50</x>
+        <y>150</y>
+        <width>271</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border: 0px;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>90</y>
+        <width>221</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Status:</string>
       </property>
      </widget>
     </widget>

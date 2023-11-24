@@ -254,6 +254,23 @@ class Home(QtWidgets.QMainWindow):
 
         self.Status.setText("Nothing to report")
 
+
+
+        #BMI 
+        
+        #height and weight
+        height = logged_in_user.BMI.get_height()
+        weight = logged_in_user.BMI.get_weight()
+        
+        #bmi
+        logged_in_user.BMI.calculate_bmi(height, weight)
+        bmi = logged_in_user.BMI.get_bmi()
+        
+        self.DISPLAY_BMI.setText("BMI: " + str(bmi))
+        
+        #status
+        bmi_status = logged_in_user.BMI.get_bmi_status()
+        self.DISPLAY_BMI_STATUS.setText(str(bmi_status))
         
         
         #buttons
