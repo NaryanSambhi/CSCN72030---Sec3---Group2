@@ -16,39 +16,61 @@ from UserData import *
 from PyQt5.QtCore import QTimer
 import random
 
+from general_functions import *
+
+########################################################## GENERAL FUNCTIONS ##########################################################
 
 #create user object to be filled out with new users
 #our currently used - user object is loaded and modified here
 logged_in_user = UserData(name="", age=0)
 
-#input validation functions
-
-#makes sure input values are numbers only 
-def is_int(value):
-    try:
-        int(value)
-        return True
-    except ValueError:
-        return False
-
-#same for floats
-def is_float(value):
-   try:
-       float(value)
-       return True
-   except ValueError:
-       return False    
-   
-
 #assigning a random heart rate to a user to simulate a real users heart rate
 def simulate_heart(self):
-    
     dyanmic_heart = (random.randint(60, 100))
     logged_in_user.heart_health.set_hr(dyanmic_heart)      
     current = logged_in_user.heart_health.get_hr()
     self.DISPLAY_HEART.setText("Heart-rate: " + str(current))
+  
+#close current widget and go back to new widget
+    #used for update values widgets in order to reopen a refreshed version of the previous page with new values shown
+def GoBack(self, new_widget):        
+   widget.removeWidget(self)
+   widget.addWidget(new_widget)
+   widget.setCurrentIndex(widget.currentIndex() + 1)
+   
+#go to new widget
+def GoTo(new_widget):       
+    widget.addWidget(new_widget)
+    widget.setCurrentIndex(widget.currentIndex() + 1)
+    
+#go to new widget
+def GoToAndRemove(self, new_widget):       
+    widget.removeWidget(self)
+    widget.addWidget(new_widget)
+    widget.setCurrentIndex(widget.currentIndex() + 1)
     
     
+    
+def DisplayBMI(self):
+    
+        #height and weight
+        height = logged_in_user.BMI.get_height()
+        weight = logged_in_user.BMI.get_weight()
+        
+        #bmi
+        logged_in_user.BMI.calculate_bmi(height, weight)
+        bmi = logged_in_user.BMI.get_bmi()
+        
+        self.DISPLAY_BMI.setText("BMI: " + str(bmi))
+        
+        #status
+        bmi_status = logged_in_user.BMI.get_bmi_status()
+        self.DISPLAY_BMI_STATUS.setText(str(bmi_status))
+    
+    
+    
+########################################################## Graphic User Interface ##########################################################
+
 #GUI OBJECTS
 #welcome screen to login or create account
 class WelcomeScreen(QDialog):
@@ -61,13 +83,11 @@ class WelcomeScreen(QDialog):
 #navigation functions
     def gotologin(self):
         login = LoginScreen()
-        widget.addWidget(login)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+        GoTo(login)
         
     def gotocreate(self):
         create = CreateScreen()
-        widget.addWidget(create)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+        GoTo(create)
 
 
 #creating a new account screen
@@ -120,11 +140,8 @@ class CreateScreen(QDialog):
             writer = csv.writer(f,delimiter=",") #, useed to sep entries
             writer.writerow([user, password, userSave]) #write in order
                               
-            #close current window open next window
-            self.close()
             CreateUser = CreateUserProfile(userSave)
-            widget.addWidget(CreateUser)            
-            widget.setCurrentIndex(widget.currentIndex()+1)
+            GoToAndRemove(self, CreateUser)
             return
         
     def Back(self): 
@@ -141,7 +158,7 @@ class CreateUserProfile(QDialog):
 #create new user
     def CreateFunction(self):
         
-        #vars
+        #vars        
         UserName = self.Name.text()
         UserAge = self.Age.text()
         UserWeight = self.Weight.text()
@@ -149,9 +166,6 @@ class CreateUserProfile(QDialog):
         
         #assign to object
         NewUser = UserData(name=UserName, age=UserAge)
-        
-        NewUser.BMI.set_height(float(UserHeight))
-        NewUser.BMI.set_weight(float(UserWeight))
         NewUser.set_Save_Path(self.userSave)
         
         #verify  
@@ -166,6 +180,9 @@ class CreateUserProfile(QDialog):
         if not(is_float(UserWeight) and is_float(UserHeight)):
             self.accountError.setText("Weight and height must be numeric.")
             return
+        
+        NewUser.BMI.set_height(float(UserHeight))
+        NewUser.BMI.set_weight(float(UserWeight))
 
         #save person object and save to file
         print(NewUser)
@@ -173,10 +190,9 @@ class CreateUserProfile(QDialog):
         self.accountError.setText("")
         NewUser.save_to_file(self.userSave)
         
-        self.close()
-        login = LoginScreen()
-        widget.addWidget(login)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+        login = LoginScreen()        
+        GoToAndRemove(self, login)
+        
 
 
 
@@ -224,10 +240,8 @@ class LoginScreen(QDialog):
                         return
                     
                     #open window to homepage
-                    self.close()
                     home = Home()
-                    widget.addWidget(home)
-                    widget.setCurrentIndex(widget.currentIndex() + 1)         
+                    GoToAndRemove(self, home)
                     return
         
         # If no match found
@@ -273,19 +287,7 @@ class Home(QtWidgets.QMainWindow):
         self.update_label()
 
         #BMI 
-        #height and weight
-        height = logged_in_user.BMI.get_height()
-        weight = logged_in_user.BMI.get_weight()
-        
-        #bmi
-        logged_in_user.BMI.calculate_bmi(height, weight)
-        bmi = logged_in_user.BMI.get_bmi()
-        
-        self.DISPLAY_BMI.setText("BMI: " + str(bmi))
-        
-        #status
-        bmi_status = logged_in_user.BMI.get_bmi_status()
-        self.DISPLAY_BMI_STATUS.setText(str(bmi_status))
+        DisplayBMI(self)
         
         
         #buttons
@@ -302,23 +304,19 @@ class Home(QtWidgets.QMainWindow):
 #navigation links (doesnt close current as we will go back often)
     def GoToPrescriptionManager(self):
         PHS = PrescriptionManager()
-        widget.addWidget(PHS)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        GoTo(PHS)
     
     def GoToBMI(self):
         bmi = BMI()
-        widget.addWidget(bmi)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        GoTo(bmi)
         
     def GoToHeartHealth(self):
         heart = HeartHealth()
-        widget.addWidget(heart)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        GoTo(heart)
 
     def GoToBodyStatus(self):
         body_status = BodyStatus()
-        widget.addWidget(body_status)
-        widget.setCurrentIndex(widget.currentIndex() + 1)     
+        GoTo(body_status)
 
         
 #prescription manager     
@@ -343,45 +341,30 @@ class BMI(QtWidgets.QMainWindow):
         #height and weight
         height = logged_in_user.BMI.get_height()
         self.DISPLAY_HEIGHT.setText(str(height) + " cm")
-
         weight = logged_in_user.BMI.get_weight()
         self.DISPLAY_WEIGHT.setText(str(weight) + " Kilograms")
-        
-        #bmi
-        logged_in_user.BMI.calculate_bmi(height, weight)
-        bmi = logged_in_user.BMI.get_bmi()
-        
-        self.DISPLAY_BMI.setText("BMI: " + str(bmi))
-        
-        #status
-        bmi_status = logged_in_user.BMI.get_bmi_status()
-        self.DISPLAY_BMI_STATUS.setText(str(bmi_status))
+                
+        DisplayBMI(self)
+
 
         #images
         qpixmap = QPixmap('UI/ruler.png')
         self.rulerpic.setPixmap(qpixmap)
-
         qpixmap = QPixmap('UI/person.png')
         self.person.setPixmap(qpixmap)
-        
         qpixmap = QPixmap('UI/scale.png')
         self.bmi.setPixmap(qpixmap)
 
-        self.GoBack.clicked.connect(self.Back)
-        
+        #buttons
+        self.GoBack.clicked.connect(self.Back)       
         self.UpdateValues.clicked.connect(self.UpdateBMI)
         
     def Back(self): 
         widget.removeWidget(self)
         
-    def UpdateBMI(self):      
-        
-        widget.removeWidget(self)
-
-         
+    def UpdateBMI(self):               
         bmi = UpdateBMI()
-        widget.addWidget(bmi)
-        widget.setCurrentIndex(widget.currentIndex() + 1)     
+        GoToAndRemove(self, bmi)
         
         
 class UpdateBMI(QtWidgets.QMainWindow):
@@ -395,6 +378,10 @@ class UpdateBMI(QtWidgets.QMainWindow):
         
         qpixmap = QPixmap('UI/scale.png')
         self.bmi.setPixmap(qpixmap)
+        
+        #display current bmi        
+        DisplayBMI(self)
+
         
         self.GoBack.clicked.connect(self.Back)
         self.Apply_Height.clicked.connect(self.ApplyHeight)
@@ -417,6 +404,11 @@ class UpdateBMI(QtWidgets.QMainWindow):
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
         
+        
+        #display current bmi
+        DisplayBMI(self)
+
+        
 
     def ApplyWeight(self):
         
@@ -433,13 +425,14 @@ class UpdateBMI(QtWidgets.QMainWindow):
         logged_in_user.BMI.set_weight(float(weight))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
-
+        
+        
+        #display current bmi
+        DisplayBMI(self)
 
     def Back(self):         
-        widget.removeWidget(self)
         bmi = BMI()
-        widget.addWidget(bmi)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        GoBack(self, bmi)
     
 
 #heart class     
@@ -495,7 +488,8 @@ class BodyStatus(QtWidgets.QMainWindow):
     def Back(self): 
         widget.removeWidget(self)
         
-
+        
+########################################################## MAIN ##########################################################
         
 #main 
 app = QApplication(sys.argv)

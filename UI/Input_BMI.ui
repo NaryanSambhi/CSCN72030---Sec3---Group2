@@ -79,7 +79,7 @@ background-color: rgb(255, 228, 229);
        <rect>
         <x>40</x>
         <y>40</y>
-        <width>201</width>
+        <width>191</width>
         <height>71</height>
        </rect>
       </property>
@@ -107,6 +107,23 @@ color: rgb(255, 0, 0);</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="height_measure">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>60</y>
+        <width>81</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>(cm)</string>
       </property>
      </widget>
     </widget>
@@ -215,6 +232,23 @@ color: rgb(255, 0, 0);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="weight_measure">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>60</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>(Kilograms)</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="widget_3" native="true">
      <property name="geometry">
@@ -289,7 +323,7 @@ border: 4px solid black;
      <widget class="QLabel" name="bmi">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>290</x>
         <y>30</y>
         <width>371</width>
         <height>341</height>
@@ -308,24 +342,6 @@ border: 4px solid black;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="DISPLAY_BMI_3">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>180</y>
-        <width>261</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 0, 0);
-border: 0px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
@@ -341,6 +357,43 @@ border: 0px;</string>
       </property>
       <property name="text">
        <string>BMI</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="DISPLAY_BMI">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>200</y>
+        <width>211</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 0);
+background-color: none;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="DISPLAY_BMI_STATUS">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>120</y>
+        <width>261</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 0);
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
