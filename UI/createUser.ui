@@ -225,7 +225,7 @@ font: 15pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>Height (Meters)</string>
+     <string>Height (cm)</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="Height">

@@ -104,7 +104,7 @@ class UserData:
 
             'BMI': { 
                     'height': self.BMI._height,
-                    'weight' : self.BMI._height
+                    'weight' : self.BMI._weight
                 },
             'body info': { 
                     'temp': self.body_Info._temp,

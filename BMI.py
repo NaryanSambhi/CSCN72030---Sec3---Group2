@@ -6,88 +6,53 @@
 
 class BMI(object):
     
+    _weight = 0
+    _height = 0
+    _bmi = 0
     
-    #main variables
-    
-    #you and nick need to fix this in yours in where this is being defined
-
-    _weightUpperLim = 150
-    _weightLowerLim = 50
-    _heightUpperLim = 225
-    _heightLowerLim = 80
-    
-    #flag variables
-    _weight_flag = False
-    _height_flag = False
-
     #internal variables 
 
     #Parameterized Constructor
-    def __init__(self, height, weight, weightLowerLim = 50, weightUpperLim = 150, heightLowerLim = 80, heightUpperLim = 225):
+    def __init__(self, height, weight):
+       
        self.set_height(height)
        self.set_weight(weight)
+              
+       
+    def calculate_bmi(self, height, weight):
+        height = height / 100
+        bmi = weight / (height ** 2)
+        BMI._bmi = bmi
+        return bmi
+    
+    def get_bmi(self):
+        return round(self._bmi, 2)
         
-       self.set_weightLowerLimit(weightLowerLim)
-       self.set_weightUpperLimit(weightUpperLim)
-       self.set_heightLowerLimit(heightLowerLim)
-       self.set_heightUpperLimit(heightUpperLim)
+    def get_bmi_status(self):
+        bmi = self._bmi
         
-       self.checkHeightFlag()
-       self.checkWeightFlag()
+        if bmi < 18.5:
+            return "Underweight"
+        elif bmi < 25:
+            return "Normal weight"
+        elif bmi < 30:
+            return "Overweight"
+        else:
+            return "Obesity"
+        
     
     def __str__(self):
-        return f'\nHeight: {self._height} \nWeight: {self._weight}\n'
+        return f'\nHeight: {self._height} \nWeight: {self._weight}\nBMI: {self._bmi}\n'
     
     #Getters and Setters for the weight and height 
     def get_weight(self):
-        return self._weight
+        return round(self._weight, 2)
     
     def set_weight(self, weight):
         self._weight = weight
 
     def get_height(self):
-        return self._height
+        return round(self._height, 2)
     
     def set_height(self, height):
         self._height = height 
-
-      #Getters and Setter for Internal Variables
-    def get_weightUpperLimit(self):
-        return self._weightUpperLim
-    def set_weightUpperLimit(self, weightUpperLim):
-        self._weightUpperLim = weightUpperLim
-       
-    def get_weightLowerLimit(self):
-        return self._weightLowerLim
-    def set_weightLowerLimit(self, weightLowerLim):
-        self._weightLowerLim = weightLowerLim
-
-    def get_heightUpperLimit(self):
-        return self._heightUpperLim
-    def set_heightUpperLimit(self, heightUpperLim):
-        self._heightUpperLim = heightUpperLim
-
-    def get_heightLowerLimit(self):
-        return self._heightLowerLim
-    def set_heightLowerLimit(self, heightLowerLim):
-        self._heightLowerLim = heightLowerLim
-
-    #setFlags 
-    def checkWeightFlag(self):
-        if self._weight > self._weightUpperLim or self._weight < self._weightLowerLim:
-            self._weight_flag = True
-            return self._weight_flag
-        else:
-            self._weight_flag = False
-            return self._weight_flag
-
-    def checkHeightFlag(self):
-        if self._height > self._heightUpperLim or self._height < self._heightLowerLim:
-            self._height_flag = True
-            return self._height_flag
-        else:
-            self._height_flag = False
-            return self._height_flag
-    
- #incorporate the calculate bmi function with the flags? 
-           

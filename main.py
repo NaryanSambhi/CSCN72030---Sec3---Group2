@@ -133,8 +133,8 @@ class CreateUserProfile(QDialog):
         #assign to object
         NewUser = UserData(name=UserName, age=UserAge)
         
-        NewUser.BMI.set_height(UserHeight)
-        NewUser.BMI.set_weight(UserWeight)
+        NewUser.BMI.set_height(float(UserHeight))
+        NewUser.BMI.set_weight(float(UserWeight))
         NewUser.set_Save_Path(self.userSave)
         
         #verify  
@@ -304,18 +304,24 @@ class BMI(QtWidgets.QMainWindow):
         super(BMI, self).__init__()
         loadUi("UI/PHS_BMI.ui", self)
         
-        
-        #commented out until standardized units are picked
+        #display and calculate values to GUI        
+
+        #height and weight
         height = logged_in_user.BMI.get_height()
-        self.DISPLAY_HEIGHT.setText(str(height) + " Meters")
+        self.DISPLAY_HEIGHT.setText(str(height) + " cm")
 
         weight = logged_in_user.BMI.get_weight()
-        self.DISPLAY_WEIGHT.setText(str(weight) + " Kilos")
+        self.DISPLAY_WEIGHT.setText(str(weight) + " Kilograms")
         
-
+        #bmi
+        logged_in_user.BMI.calculate_bmi(height, weight)
+        bmi = logged_in_user.BMI.get_bmi()
         
-        #bmi = logged_in_user.BMI.get
-
+        self.DISPLAY_BMI.setText("BMI: " + str(bmi))
+        
+        #status
+        bmi_status = logged_in_user.BMI.get_bmi_status()
+        self.DISPLAY_BMI_STATUS.setText(str(bmi_status))
 
         #images
         qpixmap = QPixmap('UI/ruler.png')
@@ -373,7 +379,7 @@ class UpdateBMI(QtWidgets.QMainWindow):
         self.HeightError.setText("")
 
         
-        logged_in_user.BMI.set_height(height)
+        logged_in_user.BMI.set_height(float(height))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
         
@@ -390,7 +396,7 @@ class UpdateBMI(QtWidgets.QMainWindow):
         self.WeightError.setText("")
         
         
-        logged_in_user.BMI.set_weight(weight)
+        logged_in_user.BMI.set_weight(float(weight))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
 

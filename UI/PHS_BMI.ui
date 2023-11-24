@@ -247,7 +247,7 @@ border: 4px solid black;
      <widget class="QLabel" name="bmi">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>330</x>
         <y>20</y>
         <width>331</width>
         <height>311</height>
@@ -266,24 +266,6 @@ border: 4px solid black;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="DISPLAY_BMI">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>150</y>
-        <width>231</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 255, 255);
-border: 0px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
@@ -299,6 +281,43 @@ border: 0px;</string>
       </property>
       <property name="text">
        <string>BMI</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="DISPLAY_BMI">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>170</y>
+        <width>171</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);
+background-color: none;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="DISPLAY_BMI_STATUS">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>130</y>
+        <width>261</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
