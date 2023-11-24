@@ -13,9 +13,15 @@ import csv
 
 from UserData import *
 
+from PyQt5.QtCore import QTimer
+import random
+
+
 #create user object to be filled out with new users
+#our currently used - user object is loaded and modified here
 logged_in_user = UserData(name="", age=0)
 
+#input validation functions
 
 #makes sure input values are numbers only 
 def is_int(value):
@@ -24,13 +30,23 @@ def is_int(value):
         return True
     except ValueError:
         return False
-    
+
+#same for floats
 def is_float(value):
    try:
        float(value)
        return True
    except ValueError:
        return False    
+   
+
+#assigning a random heart rate to a user to simulate a real users heart rate
+def simulate_heart(self):
+    
+    dyanmic_heart = (random.randint(60, 100))
+    logged_in_user.heart_health.set_hr(dyanmic_heart)      
+    current = logged_in_user.heart_health.get_hr()
+    self.DISPLAY_HEART.setText("Heart-rate: " + str(current))
     
     
 #GUI OBJECTS
@@ -80,6 +96,7 @@ class CreateScreen(QDialog):
             self.accountError.setText("Please fill out the entire form")
             return
         
+        #check if passwords match
         if password != password2:   
             self.accountError.setText("Passwords dont match")
             return
@@ -230,34 +247,32 @@ class Home(QtWidgets.QMainWindow):
         #inmages
         qpixmap = QPixmap('UI/Pill_Bottle.png')
         self.medpic.setPixmap(qpixmap)
-
         qpixmap = QPixmap('UI/heart.png')
         self.heartpic.setPixmap(qpixmap)
-
         qpixmap = QPixmap('UI/person.png')
         self.personpic.setPixmap(qpixmap)
-
         qpixmap = QPixmap('UI/blackheart.png')
         self.blackheart.setPixmap(qpixmap)
-
         qpixmap = QPixmap('UI/temperature.png')
         self.bodyinfo.setPixmap(qpixmap)
-
         qpixmap = QPixmap('UI/scale.png')
         self.scale.setPixmap(qpixmap)
         
         
-        
+        #name
         name = logged_in_user.get_name()
-        
         self.Name.setText("Welcome " + name)
 
+        #print flags
         self.Status.setText("Nothing to report")
 
-
+        #dynamic heart-rate values being updated and displayed on timer
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_label)
+        self.timer.start(1000) # 1000 ms = 1 second        
+        self.update_label()
 
         #BMI 
-        
         #height and weight
         height = logged_in_user.BMI.get_height()
         weight = logged_in_user.BMI.get_weight()
@@ -274,13 +289,15 @@ class Home(QtWidgets.QMainWindow):
         
         
         #buttons
-        
         self.Medication.clicked.connect(self.GoToPrescriptionManager)
         self.BMI.clicked.connect(self.GoToBMI)
         self.Heart.clicked.connect(self.GoToHeartHealth)
         self.Body.clicked.connect(self.GoToBodyStatus)
-
         
+        
+    def update_label(self):        
+        simulate_heart(self)
+
 
 #navigation links (doesnt close current as we will go back often)
     def GoToPrescriptionManager(self):
@@ -423,11 +440,6 @@ class UpdateBMI(QtWidgets.QMainWindow):
         bmi = BMI()
         widget.addWidget(bmi)
         widget.setCurrentIndex(widget.currentIndex() + 1)
-        
-        
-
-            
-        
     
 
 #heart class     
@@ -437,21 +449,31 @@ class HeartHealth(QtWidgets.QMainWindow):
         super(HeartHealth, self).__init__()
         loadUi("UI/PHS_Heart_Health.ui", self)
 
+        #pictures
         qpixmap = QPixmap('UI/bloodpressure.png')
         self.bloodpressure.setPixmap(qpixmap)
-        
         qpixmap = QPixmap('UI/bloodoxygen.png')
         self.bloodoxygen.setPixmap(qpixmap)
-        
         qpixmap = QPixmap('UI/heart.png')
         self.heartrate.setPixmap(qpixmap)
 
-        self.GoBack.clicked.connect(self.Back)
 
+        #buttons
+        self.GoBack.clicked.connect(self.Back)        
         
+        #dynamic values
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_label)
+        self.timer.start(1000) # 1000 ms = 1 second
+
+        self.update_label()
+
+
     def Back(self): 
-        widget.removeWidget(self)
-        
+        widget.removeWidget(self)        
+    
+    def update_label(self):
+        simulate_heart(self)
 
 
 #body status class
@@ -477,7 +499,7 @@ class BodyStatus(QtWidgets.QMainWindow):
         
 #main 
 app = QApplication(sys.argv)
-welcome=WelcomeScreen()
+welcome = WelcomeScreen()
 widget = QStackedWidget()
 widget.addWidget(welcome)
 widget.setFixedHeight(1280)
