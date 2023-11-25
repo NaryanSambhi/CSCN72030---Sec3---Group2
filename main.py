@@ -274,7 +274,7 @@ class Home(QtWidgets.QMainWindow):
         self.BMIpic.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/handwave.png')
         self.welcome.setPixmap(qpixmap)
-        qpixmap = QPixmap('UI/gear.png')
+        qpixmap = QPixmap('UI/gears.png')
         self.Setting.setPixmap(qpixmap)
         
         #name

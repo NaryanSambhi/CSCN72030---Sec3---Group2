@@ -3,7 +3,7 @@
     <file>Pill_Bottle.png</file>
   </qresource>
   <qresource prefix="newPrefix">
-    <file>gear.png</file>
+    <file>gears.png</file>
   </qresource>
   <qresource prefix="newPrefix">
     <file>heightscale.png</file>
