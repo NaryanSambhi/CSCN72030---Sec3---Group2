@@ -430,6 +430,9 @@ class UpdateBMI(QtWidgets.QMainWindow):
         qpixmap = QPixmap('UI/scale.png')
         self.bmi.setPixmap(qpixmap)
         
+        qpixmap = QPixmap('UI/ruler.png')
+        self.rulerpic.setPixmap(qpixmap)
+        
         #display current bmi        
         DisplayBMI(self)
 

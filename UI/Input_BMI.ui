@@ -126,13 +126,13 @@ border: 0px;</string>
        <string>(cm)</string>
       </property>
      </widget>
-     <widget class="QLabel" name="height">
+     <widget class="QLabel" name="rulerpic">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>10</y>
+        <x>470</x>
+        <y>30</y>
         <width>161</width>
-        <height>211</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -272,62 +272,6 @@ border: 0px;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="widget_3" native="true">
-     <property name="geometry">
-      <rect>
-       <x>-10</x>
-       <y>30</y>
-       <width>731</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 171, 172);
-</string>
-     </property>
-     <widget class="QLabel" name="label_12">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>40</y>
-        <width>601</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 28pt &quot;MS Shell Dlg 2&quot;;
-text-align: center;
-border:0px;</string>
-      </property>
-      <property name="text">
-       <string>Prescription Health System</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="GoBack">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>10</y>
-        <width>91</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);
-background-color: white;
-border-radius:20px;
-font: 26pt &quot;MS Shell Dlg 2&quot;;
-
-</string>
-      </property>
-      <property name="text">
-       <string>&lt;</string>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="widget_14" native="true">
      <property name="geometry">
       <rect>
@@ -416,6 +360,62 @@ border: 0px;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>30</y>
+       <width>731</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+</string>
+     </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>40</y>
+        <width>541</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 28pt &quot;MS Shell Dlg 2&quot;;
+text-align: center;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string>Medical Health System</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GoBack">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: white;
+border-radius:20px;
+font: 26pt &quot;MS Shell Dlg 2&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>&lt;</string>
       </property>
      </widget>
     </widget>
