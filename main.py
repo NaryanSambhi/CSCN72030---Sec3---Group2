@@ -29,8 +29,25 @@ def simulate_heart(self):
     dyanmic_heart = (random.randint(60, 100))
     logged_in_user.heart_health.set_hr(dyanmic_heart)      
     current = logged_in_user.heart_health.get_hr()
+    
     self.DISPLAY_HEART.setText("Heart-rate: " + str(current))
-  
+    
+def simulate_blood_oxygen(self):
+    dynamic_blood_oxygen = random.randint(95, 100)
+    logged_in_user.heart_health.set_bo(dynamic_blood_oxygen)
+    current_blood_oxygen = logged_in_user.heart_health.get_bo()
+    
+    self.DISPLAY_BLOOD_OXYGEN.setText("Blood Oxygen: " + str(current_blood_oxygen))
+
+
+def simulate_blood_pressure(self):
+    pressure = random.randint(60, 80)
+    logged_in_user.heart_health.set_bp(pressure)
+    current_pressure = logged_in_user.heart_health.get_bp()
+    
+    self.DISPLAY_BLOOD_PRESSURE.setText("Blood Pressure: " + str(current_pressure))
+
+
 #close current widget and go back to new widget
     #used for update values widgets in order to reopen a refreshed version of the previous page with new values shown
 def GoBack(self, new_widget):        
@@ -520,6 +537,8 @@ class HeartHealth(QtWidgets.QMainWindow):
     
     def update_label(self):
         simulate_heart(self)
+        simulate_blood_pressure(self)
+        simulate_blood_oxygen(self)
 
 
 #body status class
@@ -534,6 +553,14 @@ class BodyStatus(QtWidgets.QMainWindow):
         self.bodytemp.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/bodyfluid.png')
         self.bodyfluid.setPixmap(qpixmap)
+        
+        
+        
+        #height and weight
+        temprature = logged_in_user.body_Info.get_temp()
+        self.DISPLAY_TEMPRATURE.setText(str(temprature))
+        fluid = logged_in_user.body_Info.get_fluid()
+        self.DISPLAY_FLUID.setText(str(fluid))
 
          #buttons
         self.GoBack.clicked.connect(self.Back)       
@@ -561,6 +588,50 @@ class UpdateBody(QtWidgets.QMainWindow):
 
         
         self.GoBack.clicked.connect(self.Back)
+        
+        
+        
+        #buttons
+        self.GoBack.clicked.connect(self.Back)
+        self.Apply_Temperature.clicked.connect(self.ApplyTemperature)
+        self.Apply_Fluid.clicked.connect(self.ApplyFluid)
+
+    #function to change the height
+    def ApplyTemperature(self):
+        
+        #apply height to object and save object
+        Temprature = self.New_Temperature.text()
+        
+        if not(is_float(Temprature)):
+            self.TempratureError.setText("Temprature must be numeric.")
+            return
+        
+        self.TempratureError.setText("")
+
+        #saved to the file
+        logged_in_user.BMI.set_height(float(Temprature))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+        
+        
+    #function to change the weight 
+    def ApplyFluid(self):
+        
+        #apply height to object and save object
+        Fluid = self.New_Fluid.text()
+        
+        if not(is_float(Fluid)):
+            self.FluidError.setText("Fluid must be numeric.")
+            return
+        
+        self.FluidError.setText("")
+        
+        #save to the file 
+        logged_in_user.BMI.set_weight(float(Fluid))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+        
+        
     
     #go back to the body status page
     def Back(self):         
