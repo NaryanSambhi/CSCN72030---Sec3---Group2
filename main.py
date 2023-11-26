@@ -559,6 +559,9 @@ class BodyStatus(QtWidgets.QMainWindow):
         #height and weight
         temprature = logged_in_user.body_Info.get_temp()
         self.DISPLAY_TEMPRATURE.setText(str(temprature))
+        
+        
+        
         fluid = logged_in_user.body_Info.get_fluid()
         self.DISPLAY_FLUID.setText(str(fluid))
 
@@ -609,7 +612,7 @@ class UpdateBody(QtWidgets.QMainWindow):
         self.TempratureError.setText("")
 
         #saved to the file
-        logged_in_user.BMI.set_height(float(Temprature))
+        logged_in_user.body_Info.set_temp(float(Temprature))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
         
@@ -627,7 +630,7 @@ class UpdateBody(QtWidgets.QMainWindow):
         self.FluidError.setText("")
         
         #save to the file 
-        logged_in_user.BMI.set_weight(float(Fluid))
+        logged_in_user.body_Info.set_fluid(float(Fluid))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
         
