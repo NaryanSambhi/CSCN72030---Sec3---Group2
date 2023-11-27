@@ -26,14 +26,14 @@ logged_in_user = UserData(name="", age=0)
 
 #assigning a random heart rate to a user to simulate a real users heart rate
 def simulate_heart(self):
-    dyanmic_heart = (random.randint(60, 100))
+    dyanmic_heart = (random.randint(40, 120))
     logged_in_user.heart_health.set_hr(dyanmic_heart)      
     current = logged_in_user.heart_health.get_hr()
     
     self.DISPLAY_HEART.setText("Heart-rate: " + str(current))
     
 def simulate_blood_oxygen(self):
-    dynamic_blood_oxygen = random.randint(95, 100)
+    dynamic_blood_oxygen = random.randint(90, 100)
     logged_in_user.heart_health.set_bo(dynamic_blood_oxygen)
     current_blood_oxygen = logged_in_user.heart_health.get_bo()
     
@@ -41,7 +41,7 @@ def simulate_blood_oxygen(self):
 
 
 def simulate_blood_pressure(self):
-    pressure = random.randint(60, 80)
+    pressure = random.randint(70, 150)
     logged_in_user.heart_health.set_bp(pressure)
     current_pressure = logged_in_user.heart_health.get_bp()
     
@@ -83,6 +83,7 @@ def DisplayBMI(self):
         #status
         bmi_status = logged_in_user.BMI.get_bmi_status()
         self.DISPLAY_BMI_STATUS.setText(str(bmi_status))
+        
     
      
 ########################################################## Graphic User Interface ##########################################################
@@ -297,9 +298,20 @@ class Home(QtWidgets.QMainWindow):
         #name
         name = logged_in_user.get_name()
         self.Name.setText("Welcome " + name)
+        
+        
+        #Display current prediction on status
+        
+        HR = logged_in_user.heart_health.checkHRFlag()
+        BO = logged_in_user.heart_health.checkBOFlag()
+        BP = logged_in_user.heart_health.checkBPFlag()
+        TEMP = logged_in_user.body_Info.checkTempFlag()
+        FLUID = logged_in_user.body_Info.checkFluidFlag()
 
+        output = logged_in_user.Prediction_Engine.Predict(HR, BO, BP, TEMP, FLUID)
+        
         #print flags
-        self.Status.setText("Nothing to report")
+        self.Status.setText(output)
 
         #dynamic heart-rate values being updated and displayed on timer
         self.timer = QTimer(self)
@@ -309,6 +321,13 @@ class Home(QtWidgets.QMainWindow):
 
         #Display the current BMI info
         DisplayBMI(self)
+        
+        
+        #temp and fluid
+        
+        temp = logged_in_user.body_Info.get_temp()
+        self.DISPLAY_TEMP.setText("Temperature: " + str(temp))
+
  
         
         #buttons
@@ -325,23 +344,23 @@ class Home(QtWidgets.QMainWindow):
 #navigation links (doesnt close current as we will go back often)
     def GoToPrescriptionManager(self):
         PHS = PrescriptionManager()
-        GoTo(PHS)
+        GoToAndRemove(self, PHS)
     
     def GoToBMI(self):
         bmi = BMI()
-        GoTo(bmi)
+        GoToAndRemove(self, bmi)
         
     def GoToHeartHealth(self):
         heart = HeartHealth()
-        GoTo(heart)
+        GoToAndRemove(self, heart)
 
     def GoToBodyStatus(self):
         body_status = BodyStatus()
-        GoTo(body_status)
+        GoToAndRemove(self, body_status)
 
     def GoToSetting(self):
         setting = Setting()
-        GoTo(setting)
+        GoToAndRemove(self, setting)
 
 #setting class
 class Setting(QtWidgets.QMainWindow):
@@ -380,8 +399,9 @@ class PrescriptionManager(QtWidgets.QMainWindow):
         self.UpdateValues.clicked.connect(self.UpdatePrescription)
 
     def Back(self): 
-        widget.removeWidget(self)
-
+        home = Home()
+        GoToAndRemove(self, home)
+        
     def UpdatePrescription(self):               
         med = UpdatePrescription()
         GoToAndRemove(self, med)  
@@ -427,8 +447,9 @@ class BMI(QtWidgets.QMainWindow):
         self.UpdateValues.clicked.connect(self.UpdateBMI)
         
     def Back(self): 
-        widget.removeWidget(self)
-    
+        home = Home()
+        GoToAndRemove(self, home)
+            
     #go to the update page
     def UpdateBMI(self):               
         bmi = UpdateBMI()
@@ -533,8 +554,9 @@ class HeartHealth(QtWidgets.QMainWindow):
 
 
     def Back(self): 
-        widget.removeWidget(self)        
-    
+        home = Home()
+        GoToAndRemove(self, home)
+            
     def update_label(self):
         simulate_heart(self)
         simulate_blood_pressure(self)
@@ -570,8 +592,9 @@ class BodyStatus(QtWidgets.QMainWindow):
         self.UpdateValues.clicked.connect(self.UpdateBody)
         
     def Back(self): 
-        widget.removeWidget(self)
-    
+        home = Home()
+        GoToAndRemove(self, home)
+            
     #go to the update body page
     def UpdateBody(self):               
         body = UpdateBody()

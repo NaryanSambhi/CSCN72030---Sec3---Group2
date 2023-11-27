@@ -18,6 +18,9 @@ class Prediction_Engine(object):
         self.PredictArray.append(p3)
         p4 = Prediction("Dehydration", False, False, False, False, True)
         self.PredictArray.append(p4)
+        p5 = Prediction("Everythings okay", False, False, False, False, False)
+        self.PredictArray.append(p5)
+
 
     def Predict(self, hrFlag, boFlag, bpFlag, tempFlag, fluidFlag):
         # make a for loop that runs throug each item in PredictArray
@@ -60,7 +63,7 @@ class Prediction(object):
 
 
 Test = Prediction_Engine()
-output =Test.Predict(True, True, False, True, True)
+output = Test.Predict(True, True, False, True, True)
 print(output)
 output = Test.Predict(False, False, False, False, True)
 print(output)

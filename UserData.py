@@ -10,6 +10,7 @@ from Prescription import *
 from Heart_Health import *
 from BMI import *
 from Body_Info import *
+from Prediction_Engine import *
 
 import re
 
@@ -59,6 +60,8 @@ class UserData:
                 
         self.BMI = BMI(0,0)  
         self.body_Info = body_info(0.0,0.0)    
+        
+        self.Prediction_Engine = Prediction_Engine()
         
 
     def __str__(self):
