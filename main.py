@@ -18,6 +18,48 @@ import random
 
 from general_functions import *
 
+
+def checkAge(age):
+    if (age > 99):
+        return False
+    if (age < 18):
+        return False
+    else:
+        return True
+        
+def checkWeight(weight):
+    if (weight > 700):
+        return False
+    if (weight < 22):
+        return False
+    else:
+        return True
+
+def checkHeight(height):
+    if (height > 274):
+        return False
+    if (height < 50):
+        return False
+    else:
+        return True
+    
+def checkTemperature(temp):
+    if (temp > 150):
+        return False
+    if (temp < 0):
+        return False
+    else:
+        return True
+    
+def checkFluid(fluid):
+    if (fluid > 10000):
+        return False
+    if (fluid < 0):
+        return False
+    else:
+        return True
+
+
 ########################################################## GENERAL FUNCTIONS ##########################################################
 
 #create user object to be filled out with new users
@@ -185,6 +227,7 @@ class CreateUserProfile(QDialog):
         NewUser = UserData(name=UserName, age=UserAge)
         NewUser.set_Save_Path(self.userSave)
         
+        
         #verify  
         if not all([UserName, UserAge, UserWeight, UserHeight]):
             self.accountError.setText("Please fill out all forms.")
@@ -197,6 +240,17 @@ class CreateUserProfile(QDialog):
         if not(is_float(UserWeight) and is_float(UserHeight)):
             self.accountError.setText("Weight and height must be numeric.")
             return
+        
+        Age = checkAge(float(UserAge))
+        Weight = checkWeight(float(UserWeight))
+        Height = checkHeight(float(UserHeight))
+        
+        if Age or Weight or Height == False:
+            self.accountError.setText("Please put reasonable inputs")
+            return
+        
+        self.accountError.setText("")
+
         
         NewUser.BMI.set_height(float(UserHeight))
         NewUser.BMI.set_weight(float(UserWeight))
@@ -318,6 +372,9 @@ class Home(QtWidgets.QMainWindow):
         self.timer.timeout.connect(self.update_label)
         self.timer.start(1000) # 1000 ms = 1 second        
         self.update_label()
+        
+        
+        
 
         #Display the current BMI info
         DisplayBMI(self)
@@ -489,6 +546,12 @@ class UpdateBMI(QtWidgets.QMainWindow):
             self.HeightError.setText("Height must be numeric.")
             return
         
+        CheckHeight = checkHeight(float(height))
+
+        if  CheckHeight == False:
+            self.HeightError.setText("Please put reasonable inputs")
+            return
+                
         self.HeightError.setText("")
 
         #saved to the file
@@ -509,6 +572,12 @@ class UpdateBMI(QtWidgets.QMainWindow):
         
         if not(is_float(weight)):
             self.WeightError.setText("Weight must be numeric.")
+            return
+        
+        Checkweight = checkHeight(float(weight))
+
+        if  Checkweight == False:
+            self.WeightError.setText("Please put reasonable inputs")
             return
         
         self.WeightError.setText("")
@@ -632,6 +701,14 @@ class UpdateBody(QtWidgets.QMainWindow):
             self.TempratureError.setText("Temprature must be numeric.")
             return
         
+        
+        CheckTemprature = checkHeight(float(Temprature))
+
+        if  CheckTemprature == False:
+            self.TempratureError.setText("Please put reasonable inputs")
+            return
+        
+        
         self.TempratureError.setText("")
 
         #saved to the file
@@ -649,6 +726,13 @@ class UpdateBody(QtWidgets.QMainWindow):
         if not(is_float(Fluid)):
             self.FluidError.setText("Fluid must be numeric.")
             return
+        
+        CheckFluid = checkHeight(float(Fluid))
+
+        if  CheckFluid == False:
+            self.FluidError.setText("Please put reasonable inputs")
+            return
+        
         
         self.FluidError.setText("")
         
