@@ -105,7 +105,14 @@ class UserData:
                     'blood_pressure' : self.heart_health._blood_pressure,
                     'hr_flag' : self.heart_health._hr_flag,
                     'bo_flag' :self.heart_health._bo_flag,
-                    'bp_flag' : self.heart_health._bp_flag
+                    'bp_flag' : self.heart_health._bp_flag,
+                    
+                    'hrUpperLim' : self.heart_health._hrUpperLim,
+                    'hrLowerLim' : self.heart_health._hrLowerLim,
+                    'boUpperLim' : self.heart_health._boUpperLim,
+                    'boLowerLim' : self.heart_health._boLowerLim,
+                    'bpUpperLim' : self.heart_health._bpUpperLim,
+                    'bpLowerLim' : self.heart_health._bpLowerLim   
                 },
 
             'BMI': { 
@@ -116,10 +123,15 @@ class UserData:
                     'temp': self.body_Info._temp,
                     'fluid' : self.body_Info._fluid,
                     'temp_flag' : self.body_Info._temp_flag,
-                    'fluid_flag' : self.body_Info._fluid_flag
-                },
-            
-                        
+                    'fluid_flag' : self.body_Info._fluid_flag,
+                    
+                    
+                    'tempUpperLim' :self.body_Info._tempUpperLim,
+                    'tempLowerLim' :self.body_Info._tempLowerLim,
+                    
+                    'fluidUpperLim' : self.body_Info._fluidUpperLim,
+                    'fluidLowerLim' : self.body_Info._fluidLowerLim
+                },                        
         }
         
         
@@ -135,16 +147,35 @@ class UserData:
         #modules
         self.prescription_manager.Prescription_Array = loaded_data.get('prescriptions', [])  
         self.prescription_manager.Prescription_Array = loaded_data.get('prescriptions', [])
+        
         self.heart_health._heart_rate = loaded_data['Heart_Health']['heart_rate']
         self.heart_health._blood_oxygen = loaded_data['Heart_Health']['blood_oxygen']
         self.heart_health._blood_pressure = loaded_data['Heart_Health']['blood_pressure']
+        
         self.heart_health._hr_flag = loaded_data['Heart_Health']['hr_flag']
         self.heart_health._bo_flag = loaded_data['Heart_Health']['bo_flag']
         self.heart_health._bp_flag = loaded_data['Heart_Health']['bp_flag']
+        
+        self.heart_health._hrUpperLim = loaded_data['Heart_Health']['hrUpperLim']
+        self.heart_health._hrLowerLim = loaded_data['Heart_Health']['hrLowerLim']
+        self.heart_health._boUpperLim = loaded_data['Heart_Health']['boUpperLim']
+        self.heart_health._boLowerLim = loaded_data['Heart_Health']['boLowerLim']        
+        self.heart_health._bpUpperLim = loaded_data['Heart_Health']['bpUpperLim']
+        self.heart_health._bpLowerLim = loaded_data['Heart_Health']['bpLowerLim']
+
         self.BMI._height = loaded_data['BMI']['height']
         self.BMI._weight = loaded_data['BMI']['weight']
+        
         self.body_Info._temp = loaded_data['body info']['temp']
         self.body_Info._fluid = loaded_data['body info']['fluid']
+        
         self.body_Info._temp_flag = loaded_data['body info']['temp_flag']
         self.body_Info._fluid_flag = loaded_data['body info']['fluid_flag']
+        
+        self.body_Info._tempUpperLim = loaded_data['body info']['tempUpperLim']
+        self.body_Info._tempLowerLim = loaded_data['body info']['tempLowerLim']
+        self.body_Info._fluidUpperLim = loaded_data['body info']['fluidUpperLim']
+        self.body_Info._fluidLowerLim = loaded_data['body info']['fluidLowerLim']
+
+
 
