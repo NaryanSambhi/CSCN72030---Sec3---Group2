@@ -97,9 +97,12 @@ class UserData:
             'prescriptions': self.prescription_manager.Prescription_Array,
             
             'Heart_Health': { 
-                    'heart_rate': self.heart_health._heart_rate,
+                    'heart_rate': self.heart_health._heart_rate, 
                     'blood_oxygen' : self.heart_health._blood_oxygen,
-                    'blood_pressure' : self.heart_health._blood_pressure 
+                    'blood_pressure' : self.heart_health._blood_pressure,
+                    'hr_flag' : self.heart_health._hr_flag,
+                    'bo_flag' :self.heart_health._bo_flag,
+                    'bp_flag' : self.heart_health._bp_flag
                 },
 
             'BMI': { 
@@ -108,7 +111,9 @@ class UserData:
                 },
             'body info': { 
                     'temp': self.body_Info._temp,
-                    'fluid' : self.body_Info._fluid
+                    'fluid' : self.body_Info._fluid,
+                    'temp_flag' : self.body_Info._temp_flag,
+                    'fluid_flag' : self.body_Info._fluid_flag
                 },
             
                         
@@ -130,60 +135,13 @@ class UserData:
         self.heart_health._heart_rate = loaded_data['Heart_Health']['heart_rate']
         self.heart_health._blood_oxygen = loaded_data['Heart_Health']['blood_oxygen']
         self.heart_health._blood_pressure = loaded_data['Heart_Health']['blood_pressure']
+        self.heart_health._hr_flag = loaded_data['Heart_Health']['hr_flag']
+        self.heart_health._bo_flag = loaded_data['Heart_Health']['bo_flag']
+        self.heart_health._bp_flag = loaded_data['Heart_Health']['bp_flag']
         self.BMI._height = loaded_data['BMI']['height']
         self.BMI._weight = loaded_data['BMI']['weight']
         self.body_Info._temp = loaded_data['body info']['temp']
         self.body_Info._fluid = loaded_data['body info']['fluid']
+        self.body_Info._temp_flag = loaded_data['body info']['temp_flag']
+        self.body_Info._fluid_flag = loaded_data['body info']['fluid_flag']
 
-
-
-"""
-
-#create
-
-#for tests
-user = UserData(name="John Doe", age=30)
-
-user.prescription_manager.add_prescription("Aspirin", "Pain relief", "10mg")
-user.prescription_manager.add_prescription("Ibuprofen", "Pain relief", "200mg")
-
-user.heart_health._heart_rate = 90
-user.heart_health._blood_oxygen = 80
-user.heart_health._blood_pressure = 70
-
-user.BMI._weight = 70
-user.BMI._height = 190
-
-user.body_Info._temp = 100
-user.body_Info._fluid = 750
-
-
-user.save_to_file("saves/test.pkl")
-
-#load
-loaded_user = UserData(name="", age=0)
-loaded_user.load_from_file("saves/test.pkl")
-
-
-
-
-#print to confirm
-print("\n--------- profile --------")
-print(loaded_user)
-print(loaded_user._Save_Path)
-
-print("\n--------- prescriptions --------")
-loaded_user.prescription_manager.print_prescriptions()
-
-print("\n--------- heart --------")
-print(loaded_user.heart_health)
-
-
-print("\n--------- body --------")
-print(loaded_user.body_Info)
-
-print("\n--------- BMI --------")
-print(loaded_user.BMI)
-
-
-""" 
