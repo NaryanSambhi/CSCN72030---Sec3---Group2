@@ -182,7 +182,7 @@ class CreateScreen(QDialog):
         
         
         #bugged function doesnt work:
-        """
+        
         #make sure username isnt already taken
         with open("UserDBS.csv", mode="r", newline="") as f:
             reader = csv.reader(f, delimiter=",")
@@ -192,7 +192,6 @@ class CreateScreen(QDialog):
                 if row and row[0] == user:
                     self.accountError.setText("Username is already taken")
                     return
-         """
         
         #open to save
         with open("UserDBS.csv",mode="a", newline="") as f:
