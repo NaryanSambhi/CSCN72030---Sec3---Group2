@@ -306,7 +306,7 @@ class HeartRateGraph(QMainWindow):
 
     def initUI(self):
         #self.setWindowTitle('Real-Time Graph')
-        self.setGeometry(20, 20, 80, 60)
+        self.setGeometry(100, 100, 800, 600)
 
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
@@ -1002,6 +1002,8 @@ class HeartHealth(QtWidgets.QMainWindow):
         qpixmap = QPixmap('UI/heart.png')
         self.heartrate.setPixmap(qpixmap)
 
+        #graph
+        hrGraph = HeartRateGraph()
 
         #buttons
         self.GoBack.clicked.connect(self.Back)        
