@@ -93,14 +93,22 @@ logged_in_user = UserData(name="", age=0)
 
 #assigning a random heart rate to a user to simulate a real users heart rate
 def simulate_heart(self):
-    dyanmic_heart = (random.randint(40, 120))
-    logged_in_user.heart_health.set_hr(dyanmic_heart)      
+    dynamic_heart = (random.randint(logged_in_user.heart_health.get_hr()-5, logged_in_user.heart_health.get_hr()+5))
+    if (dynamic_heart <= 70):
+        dynamic_heart = 70
+    if (dynamic_heart >= 110):
+        dynamic_heart = 110
+    logged_in_user.heart_health.set_hr(dynamic_heart)      
     current = logged_in_user.heart_health.get_hr()
     
     self.DISPLAY_HEART.setText("Heart-rate: " + str(current))
     
 def simulate_blood_oxygen(self):
-    dynamic_blood_oxygen = random.randint(90, 100)
+    dynamic_blood_oxygen = random.randint(logged_in_user.heart_health.get_bo()-2, logged_in_user.heart_health.get_bo()+2)
+    if (dynamic_blood_oxygen <= 90):
+        dynamic_blood_oxygen = 90
+    if (dynamic_blood_oxygen >=100):
+        dynamic_blood_oxygen = 100
     logged_in_user.heart_health.set_bo(dynamic_blood_oxygen)
     current_blood_oxygen = logged_in_user.heart_health.get_bo()
     
@@ -108,8 +116,12 @@ def simulate_blood_oxygen(self):
 
 
 def simulate_blood_pressure(self):
-    pressure = random.randint(70, 150)
-    logged_in_user.heart_health.set_bp(pressure)
+    dynamic_blood_pressure = random.randint(logged_in_user.heart_health.get_bp()-6, logged_in_user.heart_health.get_bp()+6)
+    if (dynamic_blood_pressure <= 70):
+        dynamic_blood_pressure = 70
+    if (dynamic_blood_pressure >=150):
+        dynamic_blood_pressure = 150
+    logged_in_user.heart_health.set_bp(dynamic_blood_pressure)
     current_pressure = logged_in_user.heart_health.get_bp()
     
     self.DISPLAY_BLOOD_PRESSURE.setText("Blood Pressure: " + str(current_pressure))
