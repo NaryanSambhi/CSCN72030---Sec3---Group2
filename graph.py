@@ -1,59 +1,91 @@
-
-import numpy as np
-import matplotlib.pyplot as plt
+import sys
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from matplotlib.animation import FuncAnimation
+import numpy as np
+import random
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+import matplotlib.pyplot as plt
+from datetime import datetime
+from PyQt5.QtGui import *
 
-    
-#heart health graph
-class HeartRateGraph(QMainWindow):
+class UserData:
+    def __init__(self, name="", age=0):
+        self._Name = name
+        self._Age = age
+        self.heart_health = HeartHealth()
+
+class HeartHealth:
     def __init__(self):
-        super().__init__()
+        self._heart_rate = 0
 
-        self.initUI()
+    def get_hr(self):
+        return self._heart_rate
 
-    def initUI(self):
-        #self.setWindowTitle('Real-Time Graph')
-        self.setGeometry(100, 100, 800, 600)
+    def set_hr(self, heart_rate):
+        self._heart_rate = heart_rate
 
-        self.central_widget = QWidget(self)
-        self.setCentralWidget(self.central_widget)
+class PlotCanvas(FigureCanvas):
+    def __init__(self, parent=None, width=5, height=4, dpi=100):
+        fig = Figure(figsize=(width, height), dpi=dpi)
+        self.axes = fig.add_subplot(111)
+        super(PlotCanvas, self).__init__(fig)
+        self.setParent(parent)
 
-        self.layout = QVBoxLayout(self.central_widget)
+        FigureCanvas.setSizePolicy(self, QSizePolicy.Expanding, QSizePolicy.Expanding)
+        FigureCanvas.updateGeometry(self)
 
-        # Create a matplotlib figure and a canvas for PyQt integration
-        self.fig, self.ax = plt.subplots()
-        self.canvas = FigureCanvas(self.fig)
-        self.layout.addWidget(self.canvas)
+        self.logged_in_user = UserData(name="John", age=25)  # Create a user instance for testing
+        self.animation = FuncAnimation(fig, self.update_plot, interval=1000)
 
-        # Button to update the graph with new data
-        self.update_button = QPushButton('Update Graph', self)
-        self.update_button.clicked.connect(self.update_graph)
-        self.layout.addWidget(self.update_button)
+    def simulate_heart(self):
+        dynamic_heart = random.randint(self.logged_in_user.heart_health.get_hr() - 5,
+                                       self.logged_in_user.heart_health.get_hr() + 5)
+        if dynamic_heart <= 70:
+            dynamic_heart = 70
+        if dynamic_heart >= 110:
+            dynamic_heart = 110
+        self.logged_in_user.heart_health.set_hr(dynamic_heart)
+        return self.logged_in_user.heart_health.get_hr()
 
-        # Initial data
-        self.x_data = np.arange(0, 10, 0.1)
-        self.y_data = np.sin(self.x_data)
+    def update_plot(self, frame):
+        hr = self.simulate_heart()
+        x = np.linspace(hr, 150, 10, endpoint=True)
+        y = np.sin(x)
 
-        # Plot the initial data
-        self.line, = self.ax.plot(self.x_data, self.y_data)
-        self.ax.set_title('Real-Time Graph')
+        # Set new x-axis ticks and labels
+        new_xticks = np.linspace(hr, 150, 5, endpoint=True)
+        self.axes.set_xticks(new_xticks)
+        self.axes.set_xticklabels([f'{tick:.1f}' for tick in new_xticks])
 
-    def update_graph(self):
-        # Generate new real-time data
-        new_data = np.random.rand(100)
+        # Set new y-axis ticks and labels
+        new_yticks = np.linspace(-1, 1, 5, endpoint=True)
+        self.axes.set_yticks(new_yticks)
+        self.axes.set_yticklabels([f'{tick:.1f}' for tick in new_yticks])
 
-        # Update the x_data with new values
-        self.x_data = np.append(self.x_data[1:], self.x_data[-1] + 0.1)
+        self.axes.clear()
+        self.axes.plot(x, y)
 
-        # Update the y_data with new real-time data
-        self.y_data = np.append(self.y_data[1:], new_data)
+        self.draw()
 
-        # Update the plot with the new data
-        self.line.set_xdata(self.x_data)
-        self.line.set_ydata(self.y_data)
 
-        # Adjust the x-axis limits for scrolling effect
-        self.ax.set_xlim(self.x_data.min(), self.x_data.max())
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super(MainWindow, self).__init__()
 
-        # Redraw the canvas
-        self.canvas.draw()
+        central_widget = QWidget(self)
+        self.setCentralWidget(central_widget)
+
+        layout = QVBoxLayout(central_widget)
+        self.plot_canvas = PlotCanvas(self, width=5, height=4, dpi=100)
+        layout.addWidget(self.plot_canvas)
+
+        self.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    sys.exit(app.exec_())

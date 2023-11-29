@@ -499,7 +499,7 @@ class SettingProfile(QtWidgets.QMainWindow):
         age = self.New_Age.text()
 
       #it is a string so cannot do float checks  
-        if not(is_float(name)):
+        if not(is_float(age)):
             self.NameError.setText("Heart must be numeric.")
             return
         
