@@ -73,7 +73,7 @@ font: 15pt &quot;Monospace&quot;;
 </string>
     </property>
     <property name="text">
-     <string>Username</string>
+     <string>Email</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">

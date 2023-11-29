@@ -25,10 +25,13 @@ class BMI(object):
               
     #calculate BMI function was added to calculate the BMI from height and weight   
     def calculate_bmi(self, height, weight):
-        height = height / 100
-        bmi = weight / (height ** 2)
-        BMI._bmi = bmi
-        return bmi
+        try:
+            height = height / 100
+            bmi = weight / (height ** 2)
+            BMI._bmi = bmi
+            return bmi
+        except:
+            return "error"
     
     def get_bmi(self):
         return round(self._bmi, 2)

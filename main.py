@@ -152,13 +152,15 @@ class CreateScreen(QDialog):
             self.accountError.setText("Passwords dont match")
             return
                 
-        #make sure username isnt already taken
-        with open("UserDBS.csv", mode="r", newline="") as f:
+        # Make sure username isn't already taken
+        with open("UserDBS.csv", mode="r", newline="", encoding="utf-8-sig") as f:
             reader = csv.reader(f, delimiter=",")
 
             # Check if the email is already taken
             for row in reader:
-                if row and row[0] == user:
+                print(f"Comparing user: {user} with row: {row}")
+
+                if row and row[0].strip('ï»¿ ') == user.strip():
                     self.accountError.setText("Username is already taken")
                     return
         
@@ -169,7 +171,7 @@ class CreateScreen(QDialog):
                                    
             #create a user save file now
             NewUser = UserData("", age=0)
-            NewUser.userSave = userSave
+            NewUser.set_Save_Path(userSave)
             
             NewUser.save_to_file(userSave)
                                           
@@ -203,27 +205,35 @@ class CreateUserProfile(QDialog):
         
         
         #verify  
-      #  if not all([UserName, UserAge, UserWeight, UserHeight]):
-      #      self.accountError.setText("Please fill out all forms.")
-      #      return
+        if not all([UserName, UserAge, UserWeight, UserHeight]):
+            self.accountError.setText("Please fill out all forms.")
+            return
 
-      #  if not (is_int(UserAge)):
-      #      self.accountError.setText("Age must be a whole number")
-      #      return
+        if not (is_int(UserAge)):
+            self.accountError.setText("Age must be a whole number")
+            return
 
-      #  if not(is_float(UserWeight) and is_float(UserHeight)):
-      #      self.accountError.setText("Weight and height must be numeric.")
-      #      return
+        if not(is_float(UserWeight) and is_float(UserHeight)):
+            self.accountError.setText("Weight and height must be numeric.")
+            return
         
-      #  Age = checkAge(float(UserAge))
-      #  Weight = checkWeight(float(UserWeight))
-      #  Height = checkHeight(float(UserHeight))
+        Age = checkAge(int(UserAge))
+        Weight = checkWeight(float(UserWeight))
+        Height = checkHeight(float(UserHeight))
         
-      #  if Age or Weight or Height == False:
-      #      self.accountError.setText("Please put reasonable inputs")
-      #      return
         
-      #  self.accountError.setText("")
+        name = checkName(UserName)
+
+        if  name == False:
+            self.accountError.setText("Name is too large")
+            return
+        
+        if Age == False or Weight == False or Height == False:
+            self.accountError.setText("Please put reasonable inputs")
+            return
+
+        
+        self.accountError.setText("")
 
         
         NewUser.BMI.set_height(float(UserHeight))
@@ -330,18 +340,6 @@ class Home(QtWidgets.QMainWindow):
         self.Name.setText("Welcome " + name)
         
         
-        #Display current prediction on status
-        
-        HR = logged_in_user.heart_health.checkHRFlag()
-        BO = logged_in_user.heart_health.checkBOFlag()
-        BP = logged_in_user.heart_health.checkBPFlag()
-        TEMP = logged_in_user.body_Info.checkTempFlag()
-        FLUID = logged_in_user.body_Info.checkFluidFlag()
-
-        output = logged_in_user.Prediction_Engine.Predict(HR, BO, BP, TEMP, FLUID)
-        
-        #print flags
-        self.Status.setText(output)
 
         #dynamic heart-rate values being updated and displayed on timer
         self.timer = QTimer(self)
@@ -373,7 +371,23 @@ class Home(QtWidgets.QMainWindow):
         
     def update_label(self):        
         simulate_heart(self)
+        simulate_blood_oxygen(self)
+        simulate_blood_pressure(self)
+        
+        
+        #Display current prediction on status
+        
+        HR = logged_in_user.heart_health.checkHRFlag()
+        BO = logged_in_user.heart_health.checkBOFlag()
+        BP = logged_in_user.heart_health.checkBPFlag()
+        TEMP = logged_in_user.body_Info.checkTempFlag()
+        FLUID = logged_in_user.body_Info.checkFluidFlag()
 
+        output = logged_in_user.Prediction_Engine.Predict(HR, BO, BP, TEMP, FLUID)
+        
+        #print flags
+        self.Status.setText(output)
+            
     def Back(self):         
         login = LoginScreen()
         GoBack(self, login)
@@ -466,18 +480,13 @@ class SettingProfile(QtWidgets.QMainWindow):
         #apply height to object and save object
         name = self.New_Name.text()
      
-     #it is a string so cannot do float checks
-      #  if not(is_float(name)):
-      #      self.NameError.setText("Heart must be numeric.")
-      #      return
-        
-     #   CheckName = checkHeartRate(float(name))
+        Username = checkName(name)
 
-     #   if  CheckName == False:
-    #        self.NameError.setText("Please put reasonable inputs")
-    #        return
+        if  Username == False:
+            self.NameError.setText("Name is too large")
+            return
                 
-    #    self.NameError.setText("")
+        self.NameError.setText("")
 
         #saved to the file
         logged_in_user.set_name(name)
@@ -490,18 +499,18 @@ class SettingProfile(QtWidgets.QMainWindow):
         age = self.New_Age.text()
 
       #it is a string so cannot do float checks  
-      #  if not(is_float(name)):
-      #      self.NameError.setText("Heart must be numeric.")
-      #      return
+        if not(is_float(name)):
+            self.NameError.setText("Heart must be numeric.")
+            return
         
-     #   CheckName = checkHeartRate(float(name))
 
-     #   if  CheckName == False:
-    #        self.NameError.setText("Please put reasonable inputs")
-    #        return
+        user_age = checkAge(int(age))
+     
+        if user_age == False:
+            self.AgeError.setText("Please put reasonable inputs")
+            return
+        
                 
-    #    self.NameError.setText("")
-
         #saved to the file
         logged_in_user.set_age(age)
         savepath = logged_in_user.get_Save_Path()
@@ -553,7 +562,7 @@ class SettingHeart(QtWidgets.QMainWindow):
     def ApplyLowerHeartRate(self):
         
         #apply height to object and save object
-        heartrate = self.New_Lower_Heart_Rate.text()
+        heartrate = self.New_Lower_Heart_rate.text()
         
         if not(is_float(heartrate)):
             self.HeartRateError.setText("Heart must be numeric.")
@@ -769,6 +778,7 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
     def Back(self):         
         setting = Setting()
         GoBack(self, setting)
+        
 class SettingBMI(QtWidgets.QMainWindow):
     def __init__(self):
         super(SettingBMI, self).__init__()

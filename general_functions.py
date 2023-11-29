@@ -19,8 +19,13 @@ def is_float(value):
        return True
    except ValueError:
        return False    
-   
-   
+
+def checkName(name):
+    if(len(name) >= 14):
+        return False
+    else:
+        return True   
+
 def checkAge(age):
     if (age > 99):
         return False
