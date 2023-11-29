@@ -1004,6 +1004,7 @@ class HeartHealth(QtWidgets.QMainWindow):
 
         #graph
         hrGraph = HeartRateGraph()
+        hrGraph.show()
 
         #buttons
         self.GoBack.clicked.connect(self.Back)        
