@@ -19,71 +19,6 @@ import random
 from general_functions import *
 
 
-def checkAge(age):
-    if (age > 99):
-        return False
-    if (age < 18):
-        return False
-    else:
-        return True
-        
-def checkWeight(weight):
-    if (weight > 700):
-        return False
-    if (weight < 22):
-        return False
-    else:
-        return True
-
-def checkHeight(height):
-    if (height > 274):
-        return False
-    if (height < 50):
-        return False
-    else:
-        return True
-    
-def checkTemperature(temp):
-    if (temp > 150):
-        return False
-    if (temp < 0):
-        return False
-    else:
-        return True
-    
-def checkFluid(fluid):
-    if (fluid > 10000):
-        return False
-    if (fluid < 0):
-        return False
-    else:
-        return True
-    
-def checkHeartRate(heartrate):
-    if (heartrate > 200):
-        return False
-    if (heartrate < 50):
-        return False
-    else:
-        return True
-
-def checkBloodOxygen(bloodoxygen):
-    if (bloodoxygen > 200):
-        return False
-    if (bloodoxygen < 50):
-        return False
-    else:
-        return True
-
-def checkBloodPressure(bloodpressure):
-    if (bloodpressure > 200):
-        return False
-    if (bloodpressure < 50):
-        return False
-    else:
-        return True
-
-
 
 ########################################################## GENERAL FUNCTIONS ##########################################################
 
@@ -234,7 +169,7 @@ class CreateScreen(QDialog):
         with open("UserDBS.csv",mode="a", newline="") as f:
             writer = csv.writer(f,delimiter=",") #, useed to sep entries
             writer.writerow([user, password, userSave]) #write in order
-                              
+                                          
             CreateUser = CreateUserProfile(userSave)
             GoToAndRemove(self, CreateUser)
             return
@@ -343,7 +278,7 @@ class LoginScreen(QDialog):
                         logged_in_user.load_from_file(user_save)
                         print("loaded", logged_in_user)
                     except:
-                        self.loginError.setText("Error loading user")
+                        self.loginError.setText("Error loading user - please contact support")
                         return
                     
                     #open window to homepage
