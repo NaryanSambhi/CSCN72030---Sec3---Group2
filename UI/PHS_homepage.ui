@@ -45,9 +45,9 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>140</x>
         <y>30</y>
-        <width>561</width>
+        <width>501</width>
         <height>71</height>
        </rect>
       </property>
@@ -55,7 +55,7 @@
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 30pt &quot;MS Shell Dlg 2&quot;;
+       <string notr="true">font: 27pt &quot;MS Shell Dlg 2&quot;;
 text-align: center;
 border:0px;</string>
       </property>
@@ -102,6 +102,48 @@ bakcground color: none
 border-radius:20px;
 
 
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="logout">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>101</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> border: none;
+background-color: none;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/logout.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GoBack">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> border: none;
+background-color: none;
 </string>
       </property>
       <property name="text">

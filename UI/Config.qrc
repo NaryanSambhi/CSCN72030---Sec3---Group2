@@ -3,6 +3,9 @@
     <file>Pill_Bottle.png</file>
   </qresource>
   <qresource prefix="newPrefix">
+    <file>logout.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
     <file>gears.png</file>
   </qresource>
   <qresource prefix="newPrefix">

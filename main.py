@@ -58,6 +58,31 @@ def checkFluid(fluid):
         return False
     else:
         return True
+    
+def checkHeartRate(heartrate):
+    if (heartrate > 200):
+        return False
+    if (heartrate < 50):
+        return False
+    else:
+        return True
+
+def checkBloodOxygen(bloodoxygen):
+    if (bloodoxygen > 200):
+        return False
+    if (bloodoxygen < 50):
+        return False
+    else:
+        return True
+
+def checkBloodPressure(bloodpressure):
+    if (bloodpressure > 200):
+        return False
+    if (bloodpressure < 50):
+        return False
+    else:
+        return True
+
 
 
 ########################################################## GENERAL FUNCTIONS ##########################################################
@@ -228,27 +253,27 @@ class CreateUserProfile(QDialog):
         
         
         #verify  
-        if not all([UserName, UserAge, UserWeight, UserHeight]):
-            self.accountError.setText("Please fill out all forms.")
-            return
+      #  if not all([UserName, UserAge, UserWeight, UserHeight]):
+      #      self.accountError.setText("Please fill out all forms.")
+      #      return
 
-        if not (is_int(UserAge)):
-            self.accountError.setText("Age must be a whole number")
-            return
+      #  if not (is_int(UserAge)):
+      #      self.accountError.setText("Age must be a whole number")
+      #      return
 
-        if not(is_float(UserWeight) and is_float(UserHeight)):
-            self.accountError.setText("Weight and height must be numeric.")
-            return
+      #  if not(is_float(UserWeight) and is_float(UserHeight)):
+      #      self.accountError.setText("Weight and height must be numeric.")
+      #      return
         
-        Age = checkAge(float(UserAge))
-        Weight = checkWeight(float(UserWeight))
-        Height = checkHeight(float(UserHeight))
+      #  Age = checkAge(float(UserAge))
+      #  Weight = checkWeight(float(UserWeight))
+      #  Height = checkHeight(float(UserHeight))
         
-        if Age or Weight or Height == False:
-            self.accountError.setText("Please put reasonable inputs")
-            return
+      #  if Age or Weight or Height == False:
+      #      self.accountError.setText("Please put reasonable inputs")
+      #      return
         
-        self.accountError.setText("")
+      #  self.accountError.setText("")
 
         
         NewUser.BMI.set_height(float(UserHeight))
@@ -347,6 +372,8 @@ class Home(QtWidgets.QMainWindow):
         self.welcome.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/gears.png')
         self.Setting.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/logout.png')
+        self.logout.setPixmap(qpixmap)
         
         #name
         name = logged_in_user.get_name()
@@ -392,9 +419,14 @@ class Home(QtWidgets.QMainWindow):
         self.Heart.clicked.connect(self.GoToHeartHealth)
         self.Body.clicked.connect(self.GoToBodyStatus)
         self.setting.clicked.connect(self.GoToSetting)
+        self.GoBack.clicked.connect(self.Back)
         
     def update_label(self):        
         simulate_heart(self)
+
+    def Back(self):         
+        login = LoginScreen()
+        GoBack(self, login)
 
 
 #navigation links (doesnt close current as we will go back often)
@@ -437,11 +469,367 @@ class Setting(QtWidgets.QMainWindow):
 
         #buttons
         self.GoBack.clicked.connect(self.Back)
+        self.Settingprofile.clicked.connect(self.SettingProfile)
+        self.Settingheart.clicked.connect(self.SettingHeart)
+        self.Settingbodyinfo.clicked.connect(self.SettingBodyInfo)
+        self.Conversions.clicked.connect(self.SettingBMI)
         
         # go back to homepage
     def Back(self):         
         home = Home()
         GoBack(self, home)
+
+    def SettingProfile(self):               
+        profile = SettingProfile()
+        GoToAndRemove(self, profile) 
+
+    def SettingHeart(self):               
+        heart = SettingHeart()
+        GoToAndRemove(self, heart) 
+
+    def SettingBodyInfo(self):               
+        body = SettingBodyInfo()
+        GoToAndRemove(self, body) 
+
+    def SettingBMI(self):               
+        bmi = SettingBMI()
+        GoToAndRemove(self, bmi) 
+
+class SettingProfile(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(SettingProfile, self).__init__()
+        loadUi("UI/Setting_Profile.ui", self)
+        self.GoBack.clicked.connect(self.Back)
+
+        qpixmap = QPixmap('UI/handwave.png')
+        self.handwave.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/person.png')
+        self.person.setPixmap(qpixmap)
+
+        self.GoBack.clicked.connect(self.Back)
+
+        self.Apply_Name.clicked.connect(self.ApplyName)
+        self.Apply_Age.clicked.connect(self.ApplyAge)
+
+    def ApplyName(self):
+        
+        #apply height to object and save object
+        name = self.New_Name.text()
+     
+     #it is a string so cannot do float checks
+      #  if not(is_float(name)):
+      #      self.NameError.setText("Heart must be numeric.")
+      #      return
+        
+     #   CheckName = checkHeartRate(float(name))
+
+     #   if  CheckName == False:
+    #        self.NameError.setText("Please put reasonable inputs")
+    #        return
+                
+    #    self.NameError.setText("")
+
+        #saved to the file
+        logged_in_user.set_name(name)
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyAge(self):
+        
+        #apply height to object and save object
+        age = self.New_Age.text()
+
+      #it is a string so cannot do float checks  
+      #  if not(is_float(name)):
+      #      self.NameError.setText("Heart must be numeric.")
+      #      return
+        
+     #   CheckName = checkHeartRate(float(name))
+
+     #   if  CheckName == False:
+    #        self.NameError.setText("Please put reasonable inputs")
+    #        return
+                
+    #    self.NameError.setText("")
+
+        #saved to the file
+        logged_in_user.set_age(age)
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def Back(self):         
+        setting = Setting()
+        GoBack(self, setting)
+
+class SettingHeart(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(SettingHeart, self).__init__()
+        loadUi("UI/Setting_Heart.ui", self)
+        self.GoBack.clicked.connect(self.Back)
+
+        self.GoBack.clicked.connect(self.Back)
+
+        self.Apply_Upper_Heart_Rate.clicked.connect(self.ApplyUpperHeartRate)
+        self.Apply_Lower_Heart_Rate.clicked.connect(self.ApplyLowerHeartRate)
+
+        self.Apply_Upper_Blood_Oxygen.clicked.connect(self.ApplyUpperBloodOxygen)
+        self.Apply_Lower_Blood_Oxygen.clicked.connect(self.ApplyLowerBloodOxygen)
+
+        self.Apply_Upper_Blood_Pressure.clicked.connect(self.ApplyUpperBloodPressure)
+        self.Apply_Lower_Blood_Pressure.clicked.connect(self.ApplyLowerBloodPressure)
+
+    def ApplyUpperHeartRate(self):
+        
+        #apply height to object and save object
+        heartrate = self.New_Upper_Heart_Rate.text()
+        
+        if not(is_float(heartrate)):
+            self.HeartRateError.setText("Heart must be numeric.")
+            return
+        
+        CheckHeartRate = checkHeartRate(float(heartrate))
+
+        if  CheckHeartRate == False:
+            self.HeartRateError.setText("Please put reasonable inputs")
+            return
+                
+        self.HeartRateError.setText("")
+
+        #saved to the file
+        logged_in_user.heart_health.set_hrUL(float(heartrate))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyLowerHeartRate(self):
+        
+        #apply height to object and save object
+        heartrate = self.New_Lower_Heart_Rate.text()
+        
+        if not(is_float(heartrate)):
+            self.HeartRateError.setText("Heart must be numeric.")
+            return
+        
+        CheckHeartRate = checkHeartRate(float(heartrate))
+
+        if  CheckHeartRate == False:
+            self.HeartRateError.setText("Please put reasonable inputs")
+            return
+                
+        self.HeartRateError.setText("")
+
+        #saved to the file
+        logged_in_user.heart_health.set_hrLL(float(heartrate))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyUpperBloodOxygen(self):
+        
+        #apply height to object and save object
+        bloodoxygen = self.New_Upper_Blood_Oxygen.text()
+        
+        if not(is_float(bloodoxygen)):
+            self.BloodOxygenError.setText("Blood Oxygen must be numeric.")
+            return
+        
+        CheckBloodOxygen = checkBloodOxygen(float(bloodoxygen))
+
+        if  CheckBloodOxygen == False:
+            self.BloodOxygenError.setText("Please put reasonable inputs")
+            return
+                
+        self.BloodOxygenError.setText("")
+
+        #saved to the file
+        logged_in_user.heart_health.set_boUL(float(bloodoxygen))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyLowerBloodOxygen(self):
+        
+        #apply height to object and save object
+        bloodoxygen = self.New_Lower_Blood_Oxygen.text()
+        
+        if not(is_float(bloodoxygen)):
+            self.BloodOxygenError.setText("Blood Oxygen must be numeric.")
+            return
+        
+        CheckBloodOxygen = checkBloodOxygen(float(bloodoxygen))
+
+        if  CheckBloodOxygen == False:
+            self.BloodOxygenError.setText("Please put reasonable inputs")
+            return
+                
+        self.BloodOxygenError.setText("")
+
+        #saved to the file
+        logged_in_user.heart_health.set_boLL(float(bloodoxygen))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyUpperBloodPressure(self):
+        
+        #apply height to object and save object
+        bloodpressure = self.New_Upper_Blood_Pressure.text()
+        
+        if not(is_float(bloodpressure)):
+            self.BloodPressureError.setText("Blood Pressure must be numeric.")
+            return
+        
+        CheckBloodPressure = checkBloodPressure(float(bloodpressure))
+
+        if  CheckBloodPressure == False:
+            self.BloodPressureError.setText("Please put reasonable inputs")
+            return
+                
+        self.BloodPressureError.setText("")
+
+        #saved to the file
+        logged_in_user.heart_health.set_bpUL(float(bloodpressure))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyLowerBloodPressure(self):
+        
+        #apply height to object and save object
+        bloodpressure = self.New_Lower_Blood_Pressure.text()
+        
+        if not(is_float(bloodpressure)):
+            self.BloodPressureError.setText("Blood Pressure must be numeric.")
+            return
+        
+        CheckBloodPressure = checkBloodPressure(float(bloodpressure))
+
+        if  CheckBloodPressure == False:
+            self.BloodPressureError.setText("Please put reasonable inputs")
+            return
+                
+        self.BloodPressureError.setText("")
+
+        #saved to the file
+        logged_in_user.heart_health.set_bpLL(float(bloodpressure))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def Back(self):         
+        setting = Setting()
+        GoBack(self, setting)
+
+class SettingBodyInfo(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(SettingBodyInfo, self).__init__()
+        loadUi("UI/Setting_Body.ui", self)
+        self.GoBack.clicked.connect(self.Back)
+
+        self.GoBack.clicked.connect(self.Back)
+
+        self.Apply_Upper_Temp.clicked.connect(self.ApplyUpperTemperature)
+        self.Apply_Lower_Temp.clicked.connect(self.ApplyLowerTemperature)
+
+        self.Apply_Upper_Fluid.clicked.connect(self.ApplyUpperFluid)
+        self.Apply_Lower_Fluid.clicked.connect(self.ApplyLowerFluid)
+
+    def ApplyUpperTemperature(self):
+        
+        #apply height to object and save object
+        temperature = self.New_Upper_Temp.text()
+        
+        if not(is_float(temperature)):
+            self.TempError.setText("Temperature must be numeric.")
+            return
+        
+        CheckTemp = checkTemperature(float(temperature))
+
+        if  CheckTemp == False:
+            self.TempError.setText("Please put reasonable inputs")
+            return
+                
+        self.TempError.setText("")
+
+        #saved to the file
+        logged_in_user.body_Info.set_tempUpperLimit(float(temperature))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+    
+    def ApplyLowerTemperature(self):
+        
+        #apply height to object and save object
+        temperature = self.New_Lower_Temp.text()
+        
+        if not(is_float(temperature)):
+            self.TempError.setText("Temperature must be numeric.")
+            return
+        
+        CheckTemp = checkTemperature(float(temperature))
+
+        if  CheckTemp == False:
+            self.TempError.setText("Please put reasonable inputs")
+            return
+                
+        self.TempError.setText("")
+
+        #saved to the file
+        logged_in_user.body_Info.set_tempLowerLimit(float(temperature))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyUpperFluid(self):
+        
+        #apply height to object and save object
+        fluid = self.New_Upper_Fluid.text()
+        
+        if not(is_float(fluid)):
+            self.FluidError.setText("Fluid must be numeric.")
+            return
+        
+        CheckFluid = checkFluid(float(fluid))
+
+        if  CheckFluid == False:
+            self.FluidError.setText("Please put reasonable inputs")
+            return
+                
+        self.FluidError.setText("")
+
+        #saved to the file
+        logged_in_user.body_Info.set_fluidUpperLimit(float(fluid))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyLowerFluid(self):
+        
+        #apply height to object and save object
+        fluid = self.New_Lower_Fluid.text()
+        
+        if not(is_float(fluid)):
+            self.FluidError.setText("Fluid must be numeric.")
+            return
+        
+        CheckFluid = checkFluid(float(fluid))
+
+        if  CheckFluid == False:
+            self.FluidError.setText("Please put reasonable inputs")
+            return
+                
+        self.FluidError.setText("")
+
+        #saved to the file
+        logged_in_user.body_Info.set_fluidUpperLimit(float(fluid))
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+    
+    def Back(self):         
+        setting = Setting()
+        GoBack(self, setting)
+class SettingBMI(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(SettingBMI, self).__init__()
+        loadUi("UI/Setting_BMI.ui", self)
+        self.GoBack.clicked.connect(self.Back)
+
+        self.GoBack.clicked.connect(self.Back)
+
+    def Back(self):         
+        setting = Setting()
+        GoBack(self, setting)
  
 #prescription manager     
 class PrescriptionManager(QtWidgets.QMainWindow):

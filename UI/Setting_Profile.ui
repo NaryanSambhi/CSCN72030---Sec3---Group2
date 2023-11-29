@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>1280</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-30</y>
+      <width>720</width>
+      <height>1280</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 228, 229);</string>
+    </property>
+    <widget class="QWidget" name="widget_12" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>180</y>
+       <width>681</width>
+       <height>451</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+border: 4px solid black;
+</string>
+     </property>
+     <widget class="QPushButton" name="Apply_Name">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>230</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="New_Name">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>150</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>40</y>
+        <width>191</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="NameError">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>240</y>
+        <width>331</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="handwave">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>30</y>
+        <width>161</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/handwave.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_13" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>680</y>
+       <width>681</width>
+       <height>451</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+border: 4px solid black;
+</string>
+     </property>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>40</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Age</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="New_Age">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>140</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt  &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Age">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>220</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="person">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>30</y>
+        <width>181</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/person.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="AgeError">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>250</y>
+        <width>331</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>30</y>
+       <width>731</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+</string>
+     </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>40</y>
+        <width>541</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 28pt &quot;MS Shell Dlg 2&quot;;
+text-align: center;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string>Medical Health System</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GoBack">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: white;
+border-radius:20px;
+font: 26pt &quot;MS Shell Dlg 2&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>&lt;</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Config.qrc"/>
+ </resources>
+ <connections/>
+</ui>

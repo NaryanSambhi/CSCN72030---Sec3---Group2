@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>1280</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-30</y>
+      <width>720</width>
+      <height>1280</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 228, 229);</string>
+    </property>
+    <widget class="QWidget" name="widget_12" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>180</y>
+       <width>681</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+border: 4px solid black;
+</string>
+     </property>
+     <widget class="QLineEdit" name="New_Lower_Heart_rate">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>180</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>321</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Heart Rate Limits</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="HeartRateError">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>270</y>
+        <width>331</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="New_Upper_Heart_Rate">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Upper</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>170</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Lower</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Upper_Heart_Rate">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>100</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Lower_Heart_Rate">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>180</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>30</y>
+       <width>731</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+</string>
+     </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>40</y>
+        <width>541</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 28pt &quot;MS Shell Dlg 2&quot;;
+text-align: center;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string>Medical Health System</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GoBack">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: white;
+border-radius:20px;
+font: 26pt &quot;MS Shell Dlg 2&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>&lt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_13" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>540</y>
+       <width>681</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+border: 4px solid black;
+</string>
+     </property>
+     <widget class="QLineEdit" name="New_Lower_Blood_Oxygen">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>180</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>391</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Blood Oxygen Limits</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="BloodOxygenError">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>270</y>
+        <width>331</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="New_Upper_Blood_Oxygen">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Upper</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>170</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Lower</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Upper_Blood_Oxygen">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>100</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Lower_Blood_Oxygen">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>190</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_14" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>910</y>
+       <width>681</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 171, 172);
+border: 4px solid black;
+</string>
+     </property>
+     <widget class="QLineEdit" name="New_Lower_Blood_Pressure">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>180</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>381</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Blood Pressure Limits</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="BloodPressureError">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>270</y>
+        <width>331</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="New_Upper_Blood_Pressure">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>341</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 228, 229); 
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Upper</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>170</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;MS Shell Dlg 2&quot;;
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string>Lower</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Upper_Blood_Pressure">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>100</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Apply_Lower_Blood_Pressure">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>190</y>
+        <width>181</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 228, 229); 
+border-radius:20px;
+font: 16pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Config.qrc"/>
+ </resources>
+ <connections/>
+</ui>
