@@ -6,7 +6,7 @@
 import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget,  QMainWindow, QVBoxLayout, QPushButton
+from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
 from PyQt5.QtGui import QPixmap
 
 import csv 
@@ -151,10 +151,7 @@ class CreateScreen(QDialog):
         if password != password2:   
             self.accountError.setText("Passwords dont match")
             return
-        
-        
-        #bugged function doesnt work:
-        
+                
         #make sure username isnt already taken
         with open("UserDBS.csv", mode="r", newline="") as f:
             reader = csv.reader(f, delimiter=",")
@@ -169,6 +166,12 @@ class CreateScreen(QDialog):
         with open("UserDBS.csv",mode="a", newline="") as f:
             writer = csv.writer(f,delimiter=",") #, useed to sep entries
             writer.writerow([user, password, userSave]) #write in order
+                                   
+            #create a user save file now
+            NewUser = UserData("", age=0)
+            NewUser.userSave = userSave
+            
+            NewUser.save_to_file(userSave)
                                           
             CreateUser = CreateUserProfile(userSave)
             GoToAndRemove(self, CreateUser)
@@ -292,7 +295,8 @@ class LoginScreen(QDialog):
         
     def Back(self): 
         widget.removeWidget(self)
-    
+        
+        
 #homepage
 class Home(QtWidgets.QMainWindow):
     def __init__(self):
@@ -377,8 +381,8 @@ class Home(QtWidgets.QMainWindow):
 
 #navigation links (doesnt close current as we will go back often)
     def GoToPrescriptionManager(self):
-        PHS = PrescriptionManager()
-        GoToAndRemove(self, PHS)
+        prescription = PrescriptionManager()
+        GoToAndRemove(self, prescription)
     
     def GoToBMI(self):
         bmi = BMI()
@@ -943,9 +947,6 @@ class HeartHealth(QtWidgets.QMainWindow):
         qpixmap = QPixmap('UI/heart.png')
         self.heartrate.setPixmap(qpixmap)
 
-        #graph
-        #hrGraph = HeartRateGraph()
-        #hrGraph.show()
 
         #buttons
         self.GoBack.clicked.connect(self.Back)        
