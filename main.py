@@ -23,71 +23,6 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 
-def checkAge(age):
-    if (age > 99):
-        return False
-    if (age < 18):
-        return False
-    else:
-        return True
-        
-def checkWeight(weight):
-    if (weight > 700):
-        return False
-    if (weight < 22):
-        return False
-    else:
-        return True
-
-def checkHeight(height):
-    if (height > 274):
-        return False
-    if (height < 50):
-        return False
-    else:
-        return True
-    
-def checkTemperature(temp):
-    if (temp > 150):
-        return False
-    if (temp < 0):
-        return False
-    else:
-        return True
-    
-def checkFluid(fluid):
-    if (fluid > 10000):
-        return False
-    if (fluid < 0):
-        return False
-    else:
-        return True
-    
-def checkHeartRate(heartrate):
-    if (heartrate > 200):
-        return False
-    if (heartrate < 50):
-        return False
-    else:
-        return True
-
-def checkBloodOxygen(bloodoxygen):
-    if (bloodoxygen > 200):
-        return False
-    if (bloodoxygen < 50):
-        return False
-    else:
-        return True
-
-def checkBloodPressure(bloodpressure):
-    if (bloodpressure > 200):
-        return False
-    if (bloodpressure < 50):
-        return False
-    else:
-        return True
-
-
 
 ########################################################## GENERAL FUNCTIONS ##########################################################
 
@@ -97,14 +32,22 @@ logged_in_user = UserData(name="", age=0)
 
 #assigning a random heart rate to a user to simulate a real users heart rate
 def simulate_heart(self):
-    dyanmic_heart = (random.randint(40, 120))
-    logged_in_user.heart_health.set_hr(dyanmic_heart)      
+    dynamic_heart = (random.randint(logged_in_user.heart_health.get_hr()-5, logged_in_user.heart_health.get_hr()+5))
+    if (dynamic_heart <= 70):
+        dynamic_heart = 70
+    if (dynamic_heart >= 110):
+        dynamic_heart = 110
+    logged_in_user.heart_health.set_hr(dynamic_heart)      
     current = logged_in_user.heart_health.get_hr()
     
     self.DISPLAY_HEART.setText("Heart-rate: " + str(current))
     
 def simulate_blood_oxygen(self):
-    dynamic_blood_oxygen = random.randint(90, 100)
+    dynamic_blood_oxygen = random.randint(logged_in_user.heart_health.get_bo()-2, logged_in_user.heart_health.get_bo()+2)
+    if (dynamic_blood_oxygen <= 90):
+        dynamic_blood_oxygen = 90
+    if (dynamic_blood_oxygen >=100):
+        dynamic_blood_oxygen = 100
     logged_in_user.heart_health.set_bo(dynamic_blood_oxygen)
     current_blood_oxygen = logged_in_user.heart_health.get_bo()
     
@@ -112,8 +55,12 @@ def simulate_blood_oxygen(self):
 
 
 def simulate_blood_pressure(self):
-    pressure = random.randint(70, 150)
-    logged_in_user.heart_health.set_bp(pressure)
+    dynamic_blood_pressure = random.randint(logged_in_user.heart_health.get_bp()-6, logged_in_user.heart_health.get_bp()+6)
+    if (dynamic_blood_pressure <= 70):
+        dynamic_blood_pressure = 70
+    if (dynamic_blood_pressure >=150):
+        dynamic_blood_pressure = 150
+    logged_in_user.heart_health.set_bp(dynamic_blood_pressure)
     current_pressure = logged_in_user.heart_health.get_bp()
     
     self.DISPLAY_BLOOD_PRESSURE.setText("Blood Pressure: " + str(current_pressure))
@@ -226,7 +173,7 @@ class CreateScreen(QDialog):
         with open("UserDBS.csv",mode="a", newline="") as f:
             writer = csv.writer(f,delimiter=",") #, useed to sep entries
             writer.writerow([user, password, userSave]) #write in order
-                              
+                                          
             CreateUser = CreateUserProfile(userSave)
             GoToAndRemove(self, CreateUser)
             return
@@ -335,7 +282,7 @@ class LoginScreen(QDialog):
                         logged_in_user.load_from_file(user_save)
                         print("loaded", logged_in_user)
                     except:
-                        self.loginError.setText("Error loading user")
+                        self.loginError.setText("Error loading user - please contact support")
                         return
                     
                     #open window to homepage
