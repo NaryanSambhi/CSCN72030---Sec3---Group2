@@ -372,6 +372,8 @@ class Home(QtWidgets.QMainWindow):
         self.welcome.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/gears.png')
         self.Setting.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/logout.png')
+        self.logout.setPixmap(qpixmap)
         
         #name
         name = logged_in_user.get_name()
@@ -417,9 +419,14 @@ class Home(QtWidgets.QMainWindow):
         self.Heart.clicked.connect(self.GoToHeartHealth)
         self.Body.clicked.connect(self.GoToBodyStatus)
         self.setting.clicked.connect(self.GoToSetting)
+        self.GoBack.clicked.connect(self.Back)
         
     def update_label(self):        
         simulate_heart(self)
+
+    def Back(self):         
+        login = LoginScreen()
+        GoBack(self, login)
 
 
 #navigation links (doesnt close current as we will go back often)
@@ -500,6 +507,55 @@ class SettingProfile(QtWidgets.QMainWindow):
         self.person.setPixmap(qpixmap)
 
         self.GoBack.clicked.connect(self.Back)
+
+        self.Apply_Name.clicked.connect(self.ApplyName)
+        self.Apply_Age.clicked.connect(self.ApplyAge)
+
+    def ApplyName(self):
+        
+        #apply height to object and save object
+        name = self.New_Name.text()
+     
+     #it is a string so cannot do float checks
+      #  if not(is_float(name)):
+      #      self.NameError.setText("Heart must be numeric.")
+      #      return
+        
+     #   CheckName = checkHeartRate(float(name))
+
+     #   if  CheckName == False:
+    #        self.NameError.setText("Please put reasonable inputs")
+    #        return
+                
+    #    self.NameError.setText("")
+
+        #saved to the file
+        logged_in_user.set_name(name)
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
+
+    def ApplyAge(self):
+        
+        #apply height to object and save object
+        age = self.New_Age.text()
+
+      #it is a string so cannot do float checks  
+      #  if not(is_float(name)):
+      #      self.NameError.setText("Heart must be numeric.")
+      #      return
+        
+     #   CheckName = checkHeartRate(float(name))
+
+     #   if  CheckName == False:
+    #        self.NameError.setText("Please put reasonable inputs")
+    #        return
+                
+    #    self.NameError.setText("")
+
+        #saved to the file
+        logged_in_user.set_age(age)
+        savepath = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(savepath)
 
     def Back(self):         
         setting = Setting()

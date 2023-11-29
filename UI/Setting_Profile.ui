@@ -94,8 +94,8 @@ border: 0px;</string>
      <widget class="QLabel" name="NameError">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>230</y>
+        <x>50</x>
+        <y>240</y>
         <width>331</width>
         <height>31</height>
        </rect>
@@ -222,8 +222,8 @@ font: 16pt &quot;Monospace&quot;;</string>
      <widget class="QLabel" name="AgeError">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>220</y>
+        <x>50</x>
+        <y>250</y>
         <width>331</width>
         <height>31</height>
        </rect>
