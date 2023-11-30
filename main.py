@@ -17,6 +17,7 @@ from PyQt5.QtCore import QTimer
 import random
 
 from general_functions import *
+from graph import *
 
 
 
@@ -957,6 +958,8 @@ class HeartHealth(QtWidgets.QMainWindow):
         qpixmap = QPixmap('UI/heart.png')
         self.heartrate.setPixmap(qpixmap)
 
+        #graphs
+        
 
         #buttons
         self.GoBack.clicked.connect(self.Back)        
