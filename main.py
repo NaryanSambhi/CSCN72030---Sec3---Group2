@@ -17,7 +17,7 @@ from PyQt5.QtCore import QTimer
 import random
 
 from general_functions import *
-from graph import *
+#from graph import *
 
 
 

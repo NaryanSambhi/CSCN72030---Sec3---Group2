@@ -12,6 +12,19 @@ from datetime import datetime
 from PyQt5.QtGui import *
 from main import *
 
+from hr_graph import run_hr_graph
+from bo_graph import run_bo_graph
+from bp_graph import run_bp_graph
+
+
+
+if __name__ == '__main__':
+    run_bp_graph()
+    run_bo_graph()
+    run_hr_graph()
+
+
+'''
 class UserData:
     def __init__(self, name="", age=0):
         self._Name = name
@@ -228,3 +241,4 @@ class bpGraph():
         app = QApplication(sys.argv)
         window = MainWindow()
         sys.exit(app.exec_())
+'''
