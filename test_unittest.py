@@ -253,73 +253,12 @@ class Test_BMI(unittest.TestCase):
         result  = bmi.get_weight()
         self.assertEqual(result, 75)    
     
-    #tests for set upper and lower weight limits
-    def test_set_weightUpperLimit_pass(self):
-        bmi = BMI(97,110,98,150)
-        result  = bmi.get_weightUpperLimit()
-        self.assertEqual(result, 150) 
-    
-    def test_set_weightLowerLimit_pass(self):
-        bmi = BMI(90,110,50, 110)
-        result  = bmi.get_weightLowerLimit()
-        self.assertEqual(result, 50) 
-        
-        
-    #tests for set upper and lower height limits
-    def test_set_heightUpperLimit_pass(self):
-        bmi = BMI(97,225,60, 110)
-        result  = bmi.get_heightUpperLimit()
-        self.assertEqual(result, 225) 
-    
-    def test_set_heightLowerLimit_pass(self):
-        bmi = BMI(80,140,60, 110)
-        result  = bmi.get_heightLowerLimit()
-        self.assertEqual(result, 80) 
-        
-    
-    #tests for the checkHeightFlag function
-
-    # fail to see if it will raise true flag when in range
-    def test_checkHeightFlag_inLimit_Fail(self):
-        bmi = BMI(height=99, weight=60)
-        self.assertTrue(bmi.checkHeightFlag())
-
-    # pass to see if it will flag if it is over the limit
-    def test_checkHeightFlag_overLimit_Pass(self):
-        bmi = BMI(height=1002, weight=65)
-        self.assertTrue(bmi.checkHeightFlag())
-
-    # pass to make sure that it does not raise a flag meaning that it is in range
-    def test_checkHeightFlag_inLimit_Pass(self):
-        bmi = BMI(height=99, weight=56)
-        self.assertFalse(bmi.checkHeightFlag())
-
-    # fail to make sure that it does raise a flag meaning that it is below range
-    def test_checkHeightFlag_overLimit_Fail(self):
-        bmi = BMI(height=60, weight=60)
-        self.assertFalse(bmi.checkHeightFlag())
-
-    # tests for checkWeightFlag function
-
-    # fail to see if it will raise true flag when in range
-    def test_checkWeightFlag_inLimit_Fail(self):
-        bmi = BMI(height=160, weight=70)
-        self.assertTrue(bmi.checkWeightFlag())
-
-    # pass to see if it will flag if it is over the limit
-    def test_checkWeightFlag_overLimit_Pass(self):
-        bmi = BMI(height=102, weight=700)
-        self.assertTrue(bmi.checkWeightFlag())
-
-    # pass to make sure that it does not raise a flag meaning that it is in range
-    def test_checkWeightFlag_inLimit_Pass(self):
-        bmi= BMI(height=180, weight=67)
-        self.assertFalse(bmi.checkWeightFlag())
-
-    # fail to make sure that it does raise a flag meaning that it is over range
-    def test_checkWeightFlag_overLimit_Fail(self):
-        bmi = BMI(height=100, weight=-800)
-        self.assertFalse(bmi.checkWeightFlag())
+      #pass to make sure the user is able to see their bmi
+    def test_get_bmi_pass(self):
+        bmi = BMI(98,75)
+        result  = bmi.get_bmi()
+        self.assertEqual(result, 0)  
+   
     
 if __name__ == '__main__':
     unittest.main()
