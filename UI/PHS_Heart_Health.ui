@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>714</width>
-    <height>1222</height>
+    <width>706</width>
+    <height>1199</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
        <x>20</x>
        <y>180</y>
        <width>681</width>
-       <height>241</height>
+       <height>211</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -105,9 +105,9 @@ border: 0px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>440</y>
+       <y>410</y>
        <width>681</width>
-       <height>251</height>
+       <height>201</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -177,9 +177,9 @@ border: 0px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>720</y>
+       <y>640</y>
        <width>681</width>
-       <height>281</height>
+       <height>211</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -301,9 +301,26 @@ border:0px;</string>
       </property>
      </widget>
     </widget>
+    <widget class="PlotWidget" name="graphicsView">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>870</y>
+       <width>671</width>
+       <height>351</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="Config.qrc"/>
  </resources>

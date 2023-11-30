@@ -18,6 +18,8 @@ import random
 
 from general_functions import *
 #from graph import *
+#from hr_graph import *
+#from pyqtgraph import PlotWidget
 
 
 
