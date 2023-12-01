@@ -75,6 +75,25 @@ class PrescriptionManager:
                 return
 
 
+    # Navigate +1 in the array
+    def navigate_next(self, current_index):
+        if current_index < len(self.Prescription_Array) - 1:
+            return current_index + 1
+        else:
+            #self.Status.setText("Already at the last prescription.")
+            return current_index
+
+    # Navigate -1 in the array
+    def navigate_previous(self, current_index):
+        if current_index > 0:
+            return current_index - 1
+        else:
+            #self.Status.setText("Already at the first prescription.")
+            return current_index
+
+    # Check if anything exists in the array
+    def is_array_empty(self):
+        return len(self.Prescription_Array) == 0
 
 '''
 # Create a PrescriptionManager instance

@@ -30,7 +30,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>180</y>
+       <y>270</y>
        <width>681</width>
        <height>151</height>
       </rect>
@@ -98,7 +98,7 @@ color: rgb(255, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>350</y>
+       <y>440</y>
        <width>681</width>
        <height>151</height>
       </rect>
@@ -145,7 +145,7 @@ background-color: rgb(255, 228, 229);
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>520</y>
+       <y>610</y>
        <width>681</width>
        <height>151</height>
       </rect>
@@ -210,7 +210,7 @@ color: rgb(255, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>720</y>
+       <y>810</y>
        <width>421</width>
        <height>111</height>
       </rect>
@@ -337,6 +337,24 @@ border:0px;</string>
        </property>
       </widget>
      </widget>
+    </widget>
+    <widget class="QLabel" name="Status">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>180</y>
+       <width>541</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 0);
+border: 0px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
     </widget>
    </widget>
   </widget>

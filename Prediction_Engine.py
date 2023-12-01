@@ -59,11 +59,3 @@ class Prediction(object):
         self.bpFlag = bpFlag
         self.tempFlag = tempFlag
         self.fluidFlag = fluidFlag
-
-
-
-Test = Prediction_Engine()
-output = Test.Predict(True, True, False, True, True)
-print(output)
-output = Test.Predict(False, False, False, False, True)
-print(output)

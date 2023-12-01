@@ -35,7 +35,7 @@
        <x>20</x>
        <y>160</y>
        <width>671</width>
-       <height>291</height>
+       <height>541</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -60,36 +60,121 @@ border: 0px;</string>
        <string>Medication Plan</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="widget_7" native="true">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>470</y>
-       <width>671</width>
-       <height>321</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 171, 172);
-border: 4px solid black;
-</string>
-     </property>
-     <widget class="QLabel" name="label_3">
+     <widget class="QPushButton" name="GoBackMed">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>421</width>
+        <x>20</x>
+        <y>450</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: white;
+border-radius:20px;
+font: 26pt &quot;MS Shell Dlg 2&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>&lt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GoForwardMed">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>450</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: white;
+border-radius:20px;
+font: 26pt &quot;MS Shell Dlg 2&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Name">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>190</y>
+        <width>351</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+
+color: rgb(0, 0, 0);
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Effect">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>250</y>
+        <width>351</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+
+color: rgb(0, 0, 0);
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Dosage">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>310</y>
+        <width>351</width>
         <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+
+color: rgb(0, 0, 0);
 border: 0px;</string>
       </property>
       <property name="text">
-       <string>Medication List</string>
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Status">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>100</y>
+        <width>571</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 0, 0);
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -152,8 +237,8 @@ border:0px;</string>
     <widget class="QPushButton" name="UpdateValues">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>850</y>
+       <x>170</x>
+       <y>730</y>
        <width>351</width>
        <height>111</height>
       </rect>

@@ -5,8 +5,8 @@
 
 import sys
 from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget
+from PyQt5 import QtWidgets, uic
+from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget, QListWidget
 from PyQt5.QtGui import QPixmap
 
 import csv 
@@ -793,25 +793,80 @@ class SettingBMI(QtWidgets.QMainWindow):
     def Back(self):         
         setting = Setting()
         GoBack(self, setting)
+        
+        
  
-#prescription manager     
+#prescription manager   
+
 class PrescriptionManager(QtWidgets.QMainWindow):
     def __init__(self):
         super(PrescriptionManager, self).__init__()
-        loadUi("UI/PHS_prescription.ui", self)
-        self.GoBack.clicked.connect(self.Back)
+        uic.loadUi("UI/PHS_prescription.ui", self)
 
-        #buttons
-        self.GoBack.clicked.connect(self.Back)       
+        # Connect signals to slots
+        self.GoBack.clicked.connect(self.Back)
+        self.GoBackMed.clicked.connect(self.GoBackM)
+        self.GoForwardMed.clicked.connect(self.GoForwardM)
+        self.GoBack.clicked.connect(self.Back)
         self.UpdateValues.clicked.connect(self.UpdatePrescription)
 
-    def Back(self): 
-        home = Home()
+        # Set initial values
+        self.Name.setText("Name: ")
+        self.Effect.setText("Effects: ")
+        self.Dosage.setText("Dosage: ")
+
+        self.current_index = 0  # counting current place in array
+
+        if logged_in_user.prescription_manager.is_array_empty():
+            self.Status.setText("Currently, no medications are stored")
+        else:
+            medication_count = len(logged_in_user.prescription_manager.Prescription_Array)
+            self.Status.setText("Currently have " + str(medication_count) + " medications")
+            self.display_current_prescription()
+
+    def display_current_prescription(self):
+        try:
+            current_prescription = logged_in_user.prescription_manager.Prescription_Array[self.current_index]
+            current_prescription_name = current_prescription.get_name()
+            current_prescription_effects = current_prescription.get_effects()
+            current_prescription_dosage = current_prescription.get_dosage()
+            self.Name.setText("Name: " + current_prescription_name)
+            self.Effect.setText("Effects: " + current_prescription_effects)
+            self.Dosage.setText("Dosage: " + current_prescription_dosage)
+        except IndexError:
+            self.reset_prescription_display()
+
+    def GoBackM(self):
+        try:
+            self.current_index = logged_in_user.prescription_manager.navigate_previous(self.current_index)
+            self.display_current_prescription()
+        except IndexError:
+            self.reset_prescription_display()
+
+    def GoForwardM(self):
+        try:
+            self.current_index = logged_in_user.prescription_manager.navigate_next(self.current_index)
+            self.display_current_prescription()
+        except IndexError:
+            self.reset_prescription_display()
+
+    def reset_prescription_display(self):
+        self.Name.setText("Name: ")
+        self.Effect.setText("Effects: ")
+        self.Dosage.setText("Dosage: ")
+
+    def Back(self):
+        home = Home()  # Assuming Home class is defined
         GoToAndRemove(self, home)
+
+    def UpdatePrescription(self):
+        med = UpdatePrescription()  # Assuming UpdatePrescription class is defined
+        GoToAndRemove(self, med)
         
-    def UpdatePrescription(self):               
-        med = UpdatePrescription()
-        GoToAndRemove(self, med)  
+        
+        
+        
+
 
 class UpdatePrescription(QtWidgets.QMainWindow):
     def __init__(self):
@@ -819,11 +874,32 @@ class UpdatePrescription(QtWidgets.QMainWindow):
         loadUi("UI/input_Prescriptions.ui", self)
         
         self.GoBack.clicked.connect(self.Back)
+        self.UpdateValues_2.clicked.connect(self.InsertPrescription)
 
     def Back(self):         
         body = PrescriptionManager()
         GoBack(self, body)
-       
+
+    def InsertPrescription(self):
+        new_name = self.New_Name.text()
+        new_effects = self.New_Effects.text()
+        new_dosage = self.New_Dosage.text()
+
+        if not new_name or not new_effects or not new_dosage:
+            # Check if any field is empty
+            self.Status.setText("Please fill in all fields")
+            return
+
+        # Assuming you have a reference to the logged_in_user
+        logged_in_user.prescription_manager.add_prescription(new_name, new_effects, new_dosage)
+
+        # Display success message or navigate back to PrescriptionManager
+        QtWidgets.QMessageBox.information(self, "Success", "Prescription added successfully.")
+        prescription = PrescriptionManager()
+        GoToAndRemove(self, prescription)       
+        
+        
+        
 #bmi class 
 class BMI(QtWidgets.QMainWindow):
     def __init__(self):
