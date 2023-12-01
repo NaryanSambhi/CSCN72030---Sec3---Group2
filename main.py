@@ -818,6 +818,7 @@ class PrescriptionManager(QtWidgets.QMainWindow):
         self.GoForwardMed.clicked.connect(self.GoForwardM)
         self.GoBack.clicked.connect(self.Back)
         self.UpdateValues.clicked.connect(self.UpdatePrescription)
+        self.Delete.clicked.connect(self.deletecurrent)
 
         # Set initial values
         self.Name.setText("Name: ")
@@ -856,6 +857,31 @@ class PrescriptionManager(QtWidgets.QMainWindow):
         try:
             self.current_index = logged_in_user.prescription_manager.navigate_next(self.current_index)
             self.display_current_prescription()
+        except IndexError:
+            self.reset_prescription_display()
+            
+    def deletecurrent(self):
+        try:
+            # Delete current prescription at the current index
+            del logged_in_user.prescription_manager.Prescription_Array[self.current_index]
+
+            # Reorganize array to avoid leaving any gaps
+            # (optional, you can skip this step if you don't mind having gaps in the array)
+            logged_in_user.prescription_manager.Prescription_Array = [
+                prescription for prescription in logged_in_user.prescription_manager.Prescription_Array if prescription is not None
+            ]
+
+            # Update current index if it exceeds the array bounds
+            if self.current_index >= len(logged_in_user.prescription_manager.Prescription_Array):
+                self.current_index = len(logged_in_user.prescription_manager.Prescription_Array) - 1
+
+            # Display the updated prescription
+            self.display_current_prescription()
+
+            # Update the medication count after deleting the prescription
+            medication_count = len(logged_in_user.prescription_manager.Prescription_Array)
+            self.Status.setText("Currently have " + str(medication_count) + " medications")
+
         except IndexError:
             self.reset_prescription_display()
 
