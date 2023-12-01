@@ -82,8 +82,13 @@ def GoToAndRemove(self, new_widget):
     widget.removeWidget(self)
     widget.addWidget(new_widget)
     widget.setCurrentIndex(widget.currentIndex() + 1)
-    
-    
+
+#go to new widget
+def GoToAndLogin(self, new_widget):       
+    widget.removeWidget(self)
+    widget.addWidget(new_widget)
+    widget.setCurrentIndex(widget.currentIndex() - 100)
+   
  #displays the BMI values currently   
 def DisplayBMI(self):
     
@@ -104,6 +109,9 @@ def DisplayBMI(self):
     
      
 ########################################################## Graphic User Interface ##########################################################
+def gotowelcome(self):
+        welcome = WelcomeScreen()
+        GoTo(welcome)
 
 #GUI OBJECTS
 #welcome screen to login or create account
@@ -263,7 +271,7 @@ class LoginScreen(QDialog):
         self.LoginAccount.clicked.connect(self.loginfunction)
         self.GoBack.clicked.connect(self.Back)
 
-        
+     
     #check login details to DBS
     def loginfunction(self):
         
@@ -307,9 +315,9 @@ class LoginScreen(QDialog):
         
         
     def Back(self): 
-        widget.removeWidget(self)
-        
-        
+        welcome = WelcomeScreen()
+        GoToAndRemove(self, welcome) 
+            
 #homepage
 class Home(QtWidgets.QMainWindow):
     def __init__(self):
@@ -393,7 +401,8 @@ class Home(QtWidgets.QMainWindow):
             
     def Back(self):         
         login = LoginScreen()
-        GoBack(self, login)
+        #GoBack(self, login)
+        GoToAndLogin(self, login)
 
 
 #navigation links (doesnt close current as we will go back often)
