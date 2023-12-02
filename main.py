@@ -1119,7 +1119,7 @@ class UpdateBMI(QtWidgets.QMainWindow):
             self.WeightError.setText("Weight must be numeric.")
             return
         
-        Checkweight = checkHeight(float(weight))
+        Checkweight = checkWeight(float(weight))
 
         if  Checkweight == False:
             self.WeightError.setText("Please put reasonable inputs")
@@ -1249,7 +1249,7 @@ class UpdateBody(QtWidgets.QMainWindow):
             return
         
         
-        CheckTemprature = checkHeight(float(Temprature))
+        CheckTemprature = checkTemperature(float(Temprature))
 
         if  CheckTemprature == False:
             self.TempratureError.setText("Please put reasonable inputs")
@@ -1274,7 +1274,7 @@ class UpdateBody(QtWidgets.QMainWindow):
             self.FluidError.setText("Fluid must be numeric.")
             return
         
-        CheckFluid = checkHeight(float(Fluid))
+        CheckFluid = checkFluid(float(Fluid))
 
         if  CheckFluid == False:
             self.FluidError.setText("Please put reasonable inputs")
