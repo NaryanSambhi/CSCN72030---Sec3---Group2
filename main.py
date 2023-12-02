@@ -491,21 +491,22 @@ class SettingProfile(QtWidgets.QMainWindow):
         
         #apply name to object and save object
         name = self.New_Name.text()
-     
+
         Username = checkName(name)
-        Usersname = is_float(name)
 
         if  Username == False:
-            self.NameError.setStyleSheet("color: red;")
+            
+            self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.NameError.setText("Name too long")
             return
-        if Usersname == True:
-            self.NameError.setStyleSheet("color: red;")
-            self.NameError.setText("Enter a name not a number")
+        if is_float(name) == True:
+            self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+            self.NameError.setText("No numbers")
             return
-        else:
-            self.NameError.setStyleSheet("color: green;")
-            self.NameError.setText("Good Job :3")
+
+        self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;")
+        
+        self.NameError.setText("Values have been changed")
             
                 
         #self.NameError.setText("")
@@ -522,6 +523,7 @@ class SettingProfile(QtWidgets.QMainWindow):
 
       #it is a string so cannot do float checks  
         if not(is_float(age)):
+            self.AgeError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.AgeError.setText("Age must be numeric.")
             return
         
@@ -529,13 +531,15 @@ class SettingProfile(QtWidgets.QMainWindow):
         user_age = checkAge(int(age))
      
         if user_age == False:
-            self.AgeError.setStyleSheet("color: red;")
+            # Set style sheet with red color and no border
+            self.AgeError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.AgeError.setText("Please put reasonable inputs")
             return
-        else:
-            self.AgeError.setStyleSheet("color: green;")
-            self.AgeError.setText("Good Job :3")
-        
+
+        # Set style sheet with green color and no border
+        self.AgeError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.AgeError.setText("Values have been changed")
                 
         #saved to the file
         logged_in_user.set_age(age)
@@ -568,19 +572,21 @@ class SettingHeart(QtWidgets.QMainWindow):
         #apply height to object and save object
         heartrate = self.New_Upper_Heart_Rate.text()
         
-        if not(is_float(heartrate)):
+        if not(is_float(heartrate)):            
+            self.HeartRateError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.HeartRateError.setText("Heart must be numeric.")
             return
         
         CheckHeartRate = checkHeartRate(float(heartrate))
 
         if  CheckHeartRate == False:
-            self.HeartRateError.setStyleSheet("color: red;")
+            
+            self.HeartRateError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.HeartRateError.setText("Please put reasonable inputs")
             return
-        else:
-            self.HeartRateError.setStyleSheet("color: green;")
-            self.HeartRateError.setText("Good Job :3")
+
+        self.HeartRateError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.HeartRateError.setText("Values have been changed")
                 
         #self.HeartRateError.setText("")
 
@@ -594,19 +600,20 @@ class SettingHeart(QtWidgets.QMainWindow):
         #apply height to object and save object
         heartrate = self.New_Lower_Heart_rate.text()
         
-        if not(is_float(heartrate)):
+        if not(is_float(heartrate)):            
+            self.HeartRateError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.HeartRateError.setText("Heart must be numeric.")
             return
         
         CheckHeartRate = checkHeartRate(float(heartrate))
 
         if  CheckHeartRate == False:
-            self.HeartRateError.setStyleSheet("color: red;")
+            self.HeartRateError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.HeartRateError.setText("Please put reasonable inputs")
             return
-        else:
-            self.HeartRateError.setStyleSheet("color: green;")
-            self.HeartRateError.setText("Good Job :3")
+
+        self.HeartRateError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.HeartRateError.setText("Values have been changed")
 
         #self.HeartRateError.setText("")
 
@@ -621,18 +628,19 @@ class SettingHeart(QtWidgets.QMainWindow):
         bloodoxygen = self.New_Upper_Blood_Oxygen.text()
         
         if not(is_float(bloodoxygen)):
+            self.BloodOxygenError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.BloodOxygenError.setText("Blood Oxygen must be numeric.")
             return
         
         CheckBloodOxygen = checkBloodOxygen(float(bloodoxygen))
 
         if  CheckBloodOxygen == False:
-            self.BloodOxygenError.setStyleSheet("color: red;")
+            self.BloodOxygenError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.BloodOxygenError.setText("Please put reasonable inputs")
             return
-        else:
-            self.BloodOxygenError.setStyleSheet("color: green;")
-            self.BloodOxygenError.setText("Good Job :3")
+
+        self.BloodOxygenError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.BloodOxygenError.setText("Values have been changed")
                 
        # self.BloodOxygenError.setText("")
 
@@ -646,19 +654,21 @@ class SettingHeart(QtWidgets.QMainWindow):
         #apply height to object and save object
         bloodoxygen = self.New_Lower_Blood_Oxygen.text()
         
-        if not(is_float(bloodoxygen)):
+        if not(is_float(bloodoxygen)):            
+            self.BloodOxygenError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.BloodOxygenError.setText("Blood Oxygen must be numeric.")
             return
         
         CheckBloodOxygen = checkBloodOxygen(float(bloodoxygen))
 
         if  CheckBloodOxygen == False:
-            self.BloodOxygenError.setStyleSheet("color: red;")
+            self.BloodOxygenError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.BloodOxygenError.setText("Please put reasonable inputs")
             return
-        else:
-            self.BloodOxygenError.setStyleSheet("color: green;")
-            self.BloodOxygenError.setText("Good Job :3")
+
+        self.BloodOxygenError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;")
+        self.BloodOxygenError.setText("Values have been changed")
                 
        # self.BloodOxygenError.setText("")
 
@@ -673,19 +683,22 @@ class SettingHeart(QtWidgets.QMainWindow):
         bloodpressure = self.New_Upper_Blood_Pressure.text()
         
         if not(is_float(bloodpressure)):
+            self.BloodPressureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.BloodPressureError.setText("Blood Pressure must be numeric.")
             return
         
         CheckBloodPressure = checkBloodPressure(float(bloodpressure))
 
         if  CheckBloodPressure == False:
-            self.BloodPressureError.setStyleSheet("color: red;")
+            self.BloodPressureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.BloodPressureError.setText("Please put reasonable inputs")
             return  
-        else:
-            self.BloodPressureError.setStyleSheet("color: green;")
-            self.BloodPressureError.setText("Good Job :3")
-                
+
+        self.BloodPressureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.BloodPressureError.setText("Values have been changed")
+            
        # self.BloodPressureError.setText("")
 
         #saved to the file
@@ -699,19 +712,21 @@ class SettingHeart(QtWidgets.QMainWindow):
         bloodpressure = self.New_Lower_Blood_Pressure.text()
         
         if not(is_float(bloodpressure)):
+            self.BloodPressureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.BloodPressureError.setText("Blood Pressure must be numeric.")
             return
         
         CheckBloodPressure = checkBloodPressure(float(bloodpressure))
 
         if  CheckBloodPressure == False:
-            self.BloodPressureError.setStyleSheet("color: red;")
+            self.BloodPressureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.BloodPressureError.setText("Please put reasonable inputs")
             return
         
-        else:
-            self.BloodPressureError.setStyleSheet("color: green;")
-            self.BloodPressureError.setText("Good Job :3")
+        self.BloodPressureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.BloodPressureError.setText("Values have been changed")
                 
      #   self.BloodPressureError.setText("")
 
@@ -743,19 +758,22 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
         #apply height to object and save object
         temperature = self.New_Upper_Temp.text()
         
-        if not(is_float(temperature)):
+        if not(is_float(temperature)):    
+            self.TempError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.TempError.setText("Temperature must be numeric.")
             return
         
         CheckTemp = checkTemperature(float(temperature))
 
         if  CheckTemp == False:
-            self.TempError.setStyleSheet("color: red;")
+            self.TempError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.TempError.setText("Please put reasonable inputs")
             return
-        else:
-            self.TempError.setStyleSheet("color: green;")
-            self.TempError.setText("Good Job :3")
+
+        self.TempError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.TempError.setText("Values have been changed")
                 
        # self.TempError.setText("")
 
@@ -770,18 +788,21 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
         temperature = self.New_Lower_Temp.text()
         
         if not(is_float(temperature)):
+            self.TempError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.TempError.setText("Temperature must be numeric.")
             return
         
         CheckTemp = checkTemperature(float(temperature))
 
         if  CheckTemp == False:
-            self.TempError.setStyleSheet("color: red;")
+            self.TempError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.TempError.setText("Please put reasonable inputs")
             return
-        else:
-            self.TempError.setStyleSheet("color: green;")
-            self.TempError.setText("Good Job :3")        
+        
+        self.TempError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.TempError.setText("Values have been changed")        
        # self.TempError.setText("")
 
         #saved to the file
@@ -795,18 +816,21 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
         fluid = self.New_Upper_Fluid.text()
         
         if not(is_float(fluid)):
+            self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.FluidError.setText("Fluid must be numeric.")
             return
         
         CheckFluid = checkFluid(float(fluid))
 
         if  CheckFluid == False:
-            self.FluidError.setStyleSheet("color: red;")
+            self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.FluidError.setText("Please put reasonable inputs")
             return
-        else:
-            self.FluidError.setStyleSheet("color: green;")
-            self.FluidError.setText("Good Job :3") 
+    
+        self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.FluidError.setText("Values have been changed") 
                 
        # self.FluidError.setText("")
 
@@ -821,19 +845,22 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
         fluid = self.New_Lower_Fluid.text()
         
         if not(is_float(fluid)):
+            self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.FluidError.setText("Fluid must be numeric.")
             return
         
         CheckFluid = checkFluid(float(fluid))
 
         if  CheckFluid == False:
-            self.FluidError.setStyleSheet("color: red;")
+            self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.FluidError.setText("Please put reasonable inputs")
             return
-        else:
-            self.FluidError.setStyleSheet("color: green;")
-            self.FluidError.setText("Good Job :3") 
-                
+    
+        self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.FluidError.setText("Values have been changed") 
+            
         #self.FluidError.setText("")
 
         #saved to the file

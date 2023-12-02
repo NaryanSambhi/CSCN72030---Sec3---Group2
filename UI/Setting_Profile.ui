@@ -91,25 +91,6 @@ border: 0px;</string>
        <string>Name</string>
       </property>
      </widget>
-     <widget class="QLabel" name="NameError">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>240</y>
-        <width>331</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
-border: none;
-color: rgb(255, 0, 0);
-font-color: rgb(170, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLabel" name="handwave">
       <property name="geometry">
        <rect>
@@ -130,6 +111,24 @@ font-color: rgb(170, 0, 0)</string>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="NameError">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>250</y>
+        <width>331</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
+ border: none;
+color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
