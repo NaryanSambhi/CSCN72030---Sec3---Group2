@@ -495,13 +495,16 @@ class SettingProfile(QtWidgets.QMainWindow):
         Username = checkName(name)
 
         if  Username == False:
-            
             self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.NameError.setText("Name too long")
             return
         if is_float(name) == True:
             self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.NameError.setText("No numbers")
+            return
+        if not(is_float(name)):
+            self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+            self.NameError.setText("Need an actual input")
             return
 
         self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;")
