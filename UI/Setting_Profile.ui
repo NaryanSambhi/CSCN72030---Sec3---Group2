@@ -102,8 +102,9 @@ border: 0px;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
- border: none;
-color: rgb(255, 0, 0);</string>
+border: none;
+color: rgb(255, 0, 0);
+font-color: rgb(170, 0, 0)</string>
       </property>
       <property name="text">
        <string/>

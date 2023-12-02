@@ -489,16 +489,26 @@ class SettingProfile(QtWidgets.QMainWindow):
 
     def ApplyName(self):
         
-        #apply height to object and save object
+        #apply name to object and save object
         name = self.New_Name.text()
      
         Username = checkName(name)
+        Usersname = is_float(name)
 
         if  Username == False:
-            self.NameError.setText("Name is too large")
+            self.NameError.setStyleSheet("color: red;")
+            self.NameError.setText("Name too long")
             return
+        if Usersname == True:
+            self.NameError.setStyleSheet("color: red;")
+            self.NameError.setText("Enter a name not a number")
+            return
+        else:
+            self.NameError.setStyleSheet("color: green;")
+            self.NameError.setText("Good Job :3")
+            
                 
-        self.NameError.setText("")
+        #self.NameError.setText("")
 
         #saved to the file
         logged_in_user.set_name(name)
@@ -507,20 +517,24 @@ class SettingProfile(QtWidgets.QMainWindow):
 
     def ApplyAge(self):
         
-        #apply height to object and save object
+        #apply age to object and save object
         age = self.New_Age.text()
 
       #it is a string so cannot do float checks  
         if not(is_float(age)):
-            self.NameError.setText("Heart must be numeric.")
+            self.AgeError.setText("Age must be numeric.")
             return
         
 
         user_age = checkAge(int(age))
      
         if user_age == False:
+            self.AgeError.setStyleSheet("color: red;")
             self.AgeError.setText("Please put reasonable inputs")
             return
+        else:
+            self.AgeError.setStyleSheet("color: green;")
+            self.AgeError.setText("Good Job :3")
         
                 
         #saved to the file
@@ -561,10 +575,14 @@ class SettingHeart(QtWidgets.QMainWindow):
         CheckHeartRate = checkHeartRate(float(heartrate))
 
         if  CheckHeartRate == False:
+            self.HeartRateError.setStyleSheet("color: red;")
             self.HeartRateError.setText("Please put reasonable inputs")
             return
+        else:
+            self.HeartRateError.setStyleSheet("color: green;")
+            self.HeartRateError.setText("Good Job :3")
                 
-        self.HeartRateError.setText("")
+        #self.HeartRateError.setText("")
 
         #saved to the file
         logged_in_user.heart_health.set_hrUL(float(heartrate))
@@ -583,10 +601,14 @@ class SettingHeart(QtWidgets.QMainWindow):
         CheckHeartRate = checkHeartRate(float(heartrate))
 
         if  CheckHeartRate == False:
+            self.HeartRateError.setStyleSheet("color: red;")
             self.HeartRateError.setText("Please put reasonable inputs")
             return
-                
-        self.HeartRateError.setText("")
+        else:
+            self.HeartRateError.setStyleSheet("color: green;")
+            self.HeartRateError.setText("Good Job :3")
+
+        #self.HeartRateError.setText("")
 
         #saved to the file
         logged_in_user.heart_health.set_hrLL(float(heartrate))
@@ -605,10 +627,14 @@ class SettingHeart(QtWidgets.QMainWindow):
         CheckBloodOxygen = checkBloodOxygen(float(bloodoxygen))
 
         if  CheckBloodOxygen == False:
+            self.BloodOxygenError.setStyleSheet("color: red;")
             self.BloodOxygenError.setText("Please put reasonable inputs")
             return
+        else:
+            self.BloodOxygenError.setStyleSheet("color: green;")
+            self.BloodOxygenError.setText("Good Job :3")
                 
-        self.BloodOxygenError.setText("")
+       # self.BloodOxygenError.setText("")
 
         #saved to the file
         logged_in_user.heart_health.set_boUL(float(bloodoxygen))
@@ -627,10 +653,14 @@ class SettingHeart(QtWidgets.QMainWindow):
         CheckBloodOxygen = checkBloodOxygen(float(bloodoxygen))
 
         if  CheckBloodOxygen == False:
+            self.BloodOxygenError.setStyleSheet("color: red;")
             self.BloodOxygenError.setText("Please put reasonable inputs")
             return
+        else:
+            self.BloodOxygenError.setStyleSheet("color: green;")
+            self.BloodOxygenError.setText("Good Job :3")
                 
-        self.BloodOxygenError.setText("")
+       # self.BloodOxygenError.setText("")
 
         #saved to the file
         logged_in_user.heart_health.set_boLL(float(bloodoxygen))
@@ -649,10 +679,14 @@ class SettingHeart(QtWidgets.QMainWindow):
         CheckBloodPressure = checkBloodPressure(float(bloodpressure))
 
         if  CheckBloodPressure == False:
+            self.BloodPressureError.setStyleSheet("color: red;")
             self.BloodPressureError.setText("Please put reasonable inputs")
-            return
+            return  
+        else:
+            self.BloodPressureError.setStyleSheet("color: green;")
+            self.BloodPressureError.setText("Good Job :3")
                 
-        self.BloodPressureError.setText("")
+       # self.BloodPressureError.setText("")
 
         #saved to the file
         logged_in_user.heart_health.set_bpUL(float(bloodpressure))
@@ -671,10 +705,15 @@ class SettingHeart(QtWidgets.QMainWindow):
         CheckBloodPressure = checkBloodPressure(float(bloodpressure))
 
         if  CheckBloodPressure == False:
+            self.BloodPressureError.setStyleSheet("color: red;")
             self.BloodPressureError.setText("Please put reasonable inputs")
             return
+        
+        else:
+            self.BloodPressureError.setStyleSheet("color: green;")
+            self.BloodPressureError.setText("Good Job :3")
                 
-        self.BloodPressureError.setText("")
+     #   self.BloodPressureError.setText("")
 
         #saved to the file
         logged_in_user.heart_health.set_bpLL(float(bloodpressure))
@@ -711,10 +750,14 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
         CheckTemp = checkTemperature(float(temperature))
 
         if  CheckTemp == False:
+            self.TempError.setStyleSheet("color: red;")
             self.TempError.setText("Please put reasonable inputs")
             return
+        else:
+            self.TempError.setStyleSheet("color: green;")
+            self.TempError.setText("Good Job :3")
                 
-        self.TempError.setText("")
+       # self.TempError.setText("")
 
         #saved to the file
         logged_in_user.body_Info.set_tempUpperLimit(float(temperature))
@@ -733,10 +776,13 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
         CheckTemp = checkTemperature(float(temperature))
 
         if  CheckTemp == False:
+            self.TempError.setStyleSheet("color: red;")
             self.TempError.setText("Please put reasonable inputs")
             return
-                
-        self.TempError.setText("")
+        else:
+            self.TempError.setStyleSheet("color: green;")
+            self.TempError.setText("Good Job :3")        
+       # self.TempError.setText("")
 
         #saved to the file
         logged_in_user.body_Info.set_tempLowerLimit(float(temperature))
@@ -755,10 +801,14 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
         CheckFluid = checkFluid(float(fluid))
 
         if  CheckFluid == False:
+            self.FluidError.setStyleSheet("color: red;")
             self.FluidError.setText("Please put reasonable inputs")
             return
+        else:
+            self.FluidError.setStyleSheet("color: green;")
+            self.FluidError.setText("Good Job :3") 
                 
-        self.FluidError.setText("")
+       # self.FluidError.setText("")
 
         #saved to the file
         logged_in_user.body_Info.set_fluidUpperLimit(float(fluid))
@@ -777,10 +827,14 @@ class SettingBodyInfo(QtWidgets.QMainWindow):
         CheckFluid = checkFluid(float(fluid))
 
         if  CheckFluid == False:
+            self.FluidError.setStyleSheet("color: red;")
             self.FluidError.setText("Please put reasonable inputs")
             return
+        else:
+            self.FluidError.setStyleSheet("color: green;")
+            self.FluidError.setText("Good Job :3") 
                 
-        self.FluidError.setText("")
+        #self.FluidError.setText("")
 
         #saved to the file
         logged_in_user.body_Info.set_fluidUpperLimit(float(fluid))
