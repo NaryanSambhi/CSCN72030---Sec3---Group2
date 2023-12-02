@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>706</width>
-    <height>1199</height>
+    <width>721</width>
+    <height>1186</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
        <x>20</x>
        <y>160</y>
        <width>671</width>
-       <height>541</height>
+       <height>481</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -64,7 +64,7 @@ border: 0px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>450</y>
+        <y>390</y>
         <width>91</width>
         <height>31</height>
        </rect>
@@ -85,7 +85,7 @@ font: 26pt &quot;MS Shell Dlg 2&quot;;
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>450</y>
+        <y>390</y>
         <width>91</width>
         <height>31</height>
        </rect>
@@ -106,7 +106,7 @@ font: 26pt &quot;MS Shell Dlg 2&quot;;
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>190</y>
+        <y>160</y>
         <width>351</width>
         <height>61</height>
        </rect>
@@ -125,7 +125,7 @@ border: 0px;</string>
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>250</y>
+        <y>220</y>
         <width>351</width>
         <height>61</height>
        </rect>
@@ -144,7 +144,7 @@ border: 0px;</string>
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>310</y>
+        <y>280</y>
         <width>351</width>
         <height>71</height>
        </rect>
@@ -175,6 +175,46 @@ border: 0px;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Delete">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>10</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 171, 172);
+border: 4px solid black;
+border-radius:20px;
+font: 10pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Delete Current</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="UpdateValues">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>380</y>
+        <width>281</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 171, 172);
+border: 4px solid black;
+border-radius:20px;
+font: 20pt &quot;Monospace&quot;;</string>
+      </property>
+      <property name="text">
+       <string>New Medication</string>
       </property>
      </widget>
     </widget>
@@ -234,44 +274,19 @@ border:0px;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="UpdateValues">
+    <widget class="QCalendarWidget" name="calendarWidget">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>730</y>
-       <width>391</width>
-       <height>111</height>
+       <x>10</x>
+       <y>650</y>
+       <width>701</width>
+       <height>531</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 171, 172);
-border: 4px solid black;
-border-radius:20px;
-font: 30pt &quot;Monospace&quot;;</string>
-     </property>
-     <property name="text">
-      <string>New Medication</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="Delete">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>880</y>
-       <width>391</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 171, 172);
-border: 4px solid black;
-border-radius:20px;
-font: 30pt &quot;Monospace&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Delete Current</string>
+background-color: rgb(255, 255, 255);
+alternate-background-color: rgb(170, 170, 255);</string>
      </property>
     </widget>
    </widget>

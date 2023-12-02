@@ -301,26 +301,9 @@ border:0px;</string>
       </property>
      </widget>
     </widget>
-    <widget class="PlotWidget" name="graphicsView">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>870</y>
-       <width>671</width>
-       <height>351</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>PlotWidget</class>
-   <extends>QGraphicsView</extends>
-   <header>pyqtgraph</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="Config.qrc"/>
  </resources>

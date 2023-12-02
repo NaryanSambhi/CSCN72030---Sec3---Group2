@@ -17,10 +17,6 @@ from PyQt5.QtCore import QTimer
 import random
 
 from general_functions import *
-#from graph import *
-#from hr_graph import *
-#from pyqtgraph import PlotWidget
-
 
 
 ########################################################## GENERAL FUNCTIONS ##########################################################
@@ -965,6 +961,13 @@ class PrescriptionManager(QtWidgets.QMainWindow):
             # Update the medication count after deleting the prescription
             medication_count = len(logged_in_user.prescription_manager.Prescription_Array)
             self.Status.setText("Currently have " + str(medication_count) + " medications")
+            
+            
+            save = logged_in_user.get_Save_Path()
+            logged_in_user.save_to_file(save)
+
+            self.Status.setText("Medication removed")
+
 
         except IndexError:
             self.reset_prescription_display()
@@ -1011,6 +1014,9 @@ class UpdatePrescription(QtWidgets.QMainWindow):
 
         # Assuming you have a reference to the logged_in_user
         logged_in_user.prescription_manager.add_prescription(new_name, new_effects, new_dosage)
+        
+        save = logged_in_user.get_Save_Path()
+        logged_in_user.save_to_file(save)
 
         # Display success message or navigate back to PrescriptionManager
         QtWidgets.QMessageBox.information(self, "Success", "Prescription added successfully.")
@@ -1155,9 +1161,7 @@ class HeartHealth(QtWidgets.QMainWindow):
         qpixmap = QPixmap('UI/heart.png')
         self.heartrate.setPixmap(qpixmap)
 
-        #graphs
         
-
         #buttons
         self.GoBack.clicked.connect(self.Back)        
         
