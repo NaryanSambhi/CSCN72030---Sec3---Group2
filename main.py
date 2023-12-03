@@ -1205,8 +1205,8 @@ class BodyStatus(QtWidgets.QMainWindow):
         #images
         qpixmap = QPixmap('UI/temperature.png')
         self.bodytemp.setPixmap(qpixmap)
-        qpixmap = QPixmap('UI/bodyfluid.png')
-        self.bodyfluid.setPixmap(qpixmap)
+        qpixmap = QPixmap('UI/nojug.png')
+        self.emptyjug.setPixmap(qpixmap)
         
         
         
