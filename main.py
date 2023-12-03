@@ -102,6 +102,52 @@ def DisplayBMI(self):
         bmi_status = logged_in_user.BMI.get_bmi_status()
         self.DISPLAY_BMI_STATUS.setText(str(bmi_status))
         
+        
+def DisplayJugs(self, Fluid):
+       
+        try:
+            current = float(Fluid)
+        except ValueError:
+            # Handle the case when Fluid is not a valid number
+            current = 0.0
+
+        if current <= 2000:
+            qpixmap = QPixmap('UI\\Jugs\\J1.png')
+        elif 2001 <= current < 3000:
+            qpixmap = QPixmap('UI\\Jugs\\J2.png')
+        elif 3001 <= current < 5000:
+            qpixmap = QPixmap('UI\\Jugs\\J3.png')
+        elif current >= 5001 and current <= 9000:
+            qpixmap = QPixmap('UI\\Jugs\\J4.png')
+        elif current > 9000:
+            qpixmap = QPixmap('UI\\Jugs\\J5.png')
+        else:
+            # Add a default condition or handle it as per your requirement
+            qpixmap = QPixmap('UI\\nojug.png')
+
+        self.emptyjug.setPixmap(qpixmap)
+        return
+
+        
+def DisplayTemp(self, Temp):
+    
+    try:
+        current = float(Temp)
+    except ValueError:
+        # Handle the case when Fluid is not a valid number
+        current = 0.0    
+    
+    if current < 30:
+        qpixmap = QPixmap('UI\Temp\T1.png')
+        
+    elif 70 > current > 31:
+        qpixmap = QPixmap('UI\\temperature.png')
+    elif current > 70:
+        qpixmap = QPixmap('UI\Temp\T2.png')
+
+
+    self.bodytemp.setPixmap(qpixmap)
+    return
     
      
 ########################################################## Graphic User Interface ##########################################################
@@ -329,8 +375,8 @@ class Home(QtWidgets.QMainWindow):
         self.personpic.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/blackheart.png')
         self.blackheart.setPixmap(qpixmap)
-        qpixmap = QPixmap('UI/temperature.png')
-        self.bodyinfo.setPixmap(qpixmap)
+
+        
         qpixmap = QPixmap('UI/scale.png')
         self.scale.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/bmipic.png')
@@ -364,9 +410,15 @@ class Home(QtWidgets.QMainWindow):
         #temp and fluid
         
         temp = logged_in_user.body_Info.get_temp()
-        self.DISPLAY_TEMP.setText("Temperature: " + str(temp))
+        self.DISPLAY_TEMP.setText(str(temp) + " c")
 
  
+        DisplayTemp(self, temp)
+        
+        fluid = logged_in_user.body_Info.get_fluid()
+        self.DISPLAY_FLUID.setText(str(fluid) + " mL")
+        
+        DisplayJugs(self, fluid)
         
         #buttons
         self.Medication.clicked.connect(self.GoToPrescriptionManager)
@@ -498,7 +550,7 @@ class SettingProfile(QtWidgets.QMainWindow):
             self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.NameError.setText("No numbers")
             return
-        if not(is_float(name)):
+        if len(name) == 0:
             self.NameError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.NameError.setText("Need an actual input")
             return
@@ -508,7 +560,6 @@ class SettingProfile(QtWidgets.QMainWindow):
         self.NameError.setText("Values have been changed")
             
                 
-        #self.NameError.setText("")
 
         #saved to the file
         logged_in_user.set_name(name)
@@ -1205,19 +1256,20 @@ class BodyStatus(QtWidgets.QMainWindow):
         #images
         qpixmap = QPixmap('UI/temperature.png')
         self.bodytemp.setPixmap(qpixmap)
-        qpixmap = QPixmap('UI/nojug.png')
-        self.emptyjug.setPixmap(qpixmap)
-        
-        
         
         #height and weight
         temprature = logged_in_user.body_Info.get_temp()
-        self.DISPLAY_TEMPRATURE.setText(str(temprature))
+        self.DISPLAY_TEMPRATURE.setText(str(temprature) + " c")
         
         
         
         fluid = logged_in_user.body_Info.get_fluid()
-        self.DISPLAY_FLUID.setText(str(fluid))
+        self.DISPLAY_FLUID.setText(str(fluid) + " mL")
+        
+        DisplayTemp(self, temprature)
+
+        DisplayJugs(self, fluid)
+
 
          #buttons
         self.GoBack.clicked.connect(self.Back)       
@@ -1279,6 +1331,9 @@ class UpdateBody(QtWidgets.QMainWindow):
         
         #self.TempratureError.setText("")
 
+
+        DisplayTemp(self, Temprature)
+
         #saved to the file
         logged_in_user.body_Info.set_temp(float(Temprature))
         savepath = logged_in_user.get_Save_Path()
@@ -1305,34 +1360,14 @@ class UpdateBody(QtWidgets.QMainWindow):
         
         self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
         self.FluidError.setText("Values have been changed")
-       # self.FluidError.setText("")
         
         #save to the file 
         logged_in_user.body_Info.set_fluid(float(Fluid))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
         
-        try:
-            current = float(Fluid)
-        except ValueError:
-            # Handle the case when Fluid is not a valid number
-            current = 0.0
-
-        if current <= 500:
-            qpixmap = QPixmap('UI\\Jugs\\J1.png')
-        elif 510 <= current < 900:
-            qpixmap = QPixmap('UI\\Jugs\\J2.png')
-        elif 910 <= current < 1500:
-            qpixmap = QPixmap('UI\\Jugs\\J3.png')
-        elif current >= 1500 and current <= 2000:
-            qpixmap = QPixmap('UI\\Jugs\\J4.png')
-        elif current > 2000:
-            qpixmap = QPixmap('UI\\Jugs\\J5.png')
-        else:
-            # Add a default condition or handle it as per your requirement
-            qpixmap = QPixmap('UI\\nojug.png')
-
-        self.emptyjug.setPixmap(qpixmap)
+        DisplayJugs(self, Fluid)
+     
 
     #go back to the body status page
     def Back(self):         

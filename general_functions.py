@@ -5,6 +5,9 @@
 #input validation functions
 
 #makes sure input values are numbers only 
+
+
+
 def is_int(value):
     try:
         int(value)

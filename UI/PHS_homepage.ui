@@ -511,17 +511,18 @@ background-color: none;
        <string>Body Info</string>
       </property>
      </widget>
-     <widget class="QLabel" name="bodyinfo">
+     <widget class="QLabel" name="bodytemp">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>540</x>
         <y>10</y>
-        <width>171</width>
+        <width>141</width>
         <height>141</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border: 0px</string>
+       <string notr="true">border: 0px;
+background-color: none;</string>
       </property>
       <property name="text">
        <string/>
@@ -536,14 +537,15 @@ background-color: none;
      <widget class="QLabel" name="DISPLAY_TEMP">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>70</y>
-        <width>401</width>
+        <x>20</x>
+        <y>50</y>
+        <width>111</width>
         <height>61</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: none;
 color: rgb(0, 0, 0);
 border: 0px;</string>
       </property>
@@ -551,6 +553,53 @@ border: 0px;</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="DISPLAY_FLUID">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>131</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: none;
+color: rgb(0, 0, 0);
+border: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="emptyjug">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>251</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px;
+background-color: none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/temperature.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>label_9</zorder>
+     <zorder>DISPLAY_TEMP</zorder>
+     <zorder>DISPLAY_FLUID</zorder>
+     <zorder>emptyjug</zorder>
+     <zorder>bodytemp</zorder>
     </widget>
     <widget class="QWidget" name="widget_9" native="true">
      <property name="geometry">
