@@ -1093,17 +1093,24 @@ class UpdateBMI(QtWidgets.QMainWindow):
         #apply height to object and save object
         height = self.New_Height.text()
         
-        if not(is_float(height)):
+        if not(is_float(height)):    
+            self.HeightError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.HeightError.setText("Height must be numeric.")
             return
         
         CheckHeight = checkHeight(float(height))
 
         if  CheckHeight == False:
+            self.HeightError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+
             self.HeightError.setText("Please put reasonable inputs")
             return
+
+        self.HeightError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.HeightError.setText("Values have been changed")
                 
-        self.HeightError.setText("")
+       # self.HeightError.setText("")
 
         #saved to the file
         logged_in_user.BMI.set_height(float(height))
@@ -1122,16 +1129,21 @@ class UpdateBMI(QtWidgets.QMainWindow):
         weight = self.New_Weight.text()
         
         if not(is_float(weight)):
+            self.WeightError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.WeightError.setText("Weight must be numeric.")
             return
         
         Checkweight = checkWeight(float(weight))
 
         if  Checkweight == False:
+            self.HeightError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.WeightError.setText("Please put reasonable inputs")
             return
         
-        self.WeightError.setText("")
+        self.WeightError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.WeightError.setText("Values have been changed")
+        
+        #self.WeightError.setText("")
         
         #save to the file 
         logged_in_user.BMI.set_weight(float(weight))
@@ -1231,7 +1243,7 @@ class UpdateBody(QtWidgets.QMainWindow):
         self.Temperature.setPixmap(qpixmap)
         qpixmap = QPixmap('UI/bodyfluid.png')
         self.IV.setPixmap(qpixmap)
-
+       
         
         self.GoBack.clicked.connect(self.Back)
         
@@ -1249,18 +1261,22 @@ class UpdateBody(QtWidgets.QMainWindow):
         Temprature = self.New_Temperature.text()
         
         if not(is_float(Temprature)):
-            self.TempratureError.setText("Temprature must be numeric.")
+            self.TemperatureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+            self.TemperatureError.setText("Temprature must be numeric.")
             return
         
         
         CheckTemprature = checkTemperature(float(Temprature))
 
         if  CheckTemprature == False:
-            self.TempratureError.setText("Please put reasonable inputs")
+            self.TemperatureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
+            self.TemperatureError.setText("Please put reasonable inputs")
             return
         
+        self.TemperatureError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.TemperatureError.setText("Values have been changed")
         
-        self.TempratureError.setText("")
+        #self.TempratureError.setText("")
 
         #saved to the file
         logged_in_user.body_Info.set_temp(float(Temprature))
@@ -1275,24 +1291,46 @@ class UpdateBody(QtWidgets.QMainWindow):
         Fluid = self.New_Fluid.text()
         
         if not(is_float(Fluid)):
+            self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.FluidError.setText("Fluid must be numeric.")
             return
         
         CheckFluid = checkFluid(float(Fluid))
 
         if  CheckFluid == False:
+            self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: red;")
             self.FluidError.setText("Please put reasonable inputs")
             return
         
-        
-        self.FluidError.setText("")
+        self.FluidError.setStyleSheet("font: 12pt MS Shell Dlg 2; border: none; color: green;" )
+        self.FluidError.setText("Values have been changed")
+       # self.FluidError.setText("")
         
         #save to the file 
         logged_in_user.body_Info.set_fluid(float(Fluid))
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
         
+        if Fluid <= '500':
+           qpixmap = QPixmap('UI/nojug.png')
+        if Fluid >= '510':
+            qpixmap = QPixmap('UI/J2/nojug.png')
+           #qpixmap = QPixmap('UI/J2/onequaterfull.png')
+           #self.twentyfivejug.setPixmap(qpixmap)
+        if Fluid >= '900':
+            qpixmap = QPixmap('UI/J3/nojug.png')
+           #qpixmap = QPixmap('UI/halffulljug.png')
+          # self.halfjug.setPixmap(qpixmap)
+        if Fluid >= '910':
+            qpixmap = QPixmap('UI/J4/nojug.png')
+           #qpixmap = QPixmap('UI/threequatersfull.png')
+          # self.seventyfivejug.setPixmap(qpixmap)
+        if Fluid >= '1500':
+            qpixmap = QPixmap('UI/J5/nojug.png')
+           #qpixmap = QPixmap('UI/full.png')
+          # self.fulljug.setPixmap(qpixmap)
         
+        self.emptyjug.setPixmap(qpixmap)
     
     #go back to the body status page
     def Back(self):         

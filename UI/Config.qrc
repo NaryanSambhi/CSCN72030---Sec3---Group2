@@ -3,6 +3,21 @@
     <file>Pill_Bottle.png</file>
   </qresource>
   <qresource prefix="newPrefix">
+    <file>full.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>halffulljug.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>threequatersfull.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>onequaterfull.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>nojug.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
     <file>logout.png</file>
   </qresource>
   <qresource prefix="newPrefix">
