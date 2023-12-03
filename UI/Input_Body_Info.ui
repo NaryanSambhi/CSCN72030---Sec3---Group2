@@ -126,28 +126,6 @@ border: 0px;</string>
        <string>(Celsius)</string>
       </property>
      </widget>
-     <widget class="QLabel" name="Temperature">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>30</y>
-        <width>161</width>
-        <height>161</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border: 0px</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="Config.qrc">:/newPrefix/temperature.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="TemperatureError">
       <property name="geometry">
        <rect>
@@ -166,13 +144,35 @@ color: rgb(255, 0, 0);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="bodytemp">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>10</y>
+        <width>161</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/temperature.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
      <zorder>New_Temperature</zorder>
      <zorder>label_9</zorder>
      <zorder>HeightError</zorder>
      <zorder>Celsius_measure</zorder>
-     <zorder>Temperature</zorder>
      <zorder>Apply_Temperature</zorder>
      <zorder>TemperatureError</zorder>
+     <zorder>bodytemp</zorder>
     </widget>
     <widget class="QWidget" name="widget_13" native="true">
      <property name="geometry">
