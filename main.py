@@ -1241,8 +1241,9 @@ class UpdateBody(QtWidgets.QMainWindow):
         #images
         qpixmap = QPixmap('UI/temperature.png')
         self.Temperature.setPixmap(qpixmap)
-        qpixmap = QPixmap('UI/bodyfluid.png')
-        self.IV.setPixmap(qpixmap)
+        
+        qpixmap = QPixmap('UI/nojug.png')
+        self.emptyjug.setPixmap(qpixmap)
        
         
         self.GoBack.clicked.connect(self.Back)
@@ -1311,26 +1312,43 @@ class UpdateBody(QtWidgets.QMainWindow):
         savepath = logged_in_user.get_Save_Path()
         logged_in_user.save_to_file(savepath)
         
-        if Fluid <= '500':
-           qpixmap = QPixmap('UI/nojug.png')
-        if Fluid >= '510':
-            qpixmap = QPixmap('UI/J2/nojug.png')
-           #qpixmap = QPixmap('UI/J2/onequaterfull.png')
-           #self.twentyfivejug.setPixmap(qpixmap)
-        if Fluid >= '900':
-            qpixmap = QPixmap('UI/J3/nojug.png')
-           #qpixmap = QPixmap('UI/halffulljug.png')
-          # self.halfjug.setPixmap(qpixmap)
-        if Fluid >= '910':
-            qpixmap = QPixmap('UI/J4/nojug.png')
-           #qpixmap = QPixmap('UI/threequatersfull.png')
-          # self.seventyfivejug.setPixmap(qpixmap)
-        if Fluid >= '1500':
-            qpixmap = QPixmap('UI/J5/nojug.png')
-           #qpixmap = QPixmap('UI/full.png')
-          # self.fulljug.setPixmap(qpixmap)
-        
-        self.emptyjug.setPixmap(qpixmap)
+        def CheckFluid():
+            if Fluid <= '500':
+                qpixmap = QPixmap('UI/nojug.png')
+                self.emptyjug.setPixmap(qpixmap)
+
+                return
+            if Fluid >= '510':
+                qpixmap = QPixmap('UI/J2/nojug.png')
+                self.emptyjug.setPixmap(qpixmap)
+
+                return
+            #qpixmap = QPixmap('UI/J2/onequaterfull.png')
+            #self.twentyfivejug.setPixmap(qpixmap)
+            if Fluid >= '900':
+                qpixmap = QPixmap('UI/J3/nojug.png')
+                self.emptyjug.setPixmap(qpixmap)
+
+                return
+            #qpixmap = QPixmap('UI/halffulljug.png')
+            # self.halfjug.setPixmap(qpixmap)
+            if Fluid >= '910':
+                qpixmap = QPixmap('UI/J4/nojug.png')
+                self.emptyjug.setPixmap(qpixmap)
+
+                return
+            #qpixmap = QPixmap('UI/threequatersfull.png')
+            # self.seventyfivejug.setPixmap(qpixmap)
+            if Fluid >= '1500':
+                qpixmap = QPixmap('UI/J5/nojug.png')
+                self.emptyjug.setPixmap(qpixmap)
+
+                return
+            #qpixmap = QPixmap('UI/full.png')
+            # self.fulljug.setPixmap(qpixmap)
+            
+            
+        CheckFluid()
     
     #go back to the body status page
     def Back(self):         

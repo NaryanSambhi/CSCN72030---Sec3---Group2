@@ -239,28 +239,6 @@ font: 16pt &quot;Monospace&quot;;</string>
        <string>Apply</string>
       </property>
      </widget>
-     <widget class="QLabel" name="IV">
-      <property name="geometry">
-       <rect>
-        <x>490</x>
-        <y>10</y>
-        <width>151</width>
-        <height>211</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border: 0px</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="Config.qrc">:/newPrefix/bodyfluid.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="WeightError">
       <property name="geometry">
        <rect>
@@ -314,13 +292,36 @@ color: rgb(255, 0, 0);</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="emptyjug">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>20</y>
+        <width>331</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px;
+background-color: none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Config.qrc">:/newPrefix/nojug.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
      <zorder>label_10</zorder>
      <zorder>New_Fluid</zorder>
-     <zorder>IV</zorder>
      <zorder>WeightError</zorder>
      <zorder>fluid_measure</zorder>
      <zorder>Apply_Fluid</zorder>
      <zorder>FluidError</zorder>
+     <zorder>emptyjug</zorder>
     </widget>
     <widget class="QWidget" name="widget_3" native="true">
      <property name="geometry">
@@ -377,28 +378,6 @@ font: 26pt &quot;MS Shell Dlg 2&quot;;
        <string>&lt;</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QLabel" name="emptyjug">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>870</y>
-       <width>461</width>
-       <height>351</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 0px</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="Config.qrc">:/newPrefix/nojug.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
     </widget>
    </widget>
   </widget>
