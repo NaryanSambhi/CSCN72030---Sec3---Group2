@@ -115,7 +115,7 @@ def DisplayJugs(self, Fluid):
             qpixmap = QPixmap('UI\\Jugs\\J1.png')
         elif 2001 <= current < 3000:
             qpixmap = QPixmap('UI\\Jugs\\J2.png')
-        elif 3001 <= current < 5000:
+        elif 3001 <= current <= 5000:
             qpixmap = QPixmap('UI\\Jugs\\J3.png')
         elif current >= 5001 and current <= 9000:
             qpixmap = QPixmap('UI\\Jugs\\J4.png')
@@ -129,26 +129,26 @@ def DisplayJugs(self, Fluid):
         return
 
         
-def DisplayTemp(self, Temp):
-    
+def DisplayTemp(self, Temp):    
     try:
         current = float(Temp)
     except ValueError:
         # Handle the case when Fluid is not a valid number
         current = 0.0    
     
-    if current < 30:
+    # Set a default value for qpixmap
+    qpixmap = QPixmap('UI\\default_temp.png')
+
+    if current <= 30:
         qpixmap = QPixmap('UI\Temp\T1.png')
-        
-    elif 70 > current > 31:
+    elif 70 >= current > 30:
         qpixmap = QPixmap('UI\\temperature.png')
     elif current > 70:
         qpixmap = QPixmap('UI\Temp\T2.png')
 
-
     self.bodytemp.setPixmap(qpixmap)
     return
-    
+
      
 ########################################################## Graphic User Interface ##########################################################
 def gotowelcome(self):
